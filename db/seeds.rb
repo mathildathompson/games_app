@@ -7,6 +7,10 @@ u1 = User.create(:first_name => 'Oliver', :last_name => 'Dutton', :github => 'ht
     :linkedin => 'http://www.linkedin.com/profile/view?id=74952025', :email => 'ollydutton@gmail.com', 
     :twitter => 'https://twitter.com/hacks_n_stacks')
 
+u2 = User.create(:first_name => 'Tom', :last_name => 'Dane', :github => '', 
+    :linkedin => '', :email => '', 
+    :twitter => '')
+
 p1 = Portfolio.create(:title => 'CoinHome', :link => 'http://coinhome.herokuapp.com/', :image => '')
 
 e1 = Education.create(:institution => 'Bournemouth University', :course => 'BA in Advertising & Marketing Communications', 
