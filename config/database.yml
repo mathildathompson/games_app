@@ -1,0 +1,8 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: games_app_development
+  pool: 5
+  username: Olly
+  password:
