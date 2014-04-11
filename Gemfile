@@ -32,7 +32,6 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem 'haml'
 gem 'bcrypt-ruby'
 gem 'httparty'
 gem 'protected_attributes'
