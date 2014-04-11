@@ -1,0 +1,12 @@
+<section>   
+    <div class="container">
+        <h1>Jobs Index</h1>
+        <% @careers.each do |career| %>
+            <ul>
+                Job Title: <%= link_to(career.job_title, career) %>
+                <br>
+            </ul>
+            <hr>
+        <% end %>
+    </div><!-- /.container -->
+</section>  
