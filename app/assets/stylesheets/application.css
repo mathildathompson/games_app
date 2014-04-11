@@ -11,3 +11,6 @@
  *= require_self
  *= require_tree .
  */
+html {
+  font-family: 'Press Start 2P', cursive;
+}
