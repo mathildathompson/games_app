@@ -1,0 +1,21 @@
+<section>
+    <div class="container">
+        <h1>Create Portfolio</h1>
+        <hr>
+        <%= form_for @portfolio do |f| %>
+        <div>
+            <%= f.label :title %>
+            <%= f.text_field :title, :placeholder => "Project Title" %> 
+        </div>
+        <div>
+            <%= f.label :link %>
+            <%= f.text_field :link, :placeholder => "URL to Project" %> 
+        </div>
+        <div>
+            <%= f.label :image, 'Image' %>
+            <%= f.text_field :image, :placeholder => "Image" %> 
+        </div>
+        <%= f.submit %>
+        <% end %>
+    </div><!-- /.container -->
+</section>

@@ -1,2 +1,29 @@
-<h1>UsersController#show</h1>
-<p>Find me in app/views/users_controller/show.html.erb</p>
+<section>    
+    <div class="container">
+        <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+        <br>
+        Email: <%= @user.email %>
+        <br>
+        Github: <%= @user.github %>
+        <br>
+        LinkedIn: <%= @user.linkedin %>
+        <br>
+        Twitter: <%= @user.twitter %>
+        <br>
+        <%# if @current_user && @current_user.admin %>
+            <p><%= link_to('Edit', edit_user_path(@user)) %> <%= link_to('Delete', @user, :method => :delete) %></p>
+
+            <% @user.careers.each do |career| %>
+                <p>
+                Career History: 
+                <%= link_to(career.job_title, career_path(career.id)) %>
+                <br>
+                <%= link_to(career.job_description, career_path(career.id)) %>
+                <%= link_to(career.company, career_path(career.id)) %>
+                <%= link_to(career.start_date, career_path(career.id)) %> 
+                <%= link_to(career.end_date, career_path(career.id)) %> 
+                </p>
+            <% end %>
+        <%# end %>    
+    </div><!-- /.container -->
+</section>

@@ -1,0 +1,40 @@
+<section>
+    <div class="container">
+        <h1>Create Users</h1>
+        <hr>
+            <%= form_for @user do |f| %>
+            <div>
+                <%= f.label :first_name %>
+                <%= f.text_field :first_name, :placeholder => "First Name" %> 
+            </div>
+            <div>
+                <%= f.label :last_name %>
+                <%= f.text_field :last_name, :placeholder => "Last Name" %> 
+            </div>
+            <div>
+                <%= f.label :email, 'Email address' %>
+                <%= f.text_field :email, :placeholder => "Enter email" %> 
+            </div>
+            <div>
+                <%= f.label :github %>
+                <%= f.text_field :github, :placeholder => "Github" %> 
+            </div>
+            <div>
+                <%= f.label :linkedin %>
+                <%= f.text_field :linkedin, :placeholder => "Linkedin" %> 
+            </div>
+            <div>
+                <%= f.label :twitter %>
+                <%= f.text_field :twitter, :placeholder => "Twitter" %>
+            </div>
+            <%= f.submit %>
+            <% end %>
+
+        <%# if @user.errors.any? %>
+            <%# @user.errors.full_messages.each do |msg| %>
+                <li><%#= msg %></li>
+            <%# end %>
+        <%# end %>  
+    </div><!-- /.container -->
+</section>
+

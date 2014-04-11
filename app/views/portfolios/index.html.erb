@@ -1,2 +1,12 @@
-<h1>Portfolios#index</h1>
-<p>Find me in app/views/portfolios/index.html.erb</p>
+<section>   
+    <div class="container">
+        <h1>Portfolio Index</h1>
+        <% @portfolios.each do |portfolio| %>
+            <ul>
+                Name: <%= link_to(portfolio.title, portfolio) %>
+                <br>
+            </ul>
+            <hr>
+        <% end %>
+    </div><!-- /.container -->
+</section>  

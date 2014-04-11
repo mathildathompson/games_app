@@ -1,2 +1,12 @@
-<h1>Educations#index</h1>
-<p>Find me in app/views/educations/index.html.erb</p>
+<section>   
+    <div class="container">
+        <h1>Education History Index</h1>
+        <% @educations.each do |education| %>
+            <ul>
+                Institution: <%= link_to(education.institution, education) %>
+                <br>
+            </ul>
+            <hr>
+        <% end %>
+    </div><!-- /.container -->
+</section>  
