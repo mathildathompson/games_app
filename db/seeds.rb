@@ -23,4 +23,4 @@ c1 = Career.create(:job_title => 'Search & Innovations Director', :job_descripti
 u1.portfolios << p1
 u1.educations << e1
 u1.careers << c1
-# hey Olly
+
