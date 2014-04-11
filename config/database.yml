@@ -4,5 +4,5 @@ development:
   encoding: unicode
   database: games_app_development
   pool: 5
-  username: Olly
+  username: Froese
   password:
