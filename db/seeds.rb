@@ -3,7 +3,7 @@ Portfolio.destroy_all
 Education.destroy_all
 Career.destroy_all
 
-u1 = User.create(:first_name => 'Oliver', :last_name => 'Dutton', :github => 'https://github.com/ollyd', 
+u1 = User.create(:first_name => 'Oliver', :last_name => 'Farton', :github => 'https://github.com/ollyd', 
     :linkedin => 'http://www.linkedin.com/profile/view?id=74952025', :email => 'ollydutton@gmail.com', 
     :twitter => 'https://twitter.com/hacks_n_stacks')
 
