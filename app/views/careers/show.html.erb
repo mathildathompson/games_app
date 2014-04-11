@@ -1,0 +1,15 @@
+<section>    
+    <div class="container">
+        Job Title: <%= @career.job_title %>
+        <br>
+        Description: <%= @career.job_description %>
+        <br>
+        Company: <%= @career.company %>
+        <br>
+        Start Date: <%= @career.start_date %>
+        <br>
+        End: <%= @career.end_date %>
+        <br>
+        <p><%= link_to('Edit', edit_career_path(@career)) %> <%= link_to('Delete', @career, :method => :delete) %></p>
+    </div><!-- /.container -->
+</section>

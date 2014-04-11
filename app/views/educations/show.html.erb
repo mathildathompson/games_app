@@ -1,2 +1,13 @@
-<h1>Educations#show</h1>
-<p>Find me in app/views/educations/show.html.erb</p>
+<section>    
+    <div class="container">
+        Institution: <%= @education.institution %>
+        <br>
+        Course: <%= @education.course %>
+        <br>
+        Start Date: <%= @education.start_date %>
+        <br>
+        End Date: <%= @education.end_date %>
+        <br>
+        <p><%= link_to('Edit', edit_education_path(@education)) %> <%= link_to('Delete', @education, :method => :delete) %></p>
+    </div><!-- /.container -->
+</section>

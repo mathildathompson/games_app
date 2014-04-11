@@ -1,2 +1,11 @@
-<h1>Portfolios#show</h1>
-<p>Find me in app/views/portfolios/show.html.erb</p>
+<section>    
+    <div class="container">
+        <h1><%= @portfolio.title %></h1>
+        <br>
+        Portfolio URL: <%= @portfolio.link %>
+        <br>
+        Screenshot: <%= @portfolio.image %>
+        <br>
+        <p><%= link_to('Edit', edit_portfolio_path(@portfolio)) %> <%= link_to('Delete', @portfolio, :method => :delete) %></p>
+    </div><!-- /.container -->
+</section>
