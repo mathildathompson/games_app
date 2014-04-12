@@ -1,0 +1,15 @@
+.character {
+  text-align: center;
+}
+.viewer {
+  position: relative;
+  width: 34px;
+  height: 48px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.home_sprite {
+  position: relative;
+  right: 0;
+}
