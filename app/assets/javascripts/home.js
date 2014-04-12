@@ -31,8 +31,17 @@ $(document).ready(function() {
 
   turnCharacterRight();
 // below are the functions related to hovering over the characters to show the hero images----------
+  
+  $(".character").on("mouseenter", function(){
+    if ($(this).find("#tom").length) {
+      console.log("I'm tom");
+    } else if ($(this).find("#olly").length) {
+      console.log("I'm olly");
+    } else if ($(this).find("#erik").length) {
+      console.log("I'm erik");
+    }
+  });
 
-
-
+ 
 
 });
