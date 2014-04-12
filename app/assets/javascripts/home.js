@@ -1,19 +1,33 @@
 $(document).ready(function() {
-  // This function turns the homepage sprites back and forth
-  // "viewer" is effectively a little window to the sprite. I couldn't call it window because it has a name conflict
-    var sprite = $(".home_sprite");
-    var currentPos = parseInt(sprite.css("right"));
+  // The following two functions turn the homepage sprites back and forth
+  var sprite = $(".home_sprite");
+  var currentPos = parseInt(sprite.css("right"));
 
-
+  // This turns the sprite right -------------------------------
   function turnCharacterRight (){
-  
-    console.log(currentPos)
     if (currentPos < 256){
       currentPos = currentPos + 32;
-      sprite.animate({ right: currentPos});
-      turnCharacterRight();
+      sprite.css({
+       right: currentPos
+     });
+      setTimeout(turnCharacterRight, 500);
+    }else {
+      turnCharacterLeft();
     }
   };   
- 
+  
+  // This turns the sprite left -------------------------------------
+  function turnCharacterLeft() {
+    if (currentPos > 0){
+      currentPos = currentPos - 32;
+      sprite.css({
+      right: currentPos
+     });
+      setTimeout(turnCharacterLeft, 500);
+    }else {
+      turnCharacterRight();
+    }
+  }
+
   turnCharacterRight();
 });

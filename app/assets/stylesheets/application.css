@@ -11,9 +11,11 @@
  *= require_self
  *= require_tree .
  */
+* {
+margin: 0;
+padding: 0;
+}
+
 html {
   font-family: 'Press Start 2P', cursive;
-}
-#container {
-  max-width: 960px;
 }

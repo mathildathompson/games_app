@@ -1,14 +1,40 @@
+/*The following dicate the overall sturcture of the page*/
+
+header {
+  padding: 30px;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+#header_img {
+  margin-top: 30px;
+  min-height: 55px;
+}
+
+#home_container {
+  text-align: center;
+}
+
+#info_bar {
+  background-color: black;
+  color: white;
+  padding: 15px;
+}
+
+/*The following all relate to the sprite characters*/
 .character {
   text-align: center;
+  display: inline-block;
+  margin-left: 15px;
+  margin-top: 30px;
 }
 .viewer {
   position: relative;
   width: 34px;
   height: 48px;
-  margin: auto;
+  margin: 20px auto;
   overflow: hidden;
 }
-
 .home_sprite {
   position: relative;
   right: 0;
