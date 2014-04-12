@@ -14,9 +14,12 @@
 #
 
 class User < ActiveRecord::Base
-    attr_accessible :first_name, :last_name, :github, :linkedin, :email, :twitter
+    attr_accessible :first_name, :last_name, :github, :linkedin, :email, :twitter, :password, :password_confirmation
     
     has_many :careers
     has_many :portfolios
     has_many :educations
+
+    has_secure_password
+    validates :email, :presence => true, :uniqueness => true, :length => { :minimum => 4 }
 end
