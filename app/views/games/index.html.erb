@@ -108,7 +108,7 @@ function preload() {
 
     game.load.image('stars', 'assets/starfield.png');
     game.load.spritesheet('ship', 'assets/humstar.png', 32, 32);
-    game.load.image('ball', 'assets/shinyball.png');
+    game.load.image('asteroid', 'assets/asteroid.png');
 
 }
 
@@ -126,14 +126,14 @@ function create() {
     starfield = game.add.tileSprite(0, 0, 800, 600, 'stars');
     starfield.fixedToCamera = true;
 
-    balls = game.add.group();
-    balls.enableBody = true;
-    balls.physicsBodyType = Phaser.Physics.P2JS;
+    asteroids = game.add.group();
+    asteroids.enableBody = true;
+    asteroids.physicsBodyType = Phaser.Physics.P2JS;
 
-    for (var i = 0; i < 50; i++)
+    for (var i = 0; i < 20; i++)
     {
-        var ball = balls.create(game.world.randomX, game.world.randomY, 'ball');
-        ball.body.setCircle(16);
+        var asteroid = asteroids.create(game.world.randomX, game.world.randomY, 'asteroid');
+        asteroid.body.setCircle(16);
     }
 
     ship = game.add.sprite(200, 200, 'ship');
