@@ -44,9 +44,24 @@ header {
   border: 15px ridge #e6e000;
   border-radius: 15px;
   margin: 0 auto;
-  height: 550px;
-  width: 400px;
+  height: 500px;
+  width: 350px;
   background: url(erik.png) no-repeat;
   background-size: 100%;
   margin-bottom: 40px;
+  text-align: left;
+  color: white;
+  padding: 25px;
+  text-shadow: 5px 0 black;
+  position: relative;
+}
+
+#stats {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+}
+#stats ul {
+  list-style-type: none;
 }
