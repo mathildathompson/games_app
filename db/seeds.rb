@@ -5,11 +5,15 @@ Career.destroy_all
 
 u1 = User.create(:first_name => 'Oliver', :last_name => 'Dutton', :github => 'https://github.com/ollyd', 
     :linkedin => 'http://www.linkedin.com/profile/view?id=74952025', :email => 'ollydutton@gmail.com', 
-    :twitter => 'https://twitter.com/hacks_n_stacks')
+    :twitter => 'https://twitter.com/hacks_n_stacks', :password => 'admin', :password_confirmation => 'admin')
 
 u2 = User.create(:first_name => 'Tom', :last_name => 'Dane', :github => '', 
-    :linkedin => '', :email => '', 
-    :twitter => '')
+    :linkedin => '', :email => 'tjdane@gmail.com', 
+    :twitter => '', :password => 'admin', :password_confirmation => 'admin')
+
+u3 = User.create(:first_name => 'Erik', :last_name => 'Froese', :github => '', 
+    :linkedin => '', :email => 'froesecom@gmail.com', 
+    :twitter => '', :password => 'admin', :password_confirmation => 'admin')
 
 p1 = Portfolio.create(:title => 'CoinHome', :link => 'http://coinhome.herokuapp.com/', :image => '')
 
@@ -23,4 +27,13 @@ c1 = Career.create(:job_title => 'Search & Innovations Director', :job_descripti
 u1.portfolios << p1
 u1.educations << e1
 u1.careers << c1
+
+u1.admin = true
+u1.save
+
+u2.admin = true
+u2.save
+
+u3.admin = true
+u3.save
 
