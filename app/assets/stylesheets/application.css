@@ -11,9 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+ /*globally remove default border and margin from all browsers. We should use 
+modenizer.css instead */
 * {
-margin: 0;
-padding: 0;
+    margin:0px;
+    border:0px;
+
 }
 
 html {

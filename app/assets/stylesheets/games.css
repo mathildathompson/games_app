@@ -1,0 +1,16 @@
+
+#container {
+
+    position:relative;
+    min-width: 960px;
+}
+
+#accordion {
+    position:absolute;
+    right:0px;
+    width:500px;
+    padding-right: 50px;
+    text-align: left;  
+}
+
+
