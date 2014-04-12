@@ -102,149 +102,167 @@
     <!-- canvas js -->    
     <script type="text/javascript">
 
-    var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+    var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
-    function preload() {
+function preload() {
 
-        game.load.image('sky', '/assets/sky.png');
-        game.load.image('ground', '/assets/platform.png');
-        game.load.image('star', '/assets/star.png');
-        game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
+    game.load.image('stars', 'assets/starfield.png');
+    game.load.spritesheet('ship', 'assets/humstar.png', 32, 32);
+    game.load.image('asteroid', 'assets/asteroid.png');
+    game.load.image('invader', 'assets/invader.png', 32, 32);
+    game.load.spritesheet('kaboom', 'assets/explode.png', 128, 128);
 
+}
+
+var ship;
+var starfield;
+var cursors;
+var aliens;
+
+var explosions;
+
+function create() {
+
+    game.world.setBounds(0, 0, 1600, 1200);
+
+    game.physics.startSystem(Phaser.Physics.P2JS);
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.physics.p2.defaultRestitution = 0.9;
+
+    starfield = game.add.tileSprite(0, 0, 800, 600, 'stars');
+    starfield.fixedToCamera = true;
+
+    asteroids = game.add.group();
+    asteroids.enableBody = true;
+    asteroids.physicsBodyType = Phaser.Physics.P2JS;
+
+    for (var i = 0; i < 30; i++)
+    {
+        var asteroid = asteroids.create(game.world.randomX, game.world.randomY, 'asteroid');
+        asteroid.body.setCircle(16);
     }
 
-    var player;
-    var platforms;
-    var cursors;
+    ship = game.add.sprite(900, 600, 'ship');
+    ship.scale.set(2);
+    ship.smoothed = false;
+    ship.animations.add('fly', [0,1,2,3,4,5], 10, true);
+    ship.play('fly');
 
-    var stars;
-    var score = 0;
-    var scoreText;
+    //  Create our physics body - a 28px radius circle. Set the 'false' parameter below to 'true' to enable debugging
+    game.physics.p2.enable(ship, false);
+    ship.body.setCircle(28);
 
-    function create() {
+    game.camera.follow(ship);
 
-        //  We're going to be using physics, so enable the Arcade Physics system
-        game.physics.startSystem(Phaser.Physics.ARCADE);
+    //  An explosion pool
+    explosions = game.add.group();
+    explosions.createMultiple(30, 'kaboom');
+    explosions.forEach(setupInvader, this);
 
-        //  A simple background for our game
-        game.add.sprite(0, 0, 'sky');
+    //  The Aliens
+    aliens = game.add.group();
+    aliens.enableBody = true;
+    aliens.physicsBodyType = Phaser.Physics.ARCADE;
 
-        //  The platforms group contains the ground and the 2 ledges we can jump on
-        platforms = game.add.group();
+    createAliens();
 
-        //  We will enable physics for any object that is created in this group
-        platforms.enableBody = true;
+    cursors = game.input.keyboard.createCursorKeys();
 
-        // Here we create the ground.
-        var ground = platforms.create(0, game.world.height - 64, 'ground');
+}
 
-        //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-        ground.scale.setTo(2, 2);
+function createAliens () {
 
-        //  This stops it from falling away when you jump on it
-        ground.body.immovable = true;
-
-        //  Now let's create two ledges
-        var ledge = platforms.create(400, 400, 'ground');
-        ledge.body.immovable = true;
-
-        ledge = platforms.create(-150, 250, 'ground');
-        ledge.body.immovable = true;
-
-        // The player and its settings
-        player = game.add.sprite(32, game.world.height - 150, 'dude');
-
-        //  We need to enable physics on the player
-        game.physics.arcade.enable(player);
-
-        //  Player physics properties. Give the little guy a slight bounce.
-        player.body.bounce.y = 0.2;
-        player.body.gravity.y = 300;
-        player.body.collideWorldBounds = true;
-
-        //  Our two animations, walking left and right.
-        player.animations.add('left', [0, 1, 2, 3], 10, true);
-        player.animations.add('right', [5, 6, 7, 8], 10, true);
-
-        //  Finally some stars to collect
-        stars = game.add.group();
-
-        //  We will enable physics for any star that is created in this group
-        stars.enableBody = true;
-
-        //  Here we'll create 12 of them evenly spaced apart
-        for (var i = 0; i < 12; i++)
+    for (var y = 0; y < 100; y++)
+    {
+        for (var x = 0; x < 7; x++)
         {
-            //  Create a star inside of the 'stars' group
-            var star = stars.create(i * 70, 0, 'star');
-
-            //  Let gravity do its thing
-            star.body.gravity.y = 300;
-
-            //  This just gives each star a slightly random bounce value
-            star.body.bounce.y = 0.7 + Math.random() * 0.2;
+            var alien = aliens.create(x * 200, y * 200, 'invader');
+            alien.anchor.setTo(0.9, 0.9);
+            // alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
+            alien.play('fly');
+            alien.body.moves = false;
         }
-
-        //  The score
-        scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-
-        //  Our controls.
-        cursors = game.input.keyboard.createCursorKeys();
-        
     }
 
-    function update() {
+    aliens.x = 200;
+    aliens.y = -19000;
 
-        //  Collide the player and the stars with the platforms
-        game.physics.arcade.collide(player, platforms);
-        game.physics.arcade.collide(stars, platforms);
+    //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
+    var tween = game.add.tween(aliens).to( { x: 200 }, 50, Phaser.Easing.Linear.None, true, 0, 5000, true);
 
-        //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-        game.physics.arcade.overlap(player, stars, collectStar, null, this);
+    //  When the tween loops it calls descend
+    tween.onLoop.add(descend, this);
+}
 
-        //  Reset the players velocity (movement)
-        player.body.velocity.x = 0;
+function descend() {
 
-        if (cursors.left.isDown)
-        {
-            //  Move to the left
-            player.body.velocity.x = -150;
+    aliens.y += 1;
+}
 
-            player.animations.play('left');
-        }
-        else if (cursors.right.isDown)
-        {
-            //  Move to the right
-            player.body.velocity.x = 150;
+function setupInvader (invader) {
 
-            player.animations.play('right');
-        }
-        else
-        {
-            //  Stand still
-            player.animations.stop();
+    invader.anchor.x = 0.5;
+    invader.anchor.y = 0.5;
+    invader.animations.add('kaboom');
 
-            player.frame = 4;
-        }
-        
-        //  Allow the player to jump if they are touching the ground.
-        if (cursors.up.isDown && player.body.touching.down)
-        {
-            player.body.velocity.y = -350;
-        }
+}
 
+
+function update() {
+
+    ship.body.setZeroVelocity();
+
+    if (cursors.left.isDown)
+    {
+        ship.body.moveLeft(200);
+    }
+    else if (cursors.right.isDown)
+    {
+        ship.body.moveRight(200);
     }
 
-    function collectStar (player, star) {
-        
-        // Removes the star from the screen
-        star.kill();
-
-        //  Add and update the score
-        score += 10;
-        scoreText.text = 'Score: ' + score;
-
+    if (cursors.up.isDown)
+    {
+        ship.body.moveUp(200);
     }
+    else if (cursors.down.isDown)
+    {
+        ship.body.moveDown(200);
+    }
+
+    if (!game.camera.atLimit.x)
+    {
+        starfield.tilePosition.x += (ship.body.velocity.x * 16) * game.time.physicsElapsed;
+    }
+
+    if (!game.camera.atLimit.y)
+    {
+        starfield.tilePosition.y += (ship.body.velocity.y * 16) * game.time.physicsElapsed;
+    }
+
+     //  Run collision
+    // game.physics.arcade.overlap(ship, aliens, collisionHandler, null, this);
+
+
+}
+
+function render() {
+
+}
+
+// function collisionHandler (ship, alien) {
+
+//     //  When a ship hits an alien we kill them both
+//     ship.kill();
+//     alien.kill();
+
+//     //  And create an explosion :)
+//     var explosion = explosions.getFirstExists(false);
+//     explosion.reset(alien.body.x, alien.body.y);
+//     explosion.play('kaboom', 30, false, true);
+
+// }
+
 
     </script>
     </div>
