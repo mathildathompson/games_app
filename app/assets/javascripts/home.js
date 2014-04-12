@@ -30,4 +30,9 @@ $(document).ready(function() {
   }
 
   turnCharacterRight();
+// below are the functions related to hovering over the characters to show the hero images----------
+
+
+
+
 });
