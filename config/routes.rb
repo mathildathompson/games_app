@@ -1,6 +1,11 @@
 GamesApp::Application.routes.draw do
   root :to => 'games#index'
   get '/home' => 'games#home'
+
+  get '/login' => 'session#new'
+  post '/login' => 'session#create'
+  delete '/login' => 'session#destroy'
+  
   resources :users
   resources :careers
   resources :educations
