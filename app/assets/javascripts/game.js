@@ -8,7 +8,7 @@ $(document).ready(function() {
             game.load.image('ground', '/assets/platform.png');
             game.load.image('star', '/assets/star.png');
             game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
-
+            game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
         }
 
         var player;
@@ -85,6 +85,20 @@ $(document).ready(function() {
             player.animations.add('left', [0, 1, 2, 3], 10, true);
             player.animations.add('right', [5, 6, 7, 8], 10, true);
             game.camera.follow(player);
+                
+            // going to try to create a badass mofo here
+
+            enemy = game.add.sprite(400, game.world.height - 350, 'baddie');
+            game.physics.arcade.enable(enemy);
+            enemy.body.bounce.y = 0.2;
+            enemy.body.gravity.y = 300;
+            enemy.body.collideWorldBounds = true;
+
+            enemy.animations.add('left', [0, 1], 10, true);
+            enemy.animations.add('right', [2, 3], 10, true);
+
+            game.physics.enable( [ player, enemy ], Phaser.Physics.ARCADE);
+
             //  Finally some stars to collect
             stars = game.add.group();
 
@@ -119,9 +133,14 @@ $(document).ready(function() {
             game.physics.arcade.collide(player, platforms);
             game.physics.arcade.collide(stars, platforms);
 
+            // ENEMY ADDED HERE====================
+            game.physics.arcade.collide(enemy, platforms);
+
             //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
             game.physics.arcade.overlap(player, stars, collectStar, null, this);
 
+            // KILL PLAYER IF HE BUMPS INTO BAD GUY
+            game.physics.arcade.overlap(player, enemy, killPlayer, null, this);
             //  Reset the players velocity (movement)
             player.body.velocity.x = 0;
 
@@ -131,6 +150,10 @@ $(document).ready(function() {
                 player.body.velocity.x = -150;
 
                 player.animations.play('left');
+                
+                // ENEMY ANIMATIONS HERE----------------
+                enemy.body.velocity.x = 100;
+                enemy.animations.play('right');
             }
             else if (cursors.right.isDown)
             {
@@ -138,6 +161,10 @@ $(document).ready(function() {
                 player.body.velocity.x = 150;
 
                 player.animations.play('right');
+
+                // ENEMY ANIMATIONS HERE
+                enemy.body.velocity.x = -100;
+                enemy.animations.play('left');
             }
             else
             {
@@ -165,5 +192,13 @@ $(document).ready(function() {
             scoreText.text = 'Score: ' + score;
 
         }
+        function killPlayer (player, enemy) {
+            
+            // Removes the player from the screen
+            player.kill();
+
+
+        }
+
     };
 });
