@@ -5,33 +5,39 @@
             <li>
                 <h3><span class="title">#experience</span></h3>
                 <ul>
-                    <% @user.careers.each do |career| %>
-                    <li><span class="accordian-title">.job-title > </span><%= career.job_title %></li> 
-                    <li><span class="accordian-title">.company > </span><%= career.company %></li> 
-                    <li><span class="accordian-title">.description > </span><%= career.job_description %></li>    
-                    <li><span class="accordian-title">.start-date > </span><%= career.start_date %></li>    
-                    <li><span class="accordian-title">.end-date > </span><%= career.end_date %></li> <br>      
+                    <% @user.careers.each_with_index do |career, index| %>
+                    <div id="career"<%= index %>>
+                        <li><span class="accordian-title">.job-title > </span><%= career.job_title %></li> 
+                        <li><span class="accordian-title">.company > </span><%= career.company %></li> 
+                        <li><span class="accordian-title">.description > </span><%= career.job_description %></li>    
+                        <li><span class="accordian-title">.start-date > </span><%= career.start_date %></li>    
+                        <li><span class="accordian-title">.end-date > </span><%= career.end_date %></li> <br>      
                     <% end %>
+                    </div>    
                 </ul>
             </li>
        <!--      we will keep this LI open by default -->
             <li class="active">
                 <h3><span class="title">#education</span></h3>
                 <ul>
-                    <% @user.educations.each do |education| %>
-                    <li><span class="accordian-title">.institution > </span><%= education.institution %></li>
-                    <li><span class="accordian-title">.course > </span><%= education.course %></li>
-                    <li><span class="accordian-title">.start-date > </span><%= education.start_date %></li>         
-                    <li><span class="accordian-title">.end-date > </span><%= education.end_date %></li><br>
+                    <% @user.educations.each_with_index do |education, index| %>
+                    <div id="education"<%= index %>>
+                        <li><span class="accordian-title">.institution > </span><%= education.institution %></li>
+                        <li><span class="accordian-title">.course > </span><%= education.course %></li>
+                        <li><span class="accordian-title">.start-date > </span><%= education.start_date %></li>         
+                        <li><span class="accordian-title">.end-date > </span><%= education.end_date %></li><br>
                     <% end %>
+                    </div>
                 </ul>
             </li>
             <li>
                 <h3><span class="title">#portfolio</span></h3>
                 <ul>
-                    <% @user.portfolios.each do |portfolio| %>
-                    <li><span class="accordian-title">.project > </span><%= link_to(portfolio.title, portfolio.link) %></li>
+                    <% @user.portfolios.each_with_index do |portfolio, index| %>
+                    <div id="portfolio"<%= index %>>
+                        <li><span class="accordian-title">.project > </span><%= link_to(portfolio.title, portfolio.link) %></li>
                     <% end %>
+                </div>
                 </ul>
             </li>
         </ul>

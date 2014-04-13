@@ -11,18 +11,13 @@
 /*Basic reset*/
 * {margin: 0; padding: 0;}
 
-/*body {
-    background: #4EB889;
-    font-family: Nunito, arial, verdana;
-}*/
-
 canvas {
-display: inline-block;
-position: absolute;
+    display: inline-block;
+    height: 600px;
+    width: 800px;
 }
 
 section.slider {
-    display: inline-block;
     float: right;
 }
 
