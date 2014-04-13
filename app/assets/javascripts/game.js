@@ -94,6 +94,9 @@ $(document).ready(function() {
             enemy.body.gravity.y = 300;
             enemy.body.collideWorldBounds = true;
 
+            enemy.animations.add('left', [0, 1], 10, true);
+            enemy.animations.add('right', [2, 3], 10, true);
+
             game.physics.enable( [ player, enemy ], Phaser.Physics.ARCADE);
 
             //  Finally some stars to collect
@@ -145,6 +148,10 @@ $(document).ready(function() {
                 player.body.velocity.x = -150;
 
                 player.animations.play('left');
+                
+                // ENEMY ANIMATIONS HERE----------------
+                enemy.body.velocity.x = -100;
+                enemy.animations.play('left');
             }
             else if (cursors.right.isDown)
             {
@@ -152,6 +159,10 @@ $(document).ready(function() {
                 player.body.velocity.x = 150;
 
                 player.animations.play('right');
+
+                // ENEMY ANIMATIONS HERE
+                enemy.body.velocity.x = 100;
+                enemy.animations.play('right');
             }
             else
             {
