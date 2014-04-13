@@ -20,13 +20,22 @@ p1 = Portfolio.create(:title => 'CoinHome', :link => 'http://coinhome.herokuapp.
 e1 = Education.create(:institution => 'Bournemouth University', :course => 'BA in Advertising & Marketing Communications', 
     :start_date => '01/09/2000', :end_date => '30/06/2003' )
 
+
+e2 = Education.create(:institution => 'General Assembly', :course => 'Web Development Immersive', 
+    :start_date => '24/02/2014', :end_date => '24/05/2014' )
+
+
 c1 = Career.create(:job_title => 'Search & Innovations Director', :job_description => 'Blah blah blah bleurgh...',
-    :company => 'Maxus', :start_date => '15/01/2011', :end_date => '20/02/2013')
+    :company => 'Maxus', :start_date => '1/07/2013', :end_date => '20/02/2014')
+
+c2 = Career.create(:job_title => 'Associate Search Director', :job_description => 'SEM/SEO rumpy pumpy...',
+    :company => 'Maxus', :start_date => '19/01/2012', :end_date => '30/06/2013')
 
 
 u1.portfolios << p1
 u1.educations << e1
 u1.careers << c1
+u1.careers << c2
 
 u1.admin = true
 u1.save
