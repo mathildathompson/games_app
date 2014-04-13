@@ -3,13 +3,10 @@
 /*CSS file for fontawesome - an iconfont we will be using. This CSS file imported contains the font-face declaration. More info: http://fortawesome.github.io/Font-Awesome/ */
 @import url(http://thecodeplayer.com/uploads/fonts/fontawesome/css/font-awesome.min.css);
 
-
 #container {
-
     position:relative;
     min-width: 960px;
 }
-
 
 /*Basic reset*/
 * {margin: 0; padding: 0;}
@@ -19,14 +16,19 @@ body {
     font-family: Nunito, arial, verdana;
 }
 
+canvas {
+display: inline-block;
+position: absolute;
+}
+
 section.slider {
     display: inline-block;
+    float: right;
 }
 
 #accordian {
     background: #004050;
-    width: 250px;
-    margin: 100px auto 0 auto;
+    width: 480px;
     color: white;
     /*Some cool shadow and glow effect*/
     box-shadow: 
