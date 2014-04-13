@@ -106,7 +106,7 @@ $(document).ready(function() {
             stars.enableBody = true;
 
             //  Here we'll create 8 of them evenly spaced apart
-            for (var i = 0; i < 8; i++)
+            for (var i = 0; i < 3; i++)
             {
                 //  Create a star inside of the 'stars' group
                 var star = stars.create(i * 100, 0, 'star');
@@ -118,6 +118,33 @@ $(document).ready(function() {
                 //  This just gives each star a slightly random bounce value
                 star.body.bounce.y = 0.7 + Math.random() * 0.2;
             }
+            for (var i = 0; i < 3; i++)
+            {
+                //  Create a star inside of the 'stars' group
+                var star = stars.create(i * 100, 0, 'star');
+                star.id = i
+
+                //  Let gravity do its thing
+                star.body.gravity.y = 300;
+
+                //  This just gives each star a slightly random bounce value
+                star.body.bounce.y = 0.7 + Math.random() * 0.2;
+            }
+            for (var i = 0; i < 3; i++)
+            {
+                //  Create a star inside of the 'stars' group
+                var star = stars.create(i * 100, 0, 'star');
+                star.id = i
+
+                //  Let gravity do its thing
+                star.body.gravity.y = 300;
+
+                //  This just gives each star a slightly random bounce value
+                star.body.bounce.y = 0.7 + Math.random() * 0.2;
+            }
+
+
+
 
             //  The score
             scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
