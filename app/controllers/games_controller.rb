@@ -4,8 +4,8 @@ class GamesController < ApplicationController
   end
 
   def index
-    User.find_by first_name: "Erik"
-    binding.pry
+    @user = User.find_by last_name: params[:last_name].capitalize
+    @first_name = @user.first_name
   end
 
 
