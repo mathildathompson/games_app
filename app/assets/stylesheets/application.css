@@ -7,7 +7,7 @@
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
- *
+ *= require_games
  *= require_self
  *= require_tree .
  */
@@ -25,6 +25,31 @@ canvas {
 }
 
 html {
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P`', cursive;
 }
 
+body {
+    background: #272822!important; 
+    color: #f8f8f2;
+}
+
+.blue {
+
+    color: #66D9EF
+}
+
+.red {
+
+    color:#F92672;
+}
+
+.green {
+
+    color:#A6E22E;
+
+}
+
+.orange {
+
+    color: #FD971F;
+}
