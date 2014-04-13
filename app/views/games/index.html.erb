@@ -3,43 +3,45 @@
     <div id="accordian">
         <ul>
             <li>
-                <h3><span class="icon-dashboard"></span>Experience</h3>
+                <h3><span class="title">Experience</span></h3>
                 <ul>
                     <% @user.careers.each do |career| %>
-                    <li>Job Title</li> 
+                    <li><span class="accordian-title">Job Title</span></li> 
                         <%= career.job_title %>
-                    <li>Company</li>
+                    <br>
+                    <li><span class="accordian-title">Company</span></li>
                         <%= career.company %>
-                    <li>Description</li>   
+                    <br>    
+                    <li><span class="accordian-title">Description</span></li>   
                         <%= career.job_description %> 
-                    <li>Start Date</li>    
+                    <li><span class="accordian-title">Start Date</span></li>    
                         <%= career.start_date %>
-                    <li>End Date</li>
+                    <li><span class="accordian-title">End Date</span></li>
                         <%= career.end_date %>
                     <% end %>
                 </ul>
             </li>
        <!--      we will keep this LI open by default -->
             <li class="active">
-                <h3><span class="icon-tasks"></span>Education</h3>
+                <h3><span class="title">Education</span></h3>
                 <ul>
                     <% @user.educations.each do |education| %>
-                    <li>Institution</li>
+                    <li><span class="accordian-title">Institution</span></li>
                         <%= education.institution %>
-                    <li>Course</li>
+                    <li><span class="accordian-title">Course</span></li>
                         <%= education.course %>
-                    <li>Start Date</li>
+                    <li><span class="accordian-title">Start Date</span></li>
                         <%= education.start_date %>
-                    <li>End Date</li>
+                    <li><span class="accordian-title">End Date</span></li>
                         <%= education.end_date %>
                     <% end %>
                 </ul>
             </li>
             <li>
-                <h3><span class="icon-calendar"></span>Portfolio</h3>
+                <h3><span class="title">Portfolio</span></h3>
                 <ul>
                     <% @user.portfolios.each do |portfolio| %>
-                    <li>Project</li>
+                    <li><span class="accordian-title">Project</span></li>
                         <%= link_to(portfolio.title, portfolio.link) %>
                     <% end %>
                 </ul>

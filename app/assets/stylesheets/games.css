@@ -1,7 +1,7 @@
 /*custom font for text*/
-@import url(http://fonts.googleapis.com/css?family=Nunito);
+@import url(http://fonts.googleapis.com/css?family=Fjord+One);
 /*CSS file for fontawesome - an iconfont we will be using. This CSS file imported contains the font-face declaration. More info: http://fortawesome.github.io/Font-Awesome/ */
-@import url(http://thecodeplayer.com/uploads/fonts/fontawesome/css/font-awesome.min.css);
+/*@import url(http://thecodeplayer.com/uploads/fonts/fontawesome/css/font-awesome.min.css);*/
 
 #container {
     position:relative;
@@ -11,10 +11,10 @@
 /*Basic reset*/
 * {margin: 0; padding: 0;}
 
-body {
+/*body {
     background: #4EB889;
     font-family: Nunito, arial, verdana;
-}
+}*/
 
 canvas {
 display: inline-block;
@@ -27,7 +27,8 @@ section.slider {
 }
 
 #accordian {
-    background: #004050;
+    font-family: 'Fjord One', serif;
+    background: #0A1F1D;
     width: 480px;
     color: white;
     /*Some cool shadow and glow effect*/
@@ -38,12 +39,12 @@ section.slider {
 /*heading styles*/
 #accordian h3 {
     font-size: 12px;
-    line-height: 34px;
+    line-height: 44px;
     padding: 0 10px;
     cursor: pointer;
     /*fallback for browsers not supporting gradients*/
-    background: #003040; 
-    background: linear-gradient(#003040, #002535);
+    background: #0D2526; 
+    background: linear-gradient(#0D2526, #123436);
 }
 /*heading hover effect*/
 #accordian h3:hover {
@@ -57,15 +58,17 @@ section.slider {
 /*list items*/
 #accordian li {
     list-style-type: none;
+  /*  padding-top: 10px;*/
 }
 /*links*/
+
 #accordian ul ul li a {
     color: white;
     text-decoration: none;
     font-size: 11px;
     line-height: 27px;
     display: block;
-    padding: 0 15px;
+    padding: 5 15px;
     /*transition for smooth hover animation*/
     transition: all 0.15s;
 }
@@ -80,6 +83,14 @@ section.slider {
 }
 #accordian li.active ul {
     display: block;
+}
+
+span.title {
+    color: yellow;
+}
+
+span.accordian-title {
+    color: #FF1467;
 }
 
 
