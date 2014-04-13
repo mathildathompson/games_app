@@ -30,7 +30,7 @@ section.slider {
     font-family: 'Fjord One', serif;
     background: #0A1F1D;
     width: 480px;
-    color: white;
+    color: #66D9EF;
     /*Some cool shadow and glow effect*/
     box-shadow: 
         0 5px 15px 1px rgba(0, 0, 0, 0.6), 
@@ -43,8 +43,8 @@ section.slider {
     padding: 0 10px;
     cursor: pointer;
     /*fallback for browsers not supporting gradients*/
-    background: #0D2526; 
-    background: linear-gradient(#0D2526, #123436);
+    background: #272822; 
+    background: linear-gradient(#272822, #3B3A32);
 }
 /*heading hover effect*/
 #accordian h3:hover {
@@ -56,16 +56,16 @@ section.slider {
     margin-right: 10px;
 }
 /*list items*/
-#accordian li {
+#accordian li li {
     list-style-type: none;
-  /*  padding-top: 10px;*/
+    padding: 5px 10px 0 10px;
 }
 /*links*/
 
 #accordian ul ul li a {
     color: white;
     text-decoration: none;
-    font-size: 11px;
+    font-size: 16px;
     line-height: 27px;
     display: block;
     padding: 5 15px;
@@ -73,10 +73,10 @@ section.slider {
     transition: all 0.15s;
 }
 /*hover effect on links*/
-#accordian ul ul li a:hover {
+/*#accordian ul ul li a:hover {
     background: #003545;
     border-left: 5px solid lightgreen;
-}
+}*/
 /*Lets hide the non active LIs by default*/
 #accordian ul ul {
     display: none;
@@ -86,11 +86,11 @@ section.slider {
 }
 
 span.title {
-    color: yellow;
+    color: #FFE792;
 }
 
 span.accordian-title {
-    color: #FF1467;
+    color: #F92672;
 }
 
 
