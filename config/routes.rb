@@ -1,5 +1,5 @@
 GamesApp::Application.routes.draw do
-  root :to => 'games#index'
+  root :to => 'games#home'
   get '/home' => 'games#home'
 
   get '/login' => 'session#new'
