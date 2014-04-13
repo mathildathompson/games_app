@@ -4,9 +4,8 @@ class GamesController < ApplicationController
   end
 
   def index
-    # user = User.find[params:user_id]
-    @user = User.first
-  
+    User.find_by first_name: "Erik"
+    binding.pry
   end
 
 
