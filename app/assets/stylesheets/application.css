@@ -33,6 +33,10 @@ body {
     color: #f8f8f2;
 }
 
+a {
+
+    text-decoration: none;
+}
 .blue {
 
     color: #66D9EF
