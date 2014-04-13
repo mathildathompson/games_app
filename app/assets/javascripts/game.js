@@ -7,11 +7,11 @@ $(document).ready(function() {
 
     function preload() {
 
-    game.load.image('stars', 'assets/starfield.png');
-    game.load.spritesheet('ship', 'assets/humstar.png', 32, 32);
-    game.load.image('asteroid', 'assets/asteroid.png');
-    game.load.image('invader', 'assets/invader.png', 32, 32);
-    game.load.spritesheet('kaboom', 'assets/explode.png', 128, 128);
+    game.load.image('stars', '/assets/starfield.png');
+    game.load.spritesheet('ship', '/assets/humstar.png', 32, 32);
+    game.load.image('asteroid', '/assets/asteroid.png');
+    game.load.image('invader', '/assets/invader.png', 32, 32);
+    game.load.spritesheet('kaboom', '/assets/explode.png', 128, 128);
 
     }
 
