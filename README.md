@@ -1,15 +1,16 @@
+####Comments
+* Style update: site colors come from Monokai Theme for Sublime Text 2. Hompepage inspired by: http://au.jsconf.com/
+* This is a good site to pixelate your face: http://superpixeltime.com/
+
 ##MUST HAVE
 
 ####Homepage
 
-* write javascript/jQuery so that when a character is hovered over, the hero-shot image and information changes below
-* hyperlink each character to the game view, passing in params data
+
+* update: this doesn not work. hyperlink each character to the game view, passing in params data
 * Build lots of design and functionality (backgrounds, navs, etc)
 
-####Comments
-* We’re loosely modelling our homepage on this: http://au.jsconf.com/
- images, colours, and sprites are placeholders only at this point. They should match the visual style of our game.
-* This is a good site to pixelate your face: http://superpixeltime.com/
+
 
 
 ####Game/Canvas
@@ -31,3 +32,9 @@
 
 
 ##NICE TO HAVE
+
+* function that randomizes name order on homepage
+
+##DONE
+
+* write javascript/jQuery so that when a character is hovered over, the hero-shot image and information changes below
