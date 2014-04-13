@@ -88,7 +88,7 @@ $(document).ready(function() {
                 
             // going to try to create a badass mofo here
 
-            enemy = game.add.sprite(32, game.world.height - 150, 'baddie');
+            enemy = game.add.sprite(400, game.world.height - 350, 'baddie');
             game.physics.arcade.enable(enemy);
             enemy.body.bounce.y = 0.2;
             enemy.body.gravity.y = 300;
@@ -139,6 +139,8 @@ $(document).ready(function() {
             //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
             game.physics.arcade.overlap(player, stars, collectStar, null, this);
 
+            // KILL PLAYER IF HE BUMPS INTO BAD GUY
+            game.physics.arcade.overlap(player, enemy, killPlayer, null, this);
             //  Reset the players velocity (movement)
             player.body.velocity.x = 0;
 
@@ -150,8 +152,8 @@ $(document).ready(function() {
                 player.animations.play('left');
                 
                 // ENEMY ANIMATIONS HERE----------------
-                enemy.body.velocity.x = -100;
-                enemy.animations.play('left');
+                enemy.body.velocity.x = 100;
+                enemy.animations.play('right');
             }
             else if (cursors.right.isDown)
             {
@@ -161,8 +163,8 @@ $(document).ready(function() {
                 player.animations.play('right');
 
                 // ENEMY ANIMATIONS HERE
-                enemy.body.velocity.x = 100;
-                enemy.animations.play('right');
+                enemy.body.velocity.x = -100;
+                enemy.animations.play('left');
             }
             else
             {
@@ -190,5 +192,13 @@ $(document).ready(function() {
             scoreText.text = 'Score: ' + score;
 
         }
+        function killPlayer (player, enemy) {
+            
+            // Removes the player from the screen
+            player.kill();
+
+
+        }
+
     };
 });
