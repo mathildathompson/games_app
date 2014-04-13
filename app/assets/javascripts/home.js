@@ -40,12 +40,14 @@ $(document).ready(function() {
     var $hero_weapon = $("#home_p_weap");
     var $hero_armour = $("#home_p_armour");
     var $hero_img = $("#hero_shot");
+    var $game_link = $("a")
 
     $("#tom").on("mouseenter", function(){
       $hero_name.text("P1: Tom");
-      $hero_class.text("Class: Ranger");
+      $hero_class.text("Class: Apprentice");
       $hero_weapon.text("Weapon: Bow");
-      $hero_armour.text("Armour: Leather");
+      $hero_armour.text("Armour: Git");
+      $game_link.attr("href", "/games/dane")     
       $hero_img.css("background-image", "url(http://tomvoldemortriddle.tripod.com/sitebuildercontent/sitebuilderpictures/chewie.jpg)");
     });
     
@@ -54,6 +56,7 @@ $(document).ready(function() {
       $hero_class.text("Class: Sorcerer");
       $hero_weapon.text("Weapon: Staff");
       $hero_armour.text("Armour: Robe");
+      $game_link.attr("href", "/games/dutton")
       $hero_img.css("background-image", "url(http://fc09.deviantart.net/fs70/i/2013/183/3/4/the_slime_monster_by_know_kname-d6bo6x6.png)");
     });
     
@@ -62,6 +65,7 @@ $(document).ready(function() {
       $hero_class.text("Class: Warrior");
       $hero_weapon.text("Weapon: Axe");
       $hero_armour.text("Armour: Plate");
+      $game_link.attr("href", "/games/froese")
       $hero_img.css("background-image", "url(assets/erik.png)");
     });
     
