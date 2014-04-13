@@ -42,14 +42,30 @@ $(document).ready(function() {
             //  This stops it from falling away when you jump on it
             ground.body.immovable = true;
 
-            //  Now let's create two ledges
-            var ledge = platforms.create(400, 400, 'ground');
+            //  Now let's create the ledges
+            //the three below are on the right
+
+            ledge = platforms.create(700, 200, 'ground');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(-150, 250, 'ground');
+            ledge = platforms.create(450, 300, 'ground');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(550, 150, 'ground');
+            
+
+            //the two below are on the left
+            //the first number says how many pixels from the left border it is
+            //a negative number puts the ledge off the screen to the left
+            //ledges have a fixed width, so to shorten them you have to put them off the screen
+            //the second number says how far from the top of the page it is.           
+
+             var ledge = platforms.create(-100, 400, 'ground');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(-200, 250, 'ground');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(-300, 100, 'ground');
             ledge.body.immovable = true;
 
             // The player and its settings
@@ -78,6 +94,7 @@ $(document).ready(function() {
             {
                 //  Create a star inside of the 'stars' group
                 var star = stars.create(i * 100, 0, 'star');
+                star.id = i
 
                 //  Let gravity do its thing
                 star.body.gravity.y = 300;
@@ -138,6 +155,8 @@ $(document).ready(function() {
             
             // Removes the star from the screen
             star.kill();
+
+            $('#game_canvas').append(" You unlocked #" + star.id)
 
             //  Add and update the score
             score += 10;
