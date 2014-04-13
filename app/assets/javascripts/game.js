@@ -5,8 +5,11 @@ $(document).ready(function() {
         function preload() {
 
             game.load.image('sky', '/assets/sky_large.png');
-            game.load.image('ground', '/assets/platform.png');
+            game.load.image('ground', '/assets/platform.png');            
             game.load.image('star', '/assets/star.png');
+            //here we load two more assets for the other 'stars'
+            game.load.image('diamond', '/assets/diamond.png');
+            game.load.image('shinyball', '/assets/shinyball.png');
             game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
         }
@@ -16,6 +19,7 @@ $(document).ready(function() {
         var cursors;
 
         var stars;
+        //here we set two more vars
         var score = 0;
         var scoreText;
 
@@ -101,6 +105,7 @@ $(document).ready(function() {
 
             //  Finally some stars to collect
             stars = game.add.group();
+            //diamonds
 
             //  We will enable physics for any star that is created in this group
             stars.enableBody = true;
@@ -109,8 +114,8 @@ $(document).ready(function() {
             for (var i = 0; i < 3; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(i * 100, 0, 'star');
-                star.id = i
+                var star = stars.create(i * 100, 0, 'shinyball');
+                star.id = 'career' + i
 
                 //  Let gravity do its thing
                 star.body.gravity.y = 300;
@@ -121,8 +126,8 @@ $(document).ready(function() {
             for (var i = 0; i < 3; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(i * 100, 0, 'star');
-                star.id = i
+                var star = stars.create(i * 200, 0, 'star');
+                star.id = 'education' + i
 
                 //  Let gravity do its thing
                 star.body.gravity.y = 300;
@@ -133,8 +138,8 @@ $(document).ready(function() {
             for (var i = 0; i < 3; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(i * 100, 0, 'star');
-                star.id = i
+                var star = stars.create(i * 300, 0, 'diamond');
+                star.id = 'portfolio' + i
 
                 //  Let gravity do its thing
                 star.body.gravity.y = 300;
@@ -142,9 +147,6 @@ $(document).ready(function() {
                 //  This just gives each star a slightly random bounce value
                 star.body.bounce.y = 0.7 + Math.random() * 0.2;
             }
-
-
-
 
             //  The score
             scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
