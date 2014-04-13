@@ -6,12 +6,7 @@
 
 ####Homepage
 
-
-* update: this doesn not work. hyperlink each character to the game view, passing in params data
-* Build lots of design and functionality (backgrounds, navs, etc)
-
-
-
+* hyperlink each character to the game view, passing in params data
 
 ####Game/Canvas
 
