@@ -14,46 +14,34 @@
 
  /*globally remove default border and margin from all browsers. We should use 
 modenizer.css instead */
-canvas {
-    display: inline-block;  
-}
-
 * {
     margin:0px;
     border:0px;
-
 }
-
-html {
-  font-family: 'Press Start 2P`', cursive;
-}
-
 body {
-    background: #272822!important; 
+    background: #272822!important;
+    /* this is because background is also set in game.css. can remove when we update there.*/ 
     color: #f8f8f2;
+    font-family: 'Press Start 2P`', cursive;
 }
-
+canvas {
+    display: inline-block;  
+}
 a {
-
     text-decoration: none;
 }
 .blue {
-
     color: #66D9EF
 }
 
 .red {
-
     color:#F92672;
 }
 
 .green {
-
     color:#A6E22E;
 
 }
-
 .orange {
-
     color: #FD971F;
 }
