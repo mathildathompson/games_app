@@ -215,6 +215,7 @@ $(document).ready(function() {
             star.kill();
 
             $('#game_canvas').append(" You unlocked #" + star.id)
+            $('#'+star.id).text(" You unlocked #")
 
             //  Add and update the score
             score += 10;
