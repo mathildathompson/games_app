@@ -6,7 +6,15 @@ $(document).ready(function() {
 
             game.load.image('sky', '/assets/forest.png');           
             game.load.image('star', '/assets/star.png');
+<<<<<<< HEAD
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
+=======
+            //adding background music
+            this.load.audio('music', '/assets/adventure.mp3', true);
+            //sprite audio
+            game.load.audio('powerup', '/assets/Powerup.ogg');
+            this.load.audio('jumping', '/assets/jumping.wav');
+>>>>>>> game
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
             game.load.image('diamond', '/assets/diamond.png');
@@ -34,6 +42,16 @@ $(document).ready(function() {
 
             //  A simple background for our game
             game.add.sprite(0, 0, 'sky');
+
+            // Play background music
+            music: Phaser.Sound;
+            this.music = this.add.audio('music', 1, true);
+            this.music.play();
+
+            // Put audio fx into variables to be called on an action
+            powerup = game.add.audio('powerup');
+            jumping = game.add.audio('jumping');
+           
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
             platforms = game.add.group();
@@ -220,6 +238,7 @@ $(document).ready(function() {
             if (cursors.up.isDown && player.body.touching.down)
             {
                 player.body.velocity.y = -350;
+                jumping.play('');
             }
         }
         function collectStar (player, star) {
@@ -258,7 +277,10 @@ $(document).ready(function() {
             score += 10;
             scoreText.text = 'Score: ' + score;
 
+            powerup.play('');
+
         }
+
         function killPlayer (player, enemy) {
             console.log("booms");
             explosion = game.add.sprite(player.body.x - 32, player.body.y - 32,  'explosion');
