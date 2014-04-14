@@ -215,20 +215,21 @@ $(document).ready(function() {
             star.kill();
 
             //this line fades in resume content when a star is collected
-            $('#'+star.id).children().hide().css('visibility','visible').fadeIn(), 2000;
+            $('#'+star.id).children().hide().css('visibility','visible').fadeIn(2000);
             //slides the accordian up or down to show resume content as stars are collected
             var $section = $('#'+star.id).closest('ul');
             if (! $section.is(':visible')) {
                 $section.prev('h3').trigger('click');
-
-                $section.prev('h3').data('oldColor', $section.prev('h3').css("color"));
-                $section.prev('h3').css("color", "yellow");
             }  
-            
 
-            // $('#accordian h3').animate({ scrollTop: $('#'+star.id).offset().top }, 'slow', function() {
-            //   $section.delay(1000).css('color', $section.data('oldColor'))
-            // });  
+            //highlight sidebar tabs when something is selected
+            function highlight() {
+                $section.prev('h3').css('background', 'linear-gradient(#226758, #32957B)').fadeOut(1000, function() {
+                    $section.prev('h3').css('background', 'linear-gradient(#272822, #3B3A32)').fadeIn(400);
+                });
+            }
+
+            highlight();
 
             //  Add and update the score
             score += 10;
