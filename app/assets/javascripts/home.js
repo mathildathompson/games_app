@@ -51,33 +51,63 @@ $(document).ready(function() {
     var $hero_img = $("#hero_shot");
     var $game_link = $("a")
 
+    // Here's a function to show tom in the hero image div
     $("#tom").on("mouseenter", function(){
+      tom();
+    });
+    
+    function tom() {
       $hero_name.text("P1: Tom");
       $hero_class.text("Class: Apprentice");
       $hero_weapon.text("Weapon: Bow");
       $hero_armour.text("Armour: Git");
       $game_link.attr("href", "/games/dane")     
       $hero_img.css("background-image", "url(/assets/tom.png)");
+    }
+    $("#tom").on("mouseenter", function(){
+      tom();
     });
     
+    // Here's a function to show olly in the hero image div
+   function olly(){
+    $hero_name.text("P2: Olly");
+    $hero_class.text("Class: Sorcerer");
+    $hero_weapon.text("Weapon: Staff");
+    $hero_armour.text("Armour: Robe");
+    $game_link.attr("href", "/games/dutton")
+    $hero_img.css("background-image", "url(assets/olly3.png)");
+   }
+
    $("#olly").on("mouseenter", function(){
-      $hero_name.text("P2: Olly");
-      $hero_class.text("Class: Sorcerer");
-      $hero_weapon.text("Weapon: Staff");
-      $hero_armour.text("Armour: Robe");
-      $game_link.attr("href", "/games/dutton")
-      $hero_img.css("background-image", "url(assets/olly3.png)");
+      olly();
     });
     
+    // Here's a function to show erik in the hero image div
+   function erik(){
+    $hero_name.text("P3: Erik");
+    $hero_class.text("Class: Warrior");
+    $hero_weapon.text("Weapon: Axe");
+    $hero_armour.text("Armour: Plate");
+    $game_link.attr("href", "/games/froese")
+    $hero_img.css("background-image", "url(assets/erik.png)");
+   }
+
    $("#erik").on("mouseenter", function(){
-      $hero_name.text("P3: Erik");
-      $hero_class.text("Class: Warrior");
-      $hero_weapon.text("Weapon: Axe");
-      $hero_armour.text("Armour: Plate");
-      $game_link.attr("href", "/games/froese")
-      $hero_img.css("background-image", "url(assets/erik.png)");
+      erik();
     });
-    
+
+    //this function randomises which character shows up on the homepage on load
+    var randomiser = [1, 2, 3]
+    var start_hero = randomiser[Math.floor(Math.random() * randomiser.length)];
+    console.log(start_hero);
+
+    if (start_hero === 1){
+      tom();
+    } else if (start_hero === 2){
+      olly();
+    } else {
+      erik();
+    }
  }
 
 });
