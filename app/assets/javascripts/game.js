@@ -6,15 +6,12 @@ $(document).ready(function() {
 
             game.load.image('sky', '/assets/forest.png');           
             game.load.image('star', '/assets/star.png');
-<<<<<<< HEAD
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
-=======
             //adding background music
             this.load.audio('music', '/assets/adventure.mp3', true);
             //sprite audio
             game.load.audio('powerup', '/assets/Powerup.ogg');
             this.load.audio('jumping', '/assets/jumping.wav');
->>>>>>> game
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
             game.load.image('diamond', '/assets/diamond.png');
