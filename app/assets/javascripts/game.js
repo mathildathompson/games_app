@@ -114,7 +114,7 @@ $(document).ready(function() {
             for (var i = 0; i < 3; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(i * 100, 0, 'shinyball');
+                var star = stars.create( 100 + i * 500, 100, 'shinyball');
                 star.id = 'career' + i
 
                 //  Let gravity do its thing
@@ -138,7 +138,7 @@ $(document).ready(function() {
             for (var i = 0; i < 3; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(i * 300, 0, 'diamond');
+                var star = stars.create(300 + i * 250, 0, 'diamond');
                 star.id = 'portfolio' + i
 
                 //  Let gravity do its thing
