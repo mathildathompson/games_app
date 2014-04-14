@@ -214,8 +214,8 @@ $(document).ready(function() {
             // Removes the star from the screen
             star.kill();
 
-            $('#game_canvas').append(" You unlocked #" + star.id)
-            $('#'+star.id).text(" You unlocked #")
+            //this line changes shows the content when a star is collected
+            $('#'+star.id).children().css("visibility","visible");           
 
             //  Add and update the score
             score += 10;

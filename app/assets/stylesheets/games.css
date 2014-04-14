@@ -92,17 +92,17 @@ span.accordian-title {
 
 #career0, #career1, #career2 {
 
-    display:none;
+    visibility:hidden;
 }
 
 #education0, #education1, #education2 {
 
-    display:none;
+    visibility:hidden;
 }
 
 #portfolio0, #portfolio1, #portfolio2 {
 
-    display:none;
+    visibility:hidden;
 }
 
 
