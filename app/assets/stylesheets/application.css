@@ -17,12 +17,13 @@ modenizer.css instead */
 * {
     margin:0px;
     border:0px;
+    font-family: "Calibri", sans;
 }
 body {
     background: #272822!important;
     /* this is because background is also set in game.css. can remove when we update there.*/ 
     color: #f8f8f2;
-    font-family: 'Press Start 2P`', cursive;
+    /*font-family: 'Press Start 2P`', cursive;*/
 }
 canvas {
     display: inline-block;  
