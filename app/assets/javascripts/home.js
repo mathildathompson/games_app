@@ -99,7 +99,6 @@ $(document).ready(function() {
     //this function randomises which character shows up on the homepage on load
     var randomiser = [1, 2, 3]
     var start_hero = randomiser[Math.floor(Math.random() * randomiser.length)];
-    console.log(start_hero);
 
     if (start_hero === 1){
       tom();
