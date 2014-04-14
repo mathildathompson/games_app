@@ -6,6 +6,7 @@ $(document).ready(function() {
 
             game.load.image('sky', '/assets/forest.png');           
             game.load.image('star', '/assets/star.png');
+            game.load.image('power', '/assets/powerup.png');
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
             game.load.image('diamond', '/assets/diamond.png');
@@ -20,7 +21,7 @@ $(document).ready(function() {
         var player;
         var platforms;
         var cursors;
-
+        var powerup
         var stars;
         //here we set two more vars
         var score = 0;
@@ -240,6 +241,16 @@ $(document).ready(function() {
                     $section.prev('h3').css('background', 'linear-gradient(#272822, #3B3A32)').fadeIn(400);
                 });
             }
+
+            powerup = game.add.sprite(player.body.x - 32, player.body.y - 32,  'powerup');
+            explosion.animations.add('powerup', [0, 1, 2, 3, 4, 5], 10, true);
+            explosion.animations.play('powerup');
+            // setTimeout(powerup, 1500);
+
+            // function explode() {
+            //   explosion.kill();  
+            // }
+            
 
             highlight();
 
