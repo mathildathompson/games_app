@@ -57,7 +57,7 @@ $(document).ready(function() {
       $hero_weapon.text("Weapon: Bow");
       $hero_armour.text("Armour: Git");
       $game_link.attr("href", "/games/dane")     
-      $hero_img.css("background-image", "url(http://tomvoldemortriddle.tripod.com/sitebuildercontent/sitebuilderpictures/chewie.jpg)");
+      $hero_img.css("background-image", "url(/assets/tom.png)");
     });
     
    $("#olly").on("mouseenter", function(){
@@ -66,7 +66,7 @@ $(document).ready(function() {
       $hero_weapon.text("Weapon: Staff");
       $hero_armour.text("Armour: Robe");
       $game_link.attr("href", "/games/dutton")
-      $hero_img.css("background-image", "url(assets/olly2.png)");
+      $hero_img.css("background-image", "url(assets/olly3.png)");
     });
     
    $("#erik").on("mouseenter", function(){
