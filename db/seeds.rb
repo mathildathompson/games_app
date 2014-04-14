@@ -81,8 +81,8 @@ e7 = Education.create(:institution => 'Association for Data-driven Marketing & A
 e8 = Education.create(:institution => 'University of Calgary', :course => 'Bachelor of Science, Biology', 
     :start_date => '01/09/1997', :end_date => '30/06/2002' )
 
-u3.portfolios << p5
-u3.portfolios << p6
+u3.portfolios << p3
+
 
 u3.careers << c6
 u3.careers << c7

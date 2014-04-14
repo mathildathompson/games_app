@@ -163,7 +163,7 @@ $(document).ready(function() {
                 //  This just gives each star a slightly random bounce value
                 star.body.bounce.y = 0.7 + Math.random() * 0.2;
             }
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 1; i++)
             {
                 //  Create a star inside of the 'stars' group
                 var star = stars.create(300 + i * 250, 0, 'diamond');
