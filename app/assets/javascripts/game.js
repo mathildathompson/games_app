@@ -4,7 +4,7 @@ $(document).ready(function() {
 
         function preload() {
 
-            game.load.image('sky', '/assets/sky_large.png');
+            game.load.image('sky', '/assets/forest.png');
             game.load.image('ground', '/assets/platform.png');            
             game.load.image('star', '/assets/star.png');
             //here we load two more assets for the other 'stars'
