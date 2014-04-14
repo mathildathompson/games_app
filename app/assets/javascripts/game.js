@@ -33,7 +33,7 @@ $(document).ready(function() {
         var scoreText;
 
         function create() {
-            game.world.setBounds(0, 0, 1200, 900);
+            game.world.setBounds(0, 0, 1600, 900);
             //  We're going to be using physics, so enable the Arcade Physics system
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
