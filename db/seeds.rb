@@ -34,6 +34,7 @@ c2 = Career.create(:job_title => 'Associate Search Director', :job_description =
 
 u1.portfolios << p1
 u1.educations << e1
+u1.educations << e2
 u1.careers << c1
 u1.careers << c2
 
