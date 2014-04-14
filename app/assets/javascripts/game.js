@@ -12,6 +12,7 @@ $(document).ready(function() {
             game.load.image('shinyball', '/assets/shinyball.png');
             game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
+            game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
         }
 
         var player;
@@ -92,7 +93,7 @@ $(document).ready(function() {
                 
             // going to try to create a badass mofo here
 
-            enemy = game.add.sprite(400, game.world.height - 350, 'baddie');
+            enemy = game.add.sprite(400, game.world.height -200, 'baddie');
             game.physics.arcade.enable(enemy);
             enemy.body.bounce.y = 0.2;
             enemy.body.gravity.y = 300;
@@ -223,6 +224,15 @@ $(document).ready(function() {
 
         }
         function killPlayer (player, enemy) {
+            console.log("booms");
+            explosion = game.add.sprite(player.body.x - 32, player.body.y - 32,  'explosion');
+            explosion.animations.add('run_explode', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
+            explosion.animations.play('run_explode');
+            setTimeout(explode, 1500);
+
+            function explode() {
+              explosion.kill();  
+            }
             
             // Removes the player from the screen
             player.kill();
