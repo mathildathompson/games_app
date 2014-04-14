@@ -10,8 +10,8 @@ $(document).ready(function() {
             //adding background music
             this.load.audio('music', '/assets/adventure.mp3', true);
             //sprite audio
-            game.load.audio('powerup', '/assets/Powerup.ogg');
-            this.load.audio('jumping', '/assets/jumping.wav');
+            game.load.audio('starCollect', '/assets/Powerup.ogg');
+            game.load.audio('jumping', '/assets/jumping.wav');
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
             game.load.image('diamond', '/assets/diamond.png');
@@ -46,7 +46,7 @@ $(document).ready(function() {
             this.music.play();
 
             // Put audio fx into variables to be called on an action
-            powerup = game.add.audio('powerup');
+            starCollect = game.add.audio('starCollect');
             jumping = game.add.audio('jumping');
            
 
@@ -274,7 +274,7 @@ $(document).ready(function() {
             score += 10;
             scoreText.text = 'Score: ' + score;
 
-            powerup.play('');
+            starCollect.play('');
 
         }
 
