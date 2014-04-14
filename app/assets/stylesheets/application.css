@@ -30,17 +30,17 @@ a {
     text-decoration: none;
 }
 .blue {
-    color: #66D9EF
+    color: #66D9EF; /*rgb(102,217,239)*/
 }
 
 .red {
-    color:#F92672;
+    color:#F92672; /*rgb(249,38,114)*/
 }
 
 .green {
-    color:#A6E22E;
+    color:#A6E22E;  /*rgb(166,226,46)*/
 
 }
 .orange {
-    color: #FD971F;
+    color: #FD971F;  /*rgb(253,151,31)*/
 }
