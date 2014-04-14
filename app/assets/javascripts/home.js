@@ -66,7 +66,7 @@ $(document).ready(function() {
       $hero_weapon.text("Weapon: Staff");
       $hero_armour.text("Armour: Robe");
       $game_link.attr("href", "/games/dutton")
-      $hero_img.css("background-image", "url(http://fc09.deviantart.net/fs70/i/2013/183/3/4/the_slime_monster_by_know_kname-d6bo6x6.png)");
+      $hero_img.css("background-image", "url(assets/olly2.png)");
     });
     
    $("#erik").on("mouseenter", function(){
