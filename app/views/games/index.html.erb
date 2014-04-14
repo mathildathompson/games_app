@@ -1,8 +1,9 @@
-<div id="game_canvas"><h1><%= @first_name %>'s game</h1></div>
+<div id="game_canvas"></div>
 <section class="slider">
     <div id="accordian">
         <ul class="menu">
             <li>
+                <h3><span class="title"><%= @first_name + "'s resume"%></span></h3>
                 <h3><span class="title">#experience</span></h3>
                 <ul>
                     <% @user.careers.each_with_index do |career, index| %>
