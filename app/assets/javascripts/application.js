@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require phaser
 //= require underscore
 //= require moment
 //= require_tree .

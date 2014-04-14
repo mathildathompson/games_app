@@ -39,7 +39,7 @@ gem 'rails_12factor'
 gem 'thread_safe', '0.2.0'
 gem 'underscore-rails'
 gem 'momentjs-rails'
-gem 'phaser-rails'
+
 
 
 group :development do

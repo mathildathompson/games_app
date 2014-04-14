@@ -80,8 +80,6 @@ GEM
     multi_json (1.9.2)
     multi_xml (0.5.5)
     pg (0.17.1)
-    phaser-rails (2.0.2.0)
-      railties
     polyglot (0.3.4)
     protected_attributes (1.0.7)
       activemodel (>= 4.0.1, < 5.0)
@@ -166,7 +164,6 @@ DEPENDENCIES
   jquery-rails
   momentjs-rails
   pg
-  phaser-rails
   protected_attributes
   pry-debugger
   pry-rails
