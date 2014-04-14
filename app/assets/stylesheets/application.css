@@ -25,9 +25,7 @@ body {
     color: #f8f8f2;
     /*font-family: 'Press Start 2P`', cursive;*/
 }
-canvas {
-    display: inline-block;  
-}
+
 a {
     text-decoration: none;
 }
