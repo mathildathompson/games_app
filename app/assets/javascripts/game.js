@@ -214,8 +214,21 @@ $(document).ready(function() {
             // Removes the star from the screen
             star.kill();
 
-            //this line changes shows the content when a star is collected
-            $('#'+star.id).children().css("visibility","visible");           
+            //this line fades in resume content when a star is collected
+            $('#'+star.id).children().hide().css('visibility','visible').fadeIn(), 2000;
+            //slides the accordian up or down to show resume content as stars are collected
+            var $section = $('#'+star.id).closest('ul');
+            if (! $section.is(':visible')) {
+                $section.prev('h3').trigger('click');
+
+                $section.prev('h3').data('oldColor', $section.prev('h3').css("color"));
+                $section.prev('h3').css("color", "yellow");
+            }  
+            
+
+            // $('#accordian h3').animate({ scrollTop: $('#'+star.id).offset().top }, 'slow', function() {
+            //   $section.delay(1000).css('color', $section.data('oldColor'))
+            // });  
 
             //  Add and update the score
             score += 10;

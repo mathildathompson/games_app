@@ -1,4 +1,3 @@
-/*jQuery time*/
 $(document).ready(function(){
     $("#accordian h3").click(function(){
         //slide up all the link lists
