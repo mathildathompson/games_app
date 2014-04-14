@@ -7,6 +7,11 @@ $(document).ready(function() {
             game.load.image('sky', '/assets/forest.png');           
             game.load.image('star', '/assets/star.png');
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
+            //adding background music
+            this.load.audio('music', '/assets/adventure.mp3', true);
+            //sprite audio
+            game.load.audio('powerup', '/assets/Powerup.ogg');
+            this.load.audio('jumping', '/assets/jumping.wav');
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
             game.load.image('diamond', '/assets/diamond.png');
@@ -34,6 +39,16 @@ $(document).ready(function() {
 
             //  A simple background for our game
             game.add.sprite(0, 0, 'sky');
+
+            // Play background music
+            music: Phaser.Sound;
+            this.music = this.add.audio('music', 1, true);
+            this.music.play();
+
+            // Put audio fx into variables to be called on an action
+            powerup = game.add.audio('powerup');
+            jumping = game.add.audio('jumping');
+           
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
             platforms = game.add.group();
@@ -148,7 +163,7 @@ $(document).ready(function() {
                 //  This just gives each star a slightly random bounce value
                 star.body.bounce.y = 0.7 + Math.random() * 0.2;
             }
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 1; i++)
             {
                 //  Create a star inside of the 'stars' group
                 var star = stars.create(300 + i * 250, 0, 'diamond');
@@ -220,6 +235,7 @@ $(document).ready(function() {
             if (cursors.up.isDown && player.body.touching.down)
             {
                 player.body.velocity.y = -350;
+                jumping.play('');
             }
         }
         function collectStar (player, star) {
@@ -228,13 +244,13 @@ $(document).ready(function() {
             star.kill();
 
             //this line fades in resume content when a star is collected
-            $('#'+star.id).children().hide().css('visibility','visible').fadeIn(2000);
+            $('#'+star.id).children('li').hide().css('visibility','visible').fadeIn(2000);
             //slides the accordian up or down to show resume content as stars are collected
             var $section = $('#'+star.id).closest('ul');
             if (! $section.is(':visible')) {
                 $section.prev('h3').trigger('click');
             }  
-
+            console.log($('#'+star.id));
             //highlight sidebar tabs when something is selected
             function highlight() {
                 $section.prev('h3').css('background', 'linear-gradient(#226758, #32957B)').fadeOut(1000, function() {
@@ -258,7 +274,10 @@ $(document).ready(function() {
             score += 10;
             scoreText.text = 'Score: ' + score;
 
+            powerup.play('');
+
         }
+
         function killPlayer (player, enemy) {
             console.log("booms");
             explosion = game.add.sprite(player.body.x - 32, player.body.y - 32,  'explosion');
