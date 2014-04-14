@@ -24,19 +24,31 @@ e1 = Education.create(:institution => 'Bournemouth University', :course => 'BA i
 e2 = Education.create(:institution => 'General Assembly', :course => 'Web Development Immersive', 
     :start_date => '24/02/2014', :end_date => '24/05/2014' )
 
+e3 = Education.create(:institution => 'Islington Music Workshop', :course => 'Sound Engineering & Music Tech', 
+    :start_date => '01/03/2004', :end_date => '28/02/2005' )
 
-c1 = Career.create(:job_title => 'Search & Innovations Director', :job_description => 'Blah blah blah bleurgh...',
-    :company => 'Maxus', :start_date => '1/07/2013', :end_date => '20/02/2014')
 
-c2 = Career.create(:job_title => 'Associate Search Director', :job_description => 'SEM/SEO rumpy pumpy...',
-    :company => 'Maxus', :start_date => '19/01/2012', :end_date => '30/06/2013')
+c1 = Career.create(:job_title => 'Search & Innovations Director', :job_description => 'Tasked with creating an Innovations team in order to diversify 
+    our business offering. Working closely with Maxus\' creative technology R&D division, Metalworks Singapore.',
+    :company => 'Maxus', :start_date => '1/06/2013', :end_date => '20/02/2014')
+
+c2 = Career.create(:job_title => 'Associate Search Director', :job_description => '2IC of the Maxus Australia Search Team. 
+    Primarily SEM and SEO, however, exxperienced in everything Performance Media related, e.g. Facebook Advertising, Display, Retargeting, Mobile and Video.',
+    :company => 'Maxus', :start_date => '19/01/2012', :end_date => '31/05/2013')
+
+c3 = Career.create(:job_title => 'Senior Search Manager', :job_description => 'Managed a Search Team for key client accounts across some of the most challenging verticals, 
+    including Vodafone (Telco), and CBA (Finance).',
+    :company => 'Ikon', :start_date => '01/06/2011', :end_date => '17/01/2012')
 
 
 u1.portfolios << p1
-u1.educations << e1
+
 u1.educations << e2
+u1.educations << e1
+
 u1.careers << c1
 u1.careers << c2
+u1.careers << c3
 
 u1.admin = true
 u1.save

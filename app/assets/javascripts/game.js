@@ -244,13 +244,13 @@ $(document).ready(function() {
             star.kill();
 
             //this line fades in resume content when a star is collected
-            $('#'+star.id).children().hide().css('visibility','visible').fadeIn(2000);
+            $('#'+star.id).children('li').hide().css('visibility','visible').fadeIn(2000);
             //slides the accordian up or down to show resume content as stars are collected
             var $section = $('#'+star.id).closest('ul');
             if (! $section.is(':visible')) {
                 $section.prev('h3').trigger('click');
             }  
-
+            console.log($('#'+star.id));
             //highlight sidebar tabs when something is selected
             function highlight() {
                 $section.prev('h3').css('background', 'linear-gradient(#226758, #32957B)').fadeOut(1000, function() {
