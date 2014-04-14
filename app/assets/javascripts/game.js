@@ -4,12 +4,14 @@ $(document).ready(function() {
 
         function preload() {
 
-            game.load.image('sky', '/assets/forest.png');
-            game.load.image('ground', '/assets/platform.png');            
+            game.load.image('sky', '/assets/forest.png');           
             game.load.image('star', '/assets/star.png');
             //here we load two more assets for the other 'stars'
+            game.load.image('ground', '/assets/platform.png');
             game.load.image('diamond', '/assets/diamond.png');
             game.load.image('shinyball', '/assets/shinyball.png');
+            game.load.image('wood_end1', '/assets/wood_end1.png');
+            game.load.image('wood_end2', '/assets/wood_end2.png');
             game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
@@ -50,10 +52,10 @@ $(document).ready(function() {
             //  Now let's create the ledges
             //the three below are on the right
 
-            ledge = platforms.create(700, 200, 'ground');
+            ledge = platforms.create(700, 200, 'wood_end1');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(450, 300, 'ground');
+            ledge = platforms.create(450, 300, 'wood_end1');
             ledge.body.immovable = true;
 
 
@@ -63,16 +65,25 @@ $(document).ready(function() {
             //ledges have a fixed width, so to shorten them you have to put them off the screen
             //the second number says how far from the top of the page it is.           
 
-             var ledge = platforms.create(-100, 400, 'ground');
+            var ledge = platforms.create(0, 400, 'wood_end1');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(-200, 250, 'ground');
+            ledge = platforms.create(200, 250, 'wood_end1');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(0, 700, 'ground');
+            ledge = platforms.create(0, 700, 'wood_end1');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(350, 600, 'ground');
+            // ledge = platforms.create(350, 600, 'ground');
+            // ledge.body.immovable = true;
+
+            // GOING TO CREATE SOME WOODEND LEDGES DOWN HERE
+            ledge = platforms.create(350, 600, 'wood_end1');
+            ledge.body.immovable = true;
+            ledge = platforms.create(300, 250, 'wood_end2');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(150, 500, 'wood_end2');
             ledge.body.immovable = true;
 
             // The player and its settings
