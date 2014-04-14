@@ -1,10 +1,10 @@
 $(document).ready(function() {
    if ($(".home_sprite").length > 0) {
-    // The following two functions turn the homepage sprites back and forth
-    console.log("I'm inside the .home_sprite function")
+    
+    var windowHeight = $(window).height();
     var sprite = $(".home_sprite");
     var currentPos = parseInt(sprite.css("right"));
-
+    // The following two functions turn the homepage sprites back and forth
     // This turns the sprite right -------------------------------
     function turnCharacterRight (){
       if (currentPos < 256){
@@ -33,7 +33,16 @@ $(document).ready(function() {
 
     turnCharacterRight();
 
-    
+// THE FOLLOWING PRINTS NUMBERS DOWN THE LEFT-HAND SIDE OF THE HOMEPAGE.
+    function createNums(){
+      nums = (windowHeight/15).toFixed();
+      for (var i = 0; i < nums; i++){
+        $("<li>").appendTo("#nums").html("<li>"+ i + "</li>");
+      }
+    }
+
+    createNums();
+
     // HERO IMAGE FUNCTIONS BELOW----------------------------------
     var $hero_name = $("#home_p_name");
     var $hero_class = $("#home_p_class");
