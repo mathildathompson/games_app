@@ -1,10 +1,10 @@
 $(document).ready(function() {
    if ($("#game_canvas").length > 0) {
-        var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+        var game = new Phaser.Game(900, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
         function preload() {
 
-            game.load.image('sky', '/assets/forest.png');           
+            game.load.image('sky', '/assets/forestbg.png');           
             game.load.image('star', '/assets/star.png');
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
             //adding background music
@@ -18,6 +18,7 @@ $(document).ready(function() {
             game.load.image('shinyball', '/assets/shinyball.png');
             game.load.image('wood_end1', '/assets/wood_end1.png');
             game.load.image('wood_end2', '/assets/wood_end2.png');
+            game.load.image('tree_tile', '/assets/tree_tile.png');
             game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
@@ -33,12 +34,13 @@ $(document).ready(function() {
         var scoreText;
 
         function create() {
-            game.world.setBounds(0, 0, 1600, 900);
+            game.world.setBounds(0, 0, 6400, 900);
             //  We're going to be using physics, so enable the Arcade Physics system
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
             //  A simple background for our game
             game.add.sprite(0, 0, 'sky');
+            // sky.scale.setTo(3, 2);
 
             // Play background music
             music: Phaser.Sound;
@@ -48,7 +50,7 @@ $(document).ready(function() {
             // Put audio fx into variables to be called on an action
             starCollect = game.add.audio('starCollect');
             jumping = game.add.audio('jumping');
-           
+        
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
             platforms = game.add.group();
@@ -60,7 +62,7 @@ $(document).ready(function() {
             var ground = platforms.create(0, game.world.height - 64, 'ground');
 
             //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-            ground.scale.setTo(4, 2);
+            ground.scale.setTo(16, 2);
 
             //  This stops it from falling away when you jump on it
             ground.body.immovable = true;
@@ -72,6 +74,9 @@ $(document).ready(function() {
             ledge.body.immovable = true;
 
             ledge = platforms.create(450, 300, 'wood_end1');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(910, 587, 'tree_tile');
             ledge.body.immovable = true;
 
 
