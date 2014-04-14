@@ -35,7 +35,7 @@ $(document).ready(function() {
 
 // THE FOLLOWING PRINTS NUMBERS DOWN THE LEFT-HAND SIDE OF THE HOMEPAGE.
     function createNums(){
-      nums = (windowHeight/15).toFixed();
+      nums = (windowHeight/18).toFixed();
       for (var i = 0; i < nums; i++){
         $("<li>").appendTo("#nums").html("<li>"+ i + "</li>");
       }
