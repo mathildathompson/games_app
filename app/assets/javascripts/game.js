@@ -284,21 +284,29 @@ $(document).ready(function() {
         }
 
         function killPlayer (player, enemy) {
-            console.log("booms");
             explosion = game.add.sprite(player.body.x - 32, player.body.y - 32,  'explosion');
             explosion.animations.add('run_explode', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
             explosion.animations.play('run_explode');
+            
             setTimeout(explode, 1500);
+            setTimeout(gameOverText, 1500);
+            setTimeout(gameRestart, 3000);
 
             function explode() {
               explosion.kill();  
             }
-            
+
+            function gameOverText () {
+                style = { font: "65px Arial", fill: "#fff", align: "center" };
+                var text = game.add.text(game.camera.x+450, game.camera.y+250, "You Lose! Try Again...", style);
+                text.anchor.set(0.5);
+            }
             // Removes the player from the screen
             player.kill();
 
-
+            function gameRestart () {
+                location.reload();
+            }         
         }
-
     };
 });
