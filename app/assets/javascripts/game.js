@@ -38,12 +38,12 @@ $(document).ready(function() {
         var scoreText;
 
         function create() {
-            game.world.setBounds(0, 0, 6400, 900);
+            game.world.setBounds(0, 0, 4350, 900);
             //  We're going to be using physics, so enable the Arcade Physics system
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
             //  A simple background for our game
-            game.add.sprite(-800, -500, 'sky');
+            game.add.sprite(0, 0, 'sky');
             // sky.scale.setTo(3, 2);
 
             // Play background music
@@ -109,16 +109,16 @@ $(document).ready(function() {
             ledge.body.immovable = true;
 
             //these ledges run up the second big tree
-            ledge = platforms.create(2800, 650, 'wood_end1');
+            ledge = platforms.create(2700, 650, 'wood_end1');
             ledge.body.immovable = true;
 
             ledge = platforms.create(3000, 500, 'wood_end1');
             ledge.body.immovable = true;
             
-            ledge = platforms.create(2800, 350, 'wood_end1');
+            ledge = platforms.create(2700, 350, 'wood_end1');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(3000, 190, 'wood_end1');
+            ledge = platforms.create(3000, 180, 'wood_end1');
             ledge.body.immovable = true;
 
              // this is the short wood easter egg ledge
@@ -126,32 +126,21 @@ $(document).ready(function() {
             ledge = platforms.create(2700, 150, 'shortledge');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(2250, 350, 'shortledge');
+            ledge = platforms.create(2300, 350, 'shortledge');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(2050, 150, 'shortledge');
+            ledge = platforms.create(2050, 200, 'shortledge');
+            ledge.body.immovable = true;  
+
+            ledge = platforms.create(1750, 150, 'shortledge');
             ledge.body.immovable = true;
-           
 
-            // ledge = platforms.create(3000, 250, 'wood_end1');
-            // ledge.body.immovable = true;
+            ledge = platforms.create(1450, 200, 'shortledge');
+            ledge.body.immovable = true; 
 
-            // ledge = platforms.create(3350, 600, 'treetall');
-            // ledge.body.immovable = true;
-
-
-           
-            
-
-           
-
-
-            // ledge = platforms.create(700, 200, 'wood_end1');
-            // ledge.body.immovable = true;
-
-            
-
-            
+            ledge = platforms.create(1100, 150, 'shortledge');
+            ledge.body.immovable = true;       
+                    
 
             // The player and its settings
             player = game.add.sprite(200, game.world.height - 150, 'dude');
@@ -193,7 +182,7 @@ $(document).ready(function() {
             for (var i = 0; i < 3; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create( 100 + i * 500, 100, 'shinyball');
+                var star = stars.create( 1500 + i * 500, 0, 'shinyball');
                 star.id = 'career' + i
 
                 //  Let gravity do its thing
@@ -205,7 +194,7 @@ $(document).ready(function() {
             for (var i = 0; i < 2; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(i * 200, 0, 'star');
+                var star = stars.create(600 + i * 600, 0, 'star');
                 star.id = 'education' + i
 
                 //  Let gravity do its thing
@@ -217,14 +206,14 @@ $(document).ready(function() {
             for (var i = 0; i < 2; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(300 + i * 250, 0, 'diamond');
+                var star = stars.create(470 + i * 1500, 0, 'diamond');
                 star.id = 'portfolio' + i
 
                 //  Let gravity do its thing
                 star.body.gravity.y = 300;
 
                 //  This just gives each star a slightly random bounce value
-                star.body.bounce.y = 0.7 + Math.random() * 0.2;
+                star.body.bounce.y = 0.2;
             }
 
             //  The score
@@ -255,7 +244,7 @@ $(document).ready(function() {
             if (cursors.left.isDown)
             {
                 //  Move to the left
-                player.body.velocity.x = -350;
+                player.body.velocity.x = -200;
 
                 player.animations.play('left');
                 
@@ -266,7 +255,7 @@ $(document).ready(function() {
             else if (cursors.right.isDown)
             {
                 //  Move to the right
-                player.body.velocity.x = 350;
+                player.body.velocity.x = 200;
 
                 player.animations.play('right');
 
