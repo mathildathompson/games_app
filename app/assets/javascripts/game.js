@@ -140,7 +140,7 @@ $(document).ready(function() {
             enemies.enableBody = true;
             for (var i = 0; i < 3; i++)
             {
-                var enemy = enemies.create( 100 + (i * 30), 100, 'baddie');
+                var enemy = enemies.create( 100 + (i * 200), 100, 'baddie');
                 enemy.body.gravity.y = 300;
                 enemy.body.bounce.y = 0.1 + Math.random() * 0.2;
                 enemies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
