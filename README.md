@@ -6,29 +6,29 @@
 
 ####Homepage
 
-* hyperlink each character to the game view, passing in params data
+
 
 ####Game/Canvas
 
 
+
+
 ####Sidebar/Resume
 
-* Display content based user ID when routed from homepage.  
-* Be hidden until revealed by game event.
+
 
 ####Rails/Backend
 
-* establish routes and pass info from home to players game instance. 
+
 
 ###Misc
 
-* create individual space-themed sprites for each of us
-* prevent phaser.js from running when not necessary
 
 
 ##NICE TO HAVE
 
 * function that randomizes name order on homepage
+* win function - turn cursor into hand when over button
 
 ##DONE
 
