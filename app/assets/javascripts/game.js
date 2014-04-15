@@ -38,7 +38,7 @@ $(document).ready(function() {
         var scoreText;
 
         function create() {
-            game.world.setBounds(0, 0, 4350, 900);
+            game.world.setBounds(0, 0, 4400, 900);
             //  We're going to be using physics, so enable the Arcade Physics system
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -123,8 +123,8 @@ $(document).ready(function() {
 
              // this is the short wood easter egg ledge
 
-            ledge = platforms.create(2700, 150, 'shortledge');
-            ledge.body.immovable = true;
+            // ledge = platforms.create(2700, 150, 'shortledge');
+            // ledge.body.immovable = true;
 
             ledge = platforms.create(2300, 350, 'shortledge');
             ledge.body.immovable = true;
@@ -138,8 +138,8 @@ $(document).ready(function() {
             ledge = platforms.create(1450, 200, 'shortledge');
             ledge.body.immovable = true; 
 
-            ledge = platforms.create(1100, 150, 'shortledge');
-            ledge.body.immovable = true;       
+            // ledge = platforms.create(1100, 150, 'shortledge');
+            // ledge.body.immovable = true;       
                     
 
             // The player and its settings
@@ -182,7 +182,7 @@ $(document).ready(function() {
             for (var i = 0; i < 3; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create( 1500 + i * 500, 0, 'shinyball');
+                var star = stars.create( 2100 + i * 600, 0, 'shinyball');
                 star.id = 'career' + i
 
                 //  Let gravity do its thing
@@ -194,7 +194,7 @@ $(document).ready(function() {
             for (var i = 0; i < 2; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(600 + i * 600, 0, 'star');
+                var star = stars.create(600 + i * 700, 0, 'star');
                 star.id = 'education' + i
 
                 //  Let gravity do its thing
@@ -206,7 +206,7 @@ $(document).ready(function() {
             for (var i = 0; i < 2; i++)
             {
                 //  Create a star inside of the 'stars' group
-                var star = stars.create(470 + i * 1500, 0, 'diamond');
+                var star = stars.create(470 + i * 1200, 0, 'diamond');
                 star.id = 'portfolio' + i
 
                 //  Let gravity do its thing
