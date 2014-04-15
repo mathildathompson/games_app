@@ -144,11 +144,25 @@ $(document).ready(function() {
                 enemy.body.gravity.y = 300;
                 enemy.body.bounce.y = 0.1 + Math.random() * 0.2;
                 enemies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
-                enemies.callAll('animations.play', 'animations', 'left');
+                enemies.callAll('animations.add', 'animations', 'right', [2, 3], 10, true);   
 
             }
-
-
+            // These functions animate the enemies
+           enemiesRight();
+        
+            function enemiesRight(){
+                console.log("enemiesRightcalled");
+                enemies.x += 100;
+                enemies.callAll('animations.play', 'animations', 'right');
+                setTimeout(enemiesLeft, 500);
+            }
+           
+            function enemiesLeft(){
+                console.log("enemiesLeftcalled");
+                enemies.x += -100;
+                enemies.callAll('animations.play', 'animations', 'left');
+                setTimeout(enemiesRight, 500);
+            }
             //  Finally some stars to collect
             stars = game.add.group();
             //diamonds
@@ -201,9 +215,18 @@ $(document).ready(function() {
             cursors = game.input.keyboard.createCursorKeys();
             
         }
+     
 
         function update() {
+            // enemies animations below
+            
+            // var tween = game.add.tween(enemies).to( { x: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            // tween.onLoop.add(enemiesRight, this);
+            
 
+            // enemies.x += 1;
+            
+            
             //  Collide the player and the stars with the platforms
             game.physics.arcade.collide(player, platforms);
             game.physics.arcade.collide(stars, platforms);
@@ -268,7 +291,7 @@ $(document).ready(function() {
             if (! $section.is(':visible')) {
                 $section.prev('h3').trigger('click');
             }  
-            console.log($('#'+star.id));
+            
             //highlight sidebar tabs when something is selected
             function highlight() {
                 $section.prev('h3').css('background', 'linear-gradient(#226758, #32957B)').fadeOut(1000, function() {
