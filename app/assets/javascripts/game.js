@@ -10,7 +10,7 @@ $(document).ready(function() {
             } else if ($("#Tom").length > 0) {
                 game.load.spritesheet('dude', '/assets/tomsprite.png', 32, 56);
             } else {
-                game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
+                game.load.spritesheet('dude', '/assets/ollysprite.png', 32, 60);
             }
         // Now we start to create the other assets
             game.load.image('sky', '/assets/forestbg.png');           
