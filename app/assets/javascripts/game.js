@@ -21,6 +21,7 @@ $(document).ready(function() {
             //sprite audio
             game.load.audio('starCollect', '/assets/Powerup.ogg');
             game.load.audio('jumping', '/assets/jumping.wav');
+            game.load.audio('victory', '/assets/victory.mp3');
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
             game.load.image('diamond', '/assets/diamond.png');
@@ -32,6 +33,9 @@ $(document).ready(function() {
             game.load.image('shortledge', '/assets/shortledge.png');
             game.load.image('longledge', '/assets/longledge.png');
             game.load.image('toadstool', '/assets/toadstool.png');
+            // Button images
+            game.load.image('reset-button', '/assets/reset-button.png');
+            game.load.image('contact-button', '/assets/contact-button.png');
             
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
@@ -43,6 +47,9 @@ $(document).ready(function() {
         var cursors;
         var powerup;
         var stars;
+        var button;
+        var music
+
         //here we set two more vars
         var score = 0;
         var scoreText;
@@ -60,11 +67,10 @@ $(document).ready(function() {
             music: Phaser.Sound;
             this.music = this.add.audio('music', 1, true);
             this.music.play();
-
             // Put audio fx into variables to be called on an action
             starCollect = game.add.audio('starCollect');
             jumping = game.add.audio('jumping');
-        
+            victory = game.add.audio('victory');
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
             platforms = game.add.group();
@@ -354,9 +360,40 @@ $(document).ready(function() {
             highlight();
 
             //  Add and update the score
-            score += 10;
-            scoreText.text = 'Score: ' + score;
+            // score += 10;
+            // scoreText.text = 'Score: ' + score;
 
+            ////// WIN FUNCTIONALITY //////
+            
+            // If the right score is reached then pause music and call win function
+            score += 1;
+            if (score > 0) { 
+                win();
+                this.music.pause(); 
+            }
+
+            // Here we display the contact and replay button options, calling either respective function
+            function win () {                
+                style = { font: "65px Arial", fill: "#fff", align: "center" };
+                game.add.text(game.camera.x+325, game.camera.y+150, "You Win!", style);
+                button = game.add.button(game.camera.x+275, game.camera.y+250, 'reset-button', actionOnResetClick, this);
+                button = game.add.button(game.camera.x+475, game.camera.y+250, 'contact-button', actionOnContactClick, this);  
+                // this.input.keyboard.disabled = true; 
+                // Plays the victory song    
+                victory.play('');  
+            }    
+
+            // When the Reset button is clicked, it calls this function, which in turn calls the game to be reloaded.
+            function actionOnResetClick () {
+                gameRestart();
+            }
+
+            // When the contact button is clicked it redirects through to contact form
+            function actionOnContactClick () {
+                
+            }
+
+            // This simply plays a sound effect each time an item is collected.
             starCollect.play('');
 
         }
@@ -374,17 +411,19 @@ $(document).ready(function() {
               explosion.kill();  
             }
 
+            // Show text to say you died, then reload the game.
             function gameOverText () {
                 style = { font: "65px Arial", fill: "#fff", align: "center" };
                 var text = game.add.text(game.camera.x+450, game.camera.y+250, "You Lose! Try Again...", style);
                 text.anchor.set(0.5);
             }
             // Removes the player from the screen
-            player.kill();
-
-            function gameRestart () {
-                location.reload();
-            }         
+            player.kill();     
         }
+
+        // This function gets called when restarting the game via the reset button after winning, or when you die and start over.
+        function gameRestart () {
+            location.reload();
+        }    
     };
 });
