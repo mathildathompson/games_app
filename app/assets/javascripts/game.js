@@ -23,7 +23,7 @@ $(document).ready(function() {
             game.load.image('shortledge', '/assets/shortledge.png');
             game.load.image('longledge', '/assets/longledge.png');
             game.load.image('toadstool', '/assets/toadstool.png');
-            game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
+            game.load.spritesheet('dude', '/assets/eriksprite.png', 32, 60);
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
             game.load.spritesheet('butterfly', '/assets/butterfly2.png', 70, 65);
