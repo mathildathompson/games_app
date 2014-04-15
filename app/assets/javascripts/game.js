@@ -71,11 +71,16 @@ $(document).ready(function() {
             //  This stops it from falling away when you jump on it
             ground.body.immovable = true;
 
+
             //  Now let's create the ledges
             //the first number says how many pixels from the left border it is
             //a negative number puts the ledge off the screen to the left
             //ledges have a fixed width, so to shorten them you have to put them off the screen
             //the second number says how far from the top of the page it is.    
+
+            //Now let's create the ledges
+            //the three below are on the right
+
 
             ledge = platforms.create(0, 650, 'toadstool');
             ledge.body.immovable = true;
@@ -108,6 +113,7 @@ $(document).ready(function() {
             ledge = platforms.create(3100, 180 , 'treetall');
             ledge.body.immovable = true;
 
+
             //these ledges run up the second big tree
             ledge = platforms.create(2700, 650, 'wood_end1');
             ledge.body.immovable = true;
@@ -117,6 +123,7 @@ $(document).ready(function() {
             
             ledge = platforms.create(2700, 350, 'wood_end1');
             ledge.body.immovable = true;
+
 
             ledge = platforms.create(3000, 180, 'wood_end1');
             ledge.body.immovable = true;
@@ -158,19 +165,8 @@ $(document).ready(function() {
             player.animations.add('right', [5, 6, 7, 8], 10, true);
             game.camera.follow(player);
                 
-            // going to try to create a badass mofo here
+            //ENEMIES BELOW
 
-
-// ==============// enemy = game.add.sprite(400, game.world.height -200, 'baddie');
-            // game.physics.arcade.enable(enemy);
-            // enemy.body.bounce.y = 0.2;
-            // enemy.body.gravity.y = 300;
-// ============== // enemy.body.collideWorldBounds = true;
-
-            // enemy.animations.add('left', [0, 1], 10, true);
-            // enemy.animations.add('right', [2, 3], 10, true);
-
-            // game.physics.enable( [ player, enemy ], Phaser.Physics.ARCADE);
             enemies = game.add.group();
             enemies.enableBody = true;
             for (var i = 0; i < 3; i++)
@@ -285,9 +281,6 @@ $(document).ready(function() {
 
                 player.animations.play('left');
                 
-                // ENEMY ANIMATIONS HERE----------------
- // ============  enemy.body.velocity.x = 100;
-// ============  enemy.animations.play('right');
             }
             else if (cursors.right.isDown)
             {
@@ -296,9 +289,6 @@ $(document).ready(function() {
 
                 player.animations.play('right');
 
-                // ENEMY ANIMATIONS HERE
- // ============ enemy.body.velocity.x = -100;
- // ============ enemy.animations.play('left');
             }
             else
             {
