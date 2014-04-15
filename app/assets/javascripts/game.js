@@ -19,7 +19,10 @@ $(document).ready(function() {
             game.load.image('wood_end1', '/assets/wood_end1.png');
             game.load.image('wood_end2', '/assets/wood_end2.png');
             game.load.image('tree_tile', '/assets/tree_tile.png');
-            game.load.image('treetall', '/assets/tree.png');
+            game.load.image('treetall', '/assets/tree2.png');
+            game.load.image('shortledge', '/assets/shortledge.png');
+            game.load.image('longledge', '/assets/longledge.png');
+            game.load.image('toadstool', '/assets/toadstool.png');
             game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
@@ -40,7 +43,7 @@ $(document).ready(function() {
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
             //  A simple background for our game
-            game.add.sprite(0, 0, 'sky');
+            game.add.sprite(-800, -500, 'sky');
             // sky.scale.setTo(3, 2);
 
             // Play background music
@@ -69,47 +72,89 @@ $(document).ready(function() {
             ground.body.immovable = true;
 
             //  Now let's create the ledges
-            //the three below are on the right
-
-            ledge = platforms.create(700, 200, 'wood_end1');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(450, 300, 'wood_end1');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(910, 587, 'tree_tile');
-            ledge.body.immovable = true;
-
-
-            //the two below are on the left
             //the first number says how many pixels from the left border it is
             //a negative number puts the ledge off the screen to the left
             //ledges have a fixed width, so to shorten them you have to put them off the screen
-            //the second number says how far from the top of the page it is.           
+            //the second number says how far from the top of the page it is.    
 
-            var ledge = platforms.create(0, 400, 'wood_end1');
+            ledge = platforms.create(0, 650, 'toadstool');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(200, 250, 'wood_end1');
+            //this is the first ledge right of the toadstool
+            ledge = platforms.create(350, 500, 'wood_end1');
+            ledge.body.immovable = true;
+                
+            //this is the second ledge above the toadstool
+            var ledge = platforms.create(550, 350, 'wood_end1');
+            ledge.body.immovable = true;     
+
+            ledge = platforms.create(800, 180 , 'treetall');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(0, 700, 'wood_end1');
+            //now the player is on the other side of the tree
+            ledge = platforms.create(1900, 430, 'tree_tile');
             ledge.body.immovable = true;
 
-            // ledge = platforms.create(350, 600, 'ground');
+            ledge = platforms.create(1500, 670, 'longledge');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(1800, 670, 'longledge');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(2100, 670, 'longledge');
+            ledge.body.immovable = true;
+
+            //now the player is through the bridge.
+            ledge = platforms.create(3100, 180 , 'treetall');
+            ledge.body.immovable = true;
+
+            //these ledges run up the second big tree
+            ledge = platforms.create(2800, 650, 'wood_end1');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(3000, 500, 'wood_end1');
+            ledge.body.immovable = true;
+            
+            ledge = platforms.create(2800, 350, 'wood_end1');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(3000, 190, 'wood_end1');
+            ledge.body.immovable = true;
+
+             // this is the short wood easter egg ledge
+
+            ledge = platforms.create(2700, 150, 'shortledge');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(2250, 350, 'shortledge');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(2050, 150, 'shortledge');
+            ledge.body.immovable = true;
+           
+
+            // ledge = platforms.create(3000, 250, 'wood_end1');
             // ledge.body.immovable = true;
 
-            // GOING TO CREATE SOME WOODEND LEDGES DOWN HERE
-            ledge = platforms.create(350, 600, 'wood_end1');
-            ledge.body.immovable = true;
-            ledge = platforms.create(300, 250, 'wood_end2');
-            ledge.body.immovable = true;
+            // ledge = platforms.create(3350, 600, 'treetall');
+            // ledge.body.immovable = true;
 
-            ledge = platforms.create(150, 500, 'wood_end2');
-            ledge.body.immovable = true;
+
+           
+            
+
+           
+
+
+            // ledge = platforms.create(700, 200, 'wood_end1');
+            // ledge.body.immovable = true;
+
+            
+
+            
 
             // The player and its settings
-            player = game.add.sprite(32, game.world.height - 150, 'dude');
+            player = game.add.sprite(200, game.world.height - 150, 'dude');
 
             //  We need to enable physics on the player
             game.physics.arcade.enable(player);
@@ -210,7 +255,7 @@ $(document).ready(function() {
             if (cursors.left.isDown)
             {
                 //  Move to the left
-                player.body.velocity.x = -150;
+                player.body.velocity.x = -350;
 
                 player.animations.play('left');
                 
@@ -221,7 +266,7 @@ $(document).ready(function() {
             else if (cursors.right.isDown)
             {
                 //  Move to the right
-                player.body.velocity.x = 150;
+                player.body.velocity.x = 350;
 
                 player.animations.play('right');
 
