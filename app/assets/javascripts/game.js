@@ -26,6 +26,7 @@ $(document).ready(function() {
             game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
+            game.load.spritesheet('butterfly', '/assets/butterfly2.png', 70, 65);
         }
 
         var player;
@@ -165,6 +166,12 @@ $(document).ready(function() {
             player.animations.add('right', [5, 6, 7, 8], 10, true);
             game.camera.follow(player);
                 
+            // Butterfly created
+            butterfly = game.add.sprite(200, game.world.height - 150, 'butterfly');
+            butterfly.animations.add('fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true);
+            // butterfly.body.immovable = true;
+            butterfly.animations.play('fly');
+
             //ENEMIES BELOW
 
             enemies = game.add.group();
