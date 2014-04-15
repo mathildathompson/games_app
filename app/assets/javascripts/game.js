@@ -32,6 +32,9 @@ $(document).ready(function() {
             game.load.image('shortledge', '/assets/shortledge.png');
             game.load.image('longledge', '/assets/longledge.png');
             game.load.image('toadstool', '/assets/toadstool.png');
+            // Button images
+            game.load.image('reset-button', '/assets/reset-button.png');
+            game.load.image('contact-button', '/assets/contact-button.png');
             
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
@@ -43,6 +46,8 @@ $(document).ready(function() {
         var cursors;
         var powerup;
         var stars;
+        var button;
+
         //here we set two more vars
         var score = 0;
         var scoreText;
@@ -64,7 +69,6 @@ $(document).ready(function() {
             // Put audio fx into variables to be called on an action
             starCollect = game.add.audio('starCollect');
             jumping = game.add.audio('jumping');
-        
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
             platforms = game.add.group();
@@ -354,9 +358,29 @@ $(document).ready(function() {
             highlight();
 
             //  Add and update the score
-            score += 10;
-            scoreText.text = 'Score: ' + score;
+            // score += 10;
+            // scoreText.text = 'Score: ' + score;
 
+            // setTimeout(winText, 1500);
+            score += 1;
+            if (score > 0) {                
+                style = { font: "65px Arial", fill: "#fff", align: "center" };
+                game.add.text(game.camera.x+325, game.camera.y+150, "You Win!", style);
+                button = game.add.button(game.camera.x+275, game.camera.y+250, 'reset-button', actionOnResetClick, this);
+                button = game.add.button(game.camera.x+475, game.camera.y+250, 'contact-button', actionOnContactClick, this);               
+            }
+
+            // When the Reset button is clicked, it calls this function, which in turn calls the game to be reloaded.
+            function actionOnResetClick () {
+                gameRestart();
+            }
+
+            // Redirects through to contact form
+            function actionOnContactClick () {
+                
+            }
+
+            // This simply plays a sound effect each time an item is collected.
             starCollect.play('');
 
         }
@@ -374,17 +398,19 @@ $(document).ready(function() {
               explosion.kill();  
             }
 
+            // Show text to say you died, then reload the game.
             function gameOverText () {
                 style = { font: "65px Arial", fill: "#fff", align: "center" };
                 var text = game.add.text(game.camera.x+450, game.camera.y+250, "You Lose! Try Again...", style);
                 text.anchor.set(0.5);
             }
             // Removes the player from the screen
-            player.kill();
-
-            function gameRestart () {
-                location.reload();
-            }         
+            player.kill();     
         }
+
+        // This function gets called when restarting the game via the reset button after winning, or when you die and start over.
+        function gameRestart () {
+            location.reload();
+        }    
     };
 });
