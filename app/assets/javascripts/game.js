@@ -21,6 +21,7 @@ $(document).ready(function() {
             //sprite audio
             game.load.audio('starCollect', '/assets/Powerup.ogg');
             game.load.audio('jumping', '/assets/jumping.wav');
+            game.load.audio('victory', '/assets/victory.mp3');
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
             game.load.image('diamond', '/assets/diamond.png');
@@ -47,6 +48,7 @@ $(document).ready(function() {
         var powerup;
         var stars;
         var button;
+        var music
 
         //here we set two more vars
         var score = 0;
@@ -65,10 +67,10 @@ $(document).ready(function() {
             music: Phaser.Sound;
             this.music = this.add.audio('music', 1, true);
             this.music.play();
-
             // Put audio fx into variables to be called on an action
             starCollect = game.add.audio('starCollect');
             jumping = game.add.audio('jumping');
+            victory = game.add.audio('victory');
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
             platforms = game.add.group();
@@ -361,21 +363,32 @@ $(document).ready(function() {
             // score += 10;
             // scoreText.text = 'Score: ' + score;
 
-            // setTimeout(winText, 1500);
+            ////// WIN FUNCTIONALITY //////
+            
+            // If the right score is reached then pause music and call win function
             score += 1;
-            if (score > 0) {                
+            if (score > 0) { 
+                win();
+                this.music.pause(); 
+            }
+
+            // Here we display the contact and replay button options, calling either respective function
+            function win () {                
                 style = { font: "65px Arial", fill: "#fff", align: "center" };
                 game.add.text(game.camera.x+325, game.camera.y+150, "You Win!", style);
                 button = game.add.button(game.camera.x+275, game.camera.y+250, 'reset-button', actionOnResetClick, this);
-                button = game.add.button(game.camera.x+475, game.camera.y+250, 'contact-button', actionOnContactClick, this);               
-            }
+                button = game.add.button(game.camera.x+475, game.camera.y+250, 'contact-button', actionOnContactClick, this);  
+                // this.input.keyboard.disabled = true; 
+                // Plays the victory song    
+                victory.play('');  
+            }    
 
             // When the Reset button is clicked, it calls this function, which in turn calls the game to be reloaded.
             function actionOnResetClick () {
                 gameRestart();
             }
 
-            // Redirects through to contact form
+            // When the contact button is clicked it redirects through to contact form
             function actionOnContactClick () {
                 
             }
