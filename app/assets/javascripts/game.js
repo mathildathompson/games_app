@@ -151,17 +151,18 @@ $(document).ready(function() {
            enemiesRight();
         
             function enemiesRight(){
-                console.log("enemiesRightcalled");
-                enemies.x += 100;
-                enemies.callAll('animations.play', 'animations', 'right');
-                setTimeout(enemiesLeft, 500);
+                var tween = game.add.tween(enemies).to( { x: 200 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
+
+                // enemies.x += 100;
+                enemies.callAll('animations.play', 'animations', 'left');
+                setTimeout(enemiesLeft, 2000);
             }
            
             function enemiesLeft(){
-                console.log("enemiesLeftcalled");
-                enemies.x += -100;
-                enemies.callAll('animations.play', 'animations', 'left');
-                setTimeout(enemiesRight, 500);
+                var tween = game.add.tween(enemies).to( { x: 400 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
+                // enemies.x += -100;
+                enemies.callAll('animations.play', 'animations', 'right');
+                setTimeout(enemiesRight, 2000);
             }
             //  Finally some stars to collect
             stars = game.add.group();
