@@ -125,16 +125,29 @@ $(document).ready(function() {
                 
             // going to try to create a badass mofo here
 
-            enemy = game.add.sprite(400, game.world.height -200, 'baddie');
-            game.physics.arcade.enable(enemy);
-            enemy.body.bounce.y = 0.2;
-            enemy.body.gravity.y = 300;
-            enemy.body.collideWorldBounds = true;
 
-            enemy.animations.add('left', [0, 1], 10, true);
-            enemy.animations.add('right', [2, 3], 10, true);
+// ==============// enemy = game.add.sprite(400, game.world.height -200, 'baddie');
+            // game.physics.arcade.enable(enemy);
+            // enemy.body.bounce.y = 0.2;
+            // enemy.body.gravity.y = 300;
+// ============== // enemy.body.collideWorldBounds = true;
 
-            game.physics.enable( [ player, enemy ], Phaser.Physics.ARCADE);
+            // enemy.animations.add('left', [0, 1], 10, true);
+            // enemy.animations.add('right', [2, 3], 10, true);
+
+            // game.physics.enable( [ player, enemy ], Phaser.Physics.ARCADE);
+            enemies = game.add.group();
+            enemies.enableBody = true;
+            for (var i = 0; i < 3; i++)
+            {
+                var enemy = enemies.create( 100 + (i * 30), 100, 'baddie');
+                enemy.body.gravity.y = 300;
+                enemy.body.bounce.y = 0.1 + Math.random() * 0.2;
+                enemies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
+                enemies.callAll('animations.play', 'animations', 'left');
+
+            }
+
 
             //  Finally some stars to collect
             stars = game.add.group();
@@ -196,13 +209,13 @@ $(document).ready(function() {
             game.physics.arcade.collide(stars, platforms);
 
             // ENEMY ADDED HERE====================
-            game.physics.arcade.collide(enemy, platforms);
+            game.physics.arcade.collide(enemies, platforms);
 
             //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
             game.physics.arcade.overlap(player, stars, collectStar, null, this);
 
             // KILL PLAYER IF HE BUMPS INTO BAD GUY
-            game.physics.arcade.overlap(player, enemy, killPlayer, null, this);
+            game.physics.arcade.overlap(player, enemies, killPlayer, null, this);
             //  Reset the players velocity (movement)
             player.body.velocity.x = 0;
 
@@ -214,8 +227,8 @@ $(document).ready(function() {
                 player.animations.play('left');
                 
                 // ENEMY ANIMATIONS HERE----------------
-                enemy.body.velocity.x = 100;
-                enemy.animations.play('right');
+ // ============  enemy.body.velocity.x = 100;
+// ============  enemy.animations.play('right');
             }
             else if (cursors.right.isDown)
             {
@@ -225,8 +238,8 @@ $(document).ready(function() {
                 player.animations.play('right');
 
                 // ENEMY ANIMATIONS HERE
-                enemy.body.velocity.x = -100;
-                enemy.animations.play('left');
+ // ============ enemy.body.velocity.x = -100;
+ // ============ enemy.animations.play('left');
             }
             else
             {
