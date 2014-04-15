@@ -19,6 +19,7 @@ $(document).ready(function() {
             game.load.image('wood_end1', '/assets/wood_end1.png');
             game.load.image('wood_end2', '/assets/wood_end2.png');
             game.load.image('tree_tile', '/assets/tree_tile.png');
+            game.load.image('treetall', '/assets/tree.png');
             game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
@@ -156,7 +157,7 @@ $(document).ready(function() {
                 //  This just gives each star a slightly random bounce value
                 star.body.bounce.y = 0.7 + Math.random() * 0.2;
             }
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 2; i++)
             {
                 //  Create a star inside of the 'stars' group
                 var star = stars.create(i * 200, 0, 'star');
@@ -168,7 +169,7 @@ $(document).ready(function() {
                 //  This just gives each star a slightly random bounce value
                 star.body.bounce.y = 0.7 + Math.random() * 0.2;
             }
-            for (var i = 0; i < 1; i++)
+            for (var i = 0; i < 2; i++)
             {
                 //  Create a star inside of the 'stars' group
                 var star = stars.create(300 + i * 250, 0, 'diamond');
