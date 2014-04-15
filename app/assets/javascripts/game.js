@@ -4,6 +4,15 @@ $(document).ready(function() {
 
         function preload() {
 
+          // here we run an if statement to choose which sprite to load
+            if ($("#Erik").length > 0){
+                game.load.spritesheet('dude', '/assets/eriksprite.png', 32, 60);
+            } else if ($("#Tom").length > 0) {
+                game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
+            } else {
+                game.load.spritesheet('dude', '/assets/dude.png', 32, 48);
+            }
+        // Now we start to create the other assets
             game.load.image('sky', '/assets/forestbg.png');           
             game.load.image('star', '/assets/star.png');
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
@@ -23,7 +32,7 @@ $(document).ready(function() {
             game.load.image('shortledge', '/assets/shortledge.png');
             game.load.image('longledge', '/assets/longledge.png');
             game.load.image('toadstool', '/assets/toadstool.png');
-            game.load.spritesheet('dude', '/assets/eriksprite.png', 32, 60);
+            
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
             game.load.spritesheet('butterfly', '/assets/butterfly2.png', 70, 65);
