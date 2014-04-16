@@ -61,6 +61,9 @@ $(document).ready(function() {
         var jumping;
         var grass;
         var door;
+        var butterflies;
+        var enemies
+        var ledge;
 
         //here we set two more vars
         var score = 0;
@@ -127,7 +130,7 @@ $(document).ready(function() {
             ledge.body.immovable = true;
                 
             //this is the second ledge above the toadstool
-            var ledge = platforms.create(550, 650, 'wood_end1');
+            ledge = platforms.create(550, 650, 'wood_end1');
             ledge.body.immovable = true;     
 
             //now the player is on the other side of the tree
@@ -215,13 +218,30 @@ $(document).ready(function() {
             player.animations.add('right', [5, 6, 7, 8], 10, true);
             game.camera.follow(player);
                 
-            // Butterfly created
+            // Butterfly
+            // The object below contains the butterfly coordinates
+            var butterfly_coords = {
+                107: 100,
+                106: 200,
+                105: 300,
+                104: 400,
+                103: 500,
+                102: 600,
+                101: 700
+            }
+            butterflies = game.add.group();
+            var butterflies_xs = _.keys(butterfly_coords);
+            var butterflies_ys = _.values(butterfly_coords);
+            for (var key in butterfly_coords) {
+                var butterfly = butterflies.create( key, butterfly_coords[key], 'butterfly');
+            }
+            
             butterfly = game.add.sprite(300, game.world.height - 300, 'butterfly');
             butterfly.animations.add('fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true);
             // butterfly.body.immovable = true;
             butterfly.animations.play('fly');
 
-            //ENEMIES BELOW
+            //CREATE ENEMIES BELOW
 
             enemies = game.add.group();
             enemies.enableBody = true;
@@ -230,12 +250,12 @@ $(document).ready(function() {
                 var enemy = enemies.create( 100 + (i * 200), 100, 'baddie');
                 enemy.body.gravity.y = 300;
                 enemy.body.bounce.y = 0.1 + Math.random() * 0.2;
-                enemies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
-                enemies.callAll('animations.add', 'animations', 'right', [2, 3], 10, true);   
-
             }
+            
             // These functions animate the enemies
-           enemiesRight();
+            enemies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
+            enemies.callAll('animations.add', 'animations', 'right', [2, 3], 10, true);   
+            enemiesRight();
         
             function enemiesRight(){
                 var tween = game.add.tween(enemies).to( { x: 200 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
