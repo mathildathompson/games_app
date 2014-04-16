@@ -1,6 +1,7 @@
 GamesApp::Application.routes.draw do
   root :to => 'games#home'
   get '/games/:last_name' => 'games#index'
+  get '/contacts/:last_name' => 'contacts#index'
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'
@@ -10,4 +11,5 @@ GamesApp::Application.routes.draw do
   resources :careers
   resources :educations
   resources :portfolios
+  resources :contacts
 end
