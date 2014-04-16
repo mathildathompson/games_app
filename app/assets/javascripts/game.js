@@ -27,7 +27,6 @@ $(document).ready(function() {
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
             game.load.image('diamond', '/assets/diamond.png');
-            game.load.image('shinyball', '/assets/shinyball.png');
             game.load.image('wood_end1', '/assets/wood_end1.png');
             game.load.image('wood_end2', '/assets/wood_end2.png');
             game.load.image('tree_tile', '/assets/tree_tile.png');
@@ -48,6 +47,7 @@ $(document).ready(function() {
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
             game.load.spritesheet('butterfly', '/assets/butterfly2.png', 70, 65);
+            game.load.spritesheet('butterfly_joel', '/assets/butterfly.png', 80, 80);
         }
 
         var trees;
@@ -242,6 +242,11 @@ $(document).ready(function() {
             butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
             butterflies.callAll('animations.play', 'animations', 'fly');
             
+            // create special easter egg butterfly
+            var butterfly_joel = game.add.sprite(200, game.world.height - 150, 'butterfly_joel');
+            game.physics.arcade.enable(butterfly_joel);
+            butterfly_joel.animations.add('flutter', [0, 1, 2, 3], 10, true);
+            butterfly_joel.animations.play('flutter');
             //CREATE ENEMIES BELOW
 
             enemies = game.add.group();
