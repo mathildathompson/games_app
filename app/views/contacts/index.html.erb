@@ -12,7 +12,7 @@
  
     <h2 id="home_choose_char"><span class="blue">function </span><span class="green">contact</span> (<span class="orange"><%= @first_name %></span>){}</h2>
 
-  <a class="game_link" href="/games/<%= @user.last_name %>">
+  <a href="/games/<%= @user.last_name.downcase %>">
     <div class="character">
       <div class="viewer">
         <img  class="home_sprite" src="/assets/<%= @first_name.downcase%>sprite.png">
