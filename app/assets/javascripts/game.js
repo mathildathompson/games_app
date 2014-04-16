@@ -132,6 +132,7 @@ $(document).ready(function() {
                 
             //this is the second ledge above the toadstool
             var ledge = platforms.create(550, 650, 'shortledge');
+            ledge.body.immovable = true;
 
             //now the player is on the other side of the tree
             ledge = platforms.create(1900, 730, 'tree_tile');
