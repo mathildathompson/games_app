@@ -47,7 +47,7 @@ $(document).ready(function() {
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
             game.load.spritesheet('butterfly', '/assets/butterfly2.png', 70, 65);
-            game.load.spritesheet('butterfly_joel', '/assets/butterfly.png', 80, 80);
+            game.load.spritesheet('butterflyJoel', '/assets/butterfly.png', 80, 80);
         }
 
         var trees;
@@ -243,12 +243,12 @@ $(document).ready(function() {
             butterflies.callAll('animations.play', 'animations', 'fly');
             
             // create special easter egg butterfly
-            var butterfly_joel = game.add.sprite(200, game.world.height - 150, 'butterfly_joel');
-            game.physics.arcade.enable(butterfly_joel);
-            butterfly_joel.animations.add('flutter', [0, 1, 2, 3], 10, true);
-            butterfly_joel.animations.play('flutter');
+            var butterflyJoel = game.add.sprite(200, game.world.height - 150, 'butterflyJoel');
+            game.physics.arcade.enable(butterflyJoel);
+            butterflyJoel.animations.add('flutter', [0, 1, 2, 3], 10, true);
+            butterflyJoel.animations.play('flutter');
+            
             //CREATE ENEMIES BELOW
-
             enemies = game.add.group();
             enemies.enableBody = true;
             for (var i = 0; i < 3; i++)
@@ -301,7 +301,7 @@ $(document).ready(function() {
 
              //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
             game.physics.arcade.overlap(player, butterflies, collectButterfly, null, this);
-            
+
             // KILL PLAYER IF HE BUMPS INTO BAD GUY
             game.physics.arcade.overlap(player, enemies, killPlayer, null, this);
             //  Reset the players velocity (movement)
@@ -445,6 +445,9 @@ $(document).ready(function() {
         // This function gets called when restarting the game via the reset button after winning, or when you die and start over.
         function gameRestart () {
             location.reload();
+        }
+        function joelSpeak (){
+            console.log("Hello");
         }    
     };
 });
