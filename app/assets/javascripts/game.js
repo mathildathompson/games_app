@@ -26,9 +26,6 @@ $(document).ready(function() {
             game.load.audio('victory', '/assets/victory.mp3');
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
-            game.load.image('diamond', '/assets/diamond.png');
-            game.load.image('wood_end1', '/assets/wood_end1.png');
-            game.load.image('wood_end2', '/assets/wood_end2.png');
             game.load.image('tree_tile', '/assets/tree_tile.png');
             
             game.load.image('shortledge', '/assets/shortledge.png');
@@ -246,12 +243,12 @@ $(document).ready(function() {
             // The object below contains the butterfly coordinates
             var bIdCounter = 0;
             var butterfly_coords = {
-                107: 100,
-                106: 200,
-                105: 300,
-                104: 400,
-                103: 500,
-                102: 600,
+                250: 650,
+                2800: 350,
+                800: 950,
+                4300: 700,
+                1900: 1000,
+                1920: 90,
                 101: 900
             }
             butterflies = game.add.group();
@@ -267,7 +264,7 @@ $(document).ready(function() {
             butterflies.callAll('animations.play', 'animations', 'fly');
             
             // create special easter egg butterfly
-            var butterflyJoel = game.add.sprite(200, game.world.height - 150, 'butterflyJoel');
+            var butterflyJoel = game.add.sprite(1410, 90, 'butterflyJoel');
             game.physics.arcade.enable(butterflyJoel);
             butterflyJoel.animations.add('flutter', [0, 1, 2, 3], 10, true);
             butterflyJoel.animations.play('flutter');
