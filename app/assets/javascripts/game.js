@@ -62,7 +62,7 @@ $(document).ready(function() {
         var scoreText;
 
         function create() {
-            game.world.setBounds(0, 0, 4800, 900);
+            game.world.setBounds(0, 0, 4800, 1200);
             //  We're going to be using physics, so enable the Arcade Physics system
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -105,71 +105,77 @@ $(document).ready(function() {
             //the three below are on the right
 
 
-            ledge = platforms.create(0, 650, 'toadstool');
+            ledge = platforms.create(0, 950, 'toadstool');
             ledge.body.immovable = true;
 
             //this is the first ledge right of the toadstool
-            ledge = platforms.create(350, 500, 'wood_end1');
+            ledge = platforms.create(350, 800, 'wood_end1');
             ledge.body.immovable = true;
                 
             //this is the second ledge above the toadstool
-            var ledge = platforms.create(550, 350, 'wood_end1');
+            var ledge = platforms.create(550, 650, 'wood_end1');
             ledge.body.immovable = true;     
 
             //now the player is on the other side of the tree
-            ledge = platforms.create(1900, 430, 'tree_tile');
+            ledge = platforms.create(1900, 730, 'tree_tile');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(1500, 670, 'longledge');
+            ledge = platforms.create(1500, 970, 'longledge');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(1800, 670, 'longledge');
+            ledge = platforms.create(1800, 970, 'longledge');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(2100, 670, 'longledge');
+            ledge = platforms.create(2100, 970, 'longledge');
             ledge.body.immovable = true;
 
             //now the player is through the bridge.
-            ledge = platforms.create(3100, 180 , 'treetall');
+            trees = game.add.group();
+            tree = trees.create(3100, 480 , 'treetall');
+            
+            ledge = platforms.create(3300, 600 , 'trunk');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(3140, 580 , 'invplat');
             ledge.body.immovable = true;
 
 
             //these ledges run up the second big tree
+            ledge = platforms.create(2700, 950, 'wood_end1');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(3000, 800, 'wood_end1');
+            ledge.body.immovable = true;
+            
             ledge = platforms.create(2700, 650, 'wood_end1');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(3000, 500, 'wood_end1');
-            ledge.body.immovable = true;
-            
-            ledge = platforms.create(2700, 350, 'wood_end1');
-            ledge.body.immovable = true;
 
-
-            ledge = platforms.create(3000, 180, 'wood_end1');
+            ledge = platforms.create(3000, 480, 'wood_end1');
             ledge.body.immovable = true;
 
              // this is the short wood easter egg ledge
 
-            ledge = platforms.create(2300, 350, 'shortledge');
+            ledge = platforms.create(2300, 650, 'shortledge');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(2050, 200, 'shortledge');
+            ledge = platforms.create(2050, 500, 'shortledge');
             ledge.body.immovable = true;  
 
-            ledge = platforms.create(1750, 150, 'shortledge');
+            ledge = platforms.create(1750, 450, 'shortledge');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(1450, 200, 'shortledge');
+            ledge = platforms.create(1450, 500, 'shortledge');
             ledge.body.immovable = true; 
 
        // Here are some tree/trunk/top pairings. Trees have no 'body', trunks and tops are invislbe, but do.
-            trees = game.add.group();
-            var tree = trees.create(800, 180 , 'treetall');
             
-            ledge = platforms.create(1000, 500 , 'trunk');
+            var tree = trees.create(800, 480 , 'treetall');
+            
+            ledge = platforms.create(1000, 600 , 'trunk');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(830, 270 , 'invplat');
+            ledge = platforms.create(840, 580 , 'invplat');
             ledge.body.immovable = true;
 
                     
