@@ -218,11 +218,9 @@ $(document).ready(function() {
             player.animations.add('right', [5, 6, 7, 8], 10, true);
             game.camera.follow(player);
                 
-            // NOTE: the following butterfly code works for the most part, but when we enableBody, they disappear. No idea.
-            // couldn't figure it out. Using much shittier code to do something similar below.
-            // Butterfly
+            // Butterflies create
             // The object below contains the butterfly coordinates
-            var bIdCounter = 1;
+            var bIdCounter = 0;
             var butterfly_coords = {
                 107: 100,
                 106: 200,
@@ -233,7 +231,6 @@ $(document).ready(function() {
                 101: 900
             }
             butterflies = game.add.group();
-            // FOR SOME REASON THE LINE BELOW CAUSES THE BUTTERFLIES TO DISAPPEAR. BUT WE NEED IT TO ENABLE INTERACTIONS WITH PLAYER
             butterflies.enableBody = true;
 
             for (var key in butterfly_coords) {
@@ -244,7 +241,6 @@ $(document).ready(function() {
             }
             butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
             butterflies.callAll('animations.play', 'animations', 'fly');
-            
             
             //CREATE ENEMIES BELOW
 
@@ -276,72 +272,13 @@ $(document).ready(function() {
                 enemies.callAll('animations.play', 'animations', 'right');
                 setTimeout(enemiesRight, 2000);
             }
-            //  Create butterflies to collect
-            // butterflies = game.add.group();
-            // var bIdCounter = 0;
-            // butterflies.enableBody = true;
-            // var butterfly_coords = {
-            //     100: 900,
-            //     101: 800,
-            //     102: 801
-            // }
-
-            // for (var key in butterfly_coords) {
-            //     var butterfly = butterflies.create( parseInt(key), butterfly_coords[key], 'butterfly');
-
-
-
-            //     butterfly.id = "career" + bIdCounter;
-            //     butterfly.body.gravity.y = 300;
-            //     butterfly.body.bounce.y = 0.7 + Math.random() * 0.2;
-            //     bIdCounter += 1;
-            //     console.log(bIdCounter);   
-            // }
-
-            // // for (var i = 0; i < 3; i++)
-            // // {
-            // //     //  Create a star inside of the 'stars' group
-            // //     var butterfly = butterflies.create( 2100 + i * 600, 0, 'butterfly');
-            // //     butterfly.id = 'career' + i
-
-            // //     //  Let gravity do its thing
-            // //     
-
-            // //     //  This just gives each star a slightly random bounce value
-            // //     butterfly.body.bounce.y = 0.7 + Math.random() * 0.2;
-            // // }
-            // for (var i = 0; i < 2; i++)
-            // {
-            //     //  Create a star inside of the 'stars' group
-            //     var butterfly = butterflies.create(600 + i * 700, 0, 'butterfly');
-            //     butterfly.id = 'education' + i
-
-            //     //  Let gravity do its thing
-            //     butterfly.body.gravity.y = 300;
-
-            //     //  This just gives each star a slightly random bounce value
-            //     butterfly.body.bounce.y = 0.7 + Math.random() * 0.2;
-            // }
-            // for (var i = 0; i < 2; i++)
-            // {
-            //     //  Create a star inside of the 'stars' group
-            //     var butterfly = butterflies.create(470 + i * 1200, 0, 'butterfly');
-            //     butterfly.id = 'portfolio' + i
-
-            //     //  Let gravity do its thing
-            //     butterfly.body.gravity.y = 300;
-
-            //     //  This just gives each star a slightly random bounce value
-            //     butterfly.body.bounce.y = 0.2;
-            // }
-
+            
             //  The score
             scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
             //  Our controls.
             cursors = game.input.keyboard.createCursorKeys();
-            butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
-            butterflies.callAll('animations.play', 'animations', 'fly');
+            
         }
      
 
