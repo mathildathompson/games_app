@@ -235,11 +235,8 @@ $(document).ready(function() {
             for (var key in butterfly_coords) {
                 var butterfly = butterflies.create( key, butterfly_coords[key], 'butterfly');
             }
-            
-            butterfly = game.add.sprite(300, game.world.height - 300, 'butterfly');
-            butterfly.animations.add('fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true);
-            // butterfly.body.immovable = true;
-            butterfly.animations.play('fly');
+            butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
+            butterflies.callAll('animations.play', 'animations', 'fly');
 
             //CREATE ENEMIES BELOW
 
