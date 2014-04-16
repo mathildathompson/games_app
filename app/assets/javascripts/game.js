@@ -33,6 +33,7 @@ $(document).ready(function() {
             game.load.image('tree_tile', '/assets/tree_tile.png');
             
             game.load.image('shortledge', '/assets/shortledge.png');
+            game.load.image('invshortledge', '/assets/inv_shortledge.png');
             game.load.image('invplat', '/assets/inv_plat.png');
             game.load.image('longledge', '/assets/longledge.png');
             game.load.image('toadstool', '/assets/toadstool.png');
@@ -123,11 +124,11 @@ $(document).ready(function() {
             ledge.body.immovable = true;
 
             //this is the first ledge right of the toadstool
-            ledge = platforms.create(350, 800, 'wood_end1');
+            ledge = platforms.create(250, 800, 'shortledge');
             ledge.body.immovable = true;
                 
             //this is the second ledge above the toadstool
-            var ledge = platforms.create(550, 650, 'wood_end1');
+            var ledge = platforms.create(550, 650, 'shortledge');
             ledge.body.immovable = true;     
 
             //now the player is on the other side of the tree
@@ -155,18 +156,17 @@ $(document).ready(function() {
 
 
             //these ledges run up the second big tree
-            ledge = platforms.create(2700, 950, 'wood_end1');
+            ledge = platforms.create(2700, 950, 'shortledge');
             ledge.body.immovable = true;
 
-            ledge = platforms.create(3000, 800, 'wood_end1');
+            ledge = platforms.create(3000, 800, 'shortledge');
             ledge.body.immovable = true;
             
-            ledge = platforms.create(2700, 650, 'wood_end1');
+            ledge = platforms.create(2700, 650, 'shortledge');
             ledge.body.immovable = true;
 
-
-            ledge = platforms.create(3000, 480, 'wood_end1');
-            ledge.body.immovable = true;
+            // ledge = platforms.create(3000, 180, 'shortledge');
+            // ledge.body.immovable = true;
 
              // this is the short wood easter egg ledge
 
@@ -176,13 +176,17 @@ $(document).ready(function() {
             ledge = platforms.create(2050, 500, 'shortledge');
             ledge.body.immovable = true;  
 
-            ledge = platforms.create(1750, 450, 'shortledge');
+            //secret ledge for an easter egg to go on.
+            ledge = platforms.create(1400, 150, 'invshortledge');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(1750, 300, 'shortledge');
             ledge.body.immovable = true;
 
             ledge = platforms.create(1450, 500, 'shortledge');
             ledge.body.immovable = true; 
 
-       // Here are some tree/trunk/top pairings. Trees have no 'body', trunks and tops are invislbe, but do.
+            // Here are some tree/trunk/top pairings. Trees have no 'body', trunks and tops are invislbe, but do.
             
             var tree = trees.create(800, 480 , 'treetall');
             
@@ -190,6 +194,26 @@ $(document).ready(function() {
             ledge.body.immovable = true;
 
             ledge = platforms.create(840, 580 , 'invplat');
+            ledge.body.immovable = true;
+
+            // Ledges after the second tree
+
+            ledge = platforms.create(3500, 950, 'shortledge');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(3900, 750, 'shortledge');
+            ledge.body.immovable = true;
+            
+            ledge = platforms.create(3500, 750, 'shortledge');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(4250, 550, 'shortledge');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(4250, 150, 'shortledge');
+            ledge.body.immovable = true;
+            
+            ledge = platforms.create(4600, 350, 'shortledge');
             ledge.body.immovable = true;
 
             // HOUSE
