@@ -403,7 +403,7 @@ $(document).ready(function() {
 
          // Here we check if the user has collected all the collectables when they enter the door
          function winChecker () {
-            if (score > 0) { 
+            if (score > 6) { 
                 win();
                 this.music.pause();
                 player.kill();
