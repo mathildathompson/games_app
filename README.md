@@ -1,35 +1,28 @@
-####Comments
-* Style update: site colors come from Monokai Theme for Sublime Text 2. Hompepage inspired by: http://au.jsconf.com/
-* This is a good site to pixelate your face: http://superpixeltime.com/
+TO DO
 
-##MUST HAVE
+GAME PLAY
+- ledges (olly)
+- baddies (tom)
+- butterflies (erik)
 
-####Homepage
+LOAD SCREEN TEXT
+- tom
 
+FORMATTING
+- sidebar/canvas relationship (?)
+- homepage (?)
 
-
-####Game/Canvas
-
-
-
-
-####Sidebar/Resume
-
-
-
-####Rails/Backend
-
-
-
-###Misc
-
+MISC
+* API (LinkedIn?)
 
 
 ##NICE TO HAVE
-
-* function that randomizes name order on homepage
+* border around homepage
+* another bad guy (flying)
+* joel butterfly
+* other characters to interact with
+* text over house to tell user how many butterflies they've collected
+* tree foliage to the foreground
 * win function - turn cursor into hand when over button
 
-##DONE
 
-* write javascript/jQuery so that when a character is hovered over, the hero-shot image and information changes below
