@@ -14,14 +14,14 @@ $(document).ready(function() {
                 game.load.spritesheet('dude', '/assets/ollysprite.png', 32, 60);
             }
         // Now we start to create the other assets
-            game.load.image('sky', '/assets/forestbg.png');           
+            game.load.image('forest', '/assets/forestbg.png');           
             
             game.load.image('star', '/assets/star.png');
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
             //adding background music
             this.load.audio('music', '/assets/adventure.mp3', true);
             //sprite audio
-            game.load.audio('starCollect', '/assets/Powerup.ogg');
+            game.load.audio('butterflyCollect', '/assets/Powerup.ogg');
             game.load.audio('jumping', '/assets/jumping.wav');
             game.load.audio('victory', '/assets/victory.mp3');
             //here we load two more assets for the other 'stars'
@@ -62,6 +62,9 @@ $(document).ready(function() {
         var jumping;
         var grass;
         var door;
+        var butterflies;
+        var enemies
+        var ledge;
 
         //here we set two more vars
         var score = 0;
@@ -73,15 +76,15 @@ $(document).ready(function() {
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
             //  A simple background for our game
-            game.add.sprite(0, 0, 'sky');
-            // sky.scale.setTo(3, 2);
+            game.add.sprite(0, 0, 'forest');
+            
 
             // Play background music
             music: Phaser.Sound;
             this.music = this.add.audio('music', 1, true);
             this.music.play();
             // Put audio fx into variables to be called on an action
-            starCollect = game.add.audio('starCollect');
+            butterflyCollect = game.add.audio('butterflyCollect');
             jumping = game.add.audio('jumping');
             victory = game.add.audio('victory');
 
@@ -129,7 +132,6 @@ $(document).ready(function() {
                 
             //this is the second ledge above the toadstool
             var ledge = platforms.create(550, 650, 'shortledge');
-            ledge.body.immovable = true;     
 
             //now the player is on the other side of the tree
             ledge = platforms.create(1900, 730, 'tree_tile');
@@ -239,27 +241,45 @@ $(document).ready(function() {
             player.animations.add('right', [5, 6, 7, 8], 10, true);
             game.camera.follow(player);
                 
-            // Butterfly created
-            butterfly = game.add.sprite(300, game.world.height - 300, 'butterfly');
-            butterfly.animations.add('fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true);
-            // butterfly.body.immovable = true;
-            butterfly.animations.play('fly');
+            // Butterflies create
+            // The object below contains the butterfly coordinates
+            var bIdCounter = 0;
+            var butterfly_coords = {
+                107: 100,
+                106: 200,
+                105: 300,
+                104: 400,
+                103: 500,
+                102: 600,
+                101: 900
+            }
+            butterflies = game.add.group();
+            butterflies.enableBody = true;
 
-            //ENEMIES BELOW
+            for (var key in butterfly_coords) {
+                var butterfly = butterflies.create( parseInt(key), butterfly_coords[key], 'butterfly');
+                butterfly.id = "resumeItem" + bIdCounter;
+                bIdCounter += 1;
+                console.log(bIdCounter);   
+            }
+            butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
+            butterflies.callAll('animations.play', 'animations', 'fly');
+            
+            //CREATE ENEMIES BELOW
 
             enemies = game.add.group();
             enemies.enableBody = true;
             for (var i = 0; i < 3; i++)
             {
-                var enemy = enemies.create( 100 + (i * 200), 100, 'baddie');
+                var enemy = enemies.create( 100 + (i * 200), 500, 'baddie');
                 enemy.body.gravity.y = 300;
                 enemy.body.bounce.y = 0.1 + Math.random() * 0.2;
-                enemies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
-                enemies.callAll('animations.add', 'animations', 'right', [2, 3], 10, true);   
-
             }
+            
             // These functions animate the enemies
-           enemiesRight();
+            enemies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
+            enemies.callAll('animations.add', 'animations', 'right', [2, 3], 10, true);   
+            enemiesRight();
         
             function enemiesRight(){
                 var tween = game.add.tween(enemies).to( { x: 200 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
@@ -275,51 +295,7 @@ $(document).ready(function() {
                 enemies.callAll('animations.play', 'animations', 'right');
                 setTimeout(enemiesRight, 2000);
             }
-            //  Finally some stars to collect
-            stars = game.add.group();
-            //diamonds
-
-            //  We will enable physics for any star that is created in this group
-            stars.enableBody = true;
-
-            //  Here we'll create 8 of them evenly spaced apart
-            for (var i = 0; i < 3; i++)
-            {
-                //  Create a star inside of the 'stars' group
-                var star = stars.create( 2100 + i * 600, 0, 'shinyball');
-                star.id = 'career' + i
-
-                //  Let gravity do its thing
-                star.body.gravity.y = 300;
-
-                //  This just gives each star a slightly random bounce value
-                star.body.bounce.y = 0.7 + Math.random() * 0.2;
-            }
-            for (var i = 0; i < 2; i++)
-            {
-                //  Create a star inside of the 'stars' group
-                var star = stars.create(600 + i * 700, 0, 'star');
-                star.id = 'education' + i
-
-                //  Let gravity do its thing
-                star.body.gravity.y = 300;
-
-                //  This just gives each star a slightly random bounce value
-                star.body.bounce.y = 0.7 + Math.random() * 0.2;
-            }
-            for (var i = 0; i < 2; i++)
-            {
-                //  Create a star inside of the 'stars' group
-                var star = stars.create(470 + i * 1200, 0, 'diamond');
-                star.id = 'portfolio' + i
-
-                //  Let gravity do its thing
-                star.body.gravity.y = 300;
-
-                //  This just gives each star a slightly random bounce value
-                star.body.bounce.y = 0.2;
-            }
-
+            
             //  The score
             scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
@@ -333,7 +309,7 @@ $(document).ready(function() {
             
             //  Collide the player and the stars with the platforms
             game.physics.arcade.collide(player, platforms);
-            game.physics.arcade.collide(stars, platforms);
+            game.physics.arcade.collide(butterflies, platforms);
 
             // ENEMY ADDED HERE====================
             game.physics.arcade.collide(enemies, platforms);
@@ -341,9 +317,9 @@ $(document).ready(function() {
             // This lets the user win if they run into the door.
             game.physics.arcade.overlap(player, door, winChecker, null, this);
 
-            //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
-            game.physics.arcade.overlap(player, stars, collectStar, null, this);
-
+             //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
+            game.physics.arcade.overlap(player, butterflies, collectButterfly, null, this);
+            
             // KILL PLAYER IF HE BUMPS INTO BAD GUY
             game.physics.arcade.overlap(player, enemies, killPlayer, null, this);
             //  Reset the players velocity (movement)
@@ -380,15 +356,16 @@ $(document).ready(function() {
                 jumping.play('');
             }
         }
-        function collectStar (player, star) {
+        
+        function collectButterfly (player, butterfly) {
             
             // Removes the star from the screen
-            star.kill();
+            butterfly.kill();
 
             //this line fades in resume content when a star is collected
-            $('#'+star.id).children('li').hide().css('visibility','visible').fadeIn(2000);
+            $('#'+butterfly.id).children('li').hide().css('visibility','visible').fadeIn(2000);
             //slides the accordian up or down to show resume content as stars are collected
-            var $section = $('#'+star.id).closest('ul');
+            var $section = $('#'+butterfly.id).closest('ul');
             if (! $section.is(':visible')) {
                 $section.prev('h3').trigger('click');
             }  
@@ -417,7 +394,7 @@ $(document).ready(function() {
              
 
             // This simply plays a sound effect each time an item is collected.
-            starCollect.play('');
+            butterflyCollect.play('');
 
         }
 

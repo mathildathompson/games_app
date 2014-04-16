@@ -91,18 +91,7 @@ span.accordian-title {
     color: #F92672;
 }
 
-#career0, #career1, #career2 {
-
-    visibility: hidden;
-}
-
-#education0, #education1, #education2 {
-
-    visibility: hidden;
-}
-
-#portfolio0, #portfolio1, #portfolio2 {
-
+#resumeItem0, #resumeItem1, #resumeItem2, #resumeItem3, #resumeItem4, #resumeItem5, #resumeItem6 {
     visibility: hidden;
 }
 
