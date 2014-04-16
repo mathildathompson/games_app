@@ -248,8 +248,8 @@ $(document).ready(function() {
                 800: 950,
                 4300: 700,
                 1900: 1000,
-                1920: 90,
-                101: 900
+                2105: 90,
+                4000: 200
             }
             butterflies = game.add.group();
             butterflies.enableBody = true;
