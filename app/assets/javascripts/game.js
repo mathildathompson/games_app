@@ -42,6 +42,7 @@ $(document).ready(function() {
             
 
             game.load.image('trunk', '/assets/invisibletrunk.png');
+            game.load.image('grass', '/assets/grass_ground.png');
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
             game.load.spritesheet('butterfly', '/assets/butterfly2.png', 70, 65);
@@ -54,8 +55,9 @@ $(document).ready(function() {
         var powerup;
         var stars;
         var button;
-        var music
-        var jumping
+        var music;
+        var jumping;
+        var grass;
 
         //here we set two more vars
         var score = 0;
@@ -89,11 +91,20 @@ $(document).ready(function() {
             var ground = platforms.create(0, game.world.height - 64, 'ground');
 
             //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
-            ground.scale.setTo(16, 2);
+            ground.scale.setTo(12, 2);
 
             //  This stops it from falling away when you jump on it
             ground.body.immovable = true;
 
+            // GRASS. Create 12 grass, each moving 400 to the right to form a continuous layer
+            grasses = game.add.group();
+            var x_pos = 0
+            for (var i = 0; i < 12; i++)
+            {
+                grass = grasses.create(x_pos, game.world.height - 81, 'grass'); 
+                x_pos = x_pos + 400 
+
+            }
 
             //  Now let's create the ledges
             //the first number says how many pixels from the left border it is
@@ -178,7 +189,7 @@ $(document).ready(function() {
             ledge = platforms.create(840, 580 , 'invplat');
             ledge.body.immovable = true;
 
-                    
+
             // The player and its settings
             player = game.add.sprite(200, game.world.height - 150, 'dude');
 
