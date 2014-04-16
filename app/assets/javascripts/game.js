@@ -49,6 +49,7 @@ $(document).ready(function() {
         var stars;
         var button;
         var music
+        var jumping
 
         //here we set two more vars
         var score = 0;
@@ -365,11 +366,12 @@ $(document).ready(function() {
 
             ////// WIN FUNCTIONALITY //////
             
-            // If the right score is reached then pause music and call win function
+            // If the right score is reached then pause music, remove player from screen and call win function
             score += 1;
             if (score > 0) { 
                 win();
-                this.music.pause(); 
+                this.music.pause();
+                player.kill();
             }
 
             // Here we display the contact and replay button options, calling either respective function
@@ -378,7 +380,9 @@ $(document).ready(function() {
                 game.add.text(game.camera.x+325, game.camera.y+150, "You Win!", style);
                 button = game.add.button(game.camera.x+275, game.camera.y+250, 'reset-button', actionOnResetClick, this);
                 button = game.add.button(game.camera.x+475, game.camera.y+250, 'contact-button', actionOnContactClick, this);  
-                // this.input.keyboard.disabled = true; 
+                // The following lines kill the players movement before disabling keyboard inputs
+                player.body.velocity.x = 0;
+                setTimeout(game.input.keyboard.disabled = true, 1000); 
                 // Plays the victory song    
                 victory.play('');  
             }    
