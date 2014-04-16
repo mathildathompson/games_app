@@ -14,7 +14,7 @@ $(document).ready(function() {
                 game.load.spritesheet('dude', '/assets/ollysprite.png', 32, 60);
             }
         // Now we start to create the other assets
-            game.load.image('sky', '/assets/forestbg.png');           
+            game.load.image('forest', '/assets/forestbg.png');           
             
             game.load.image('star', '/assets/star.png');
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
@@ -75,8 +75,8 @@ $(document).ready(function() {
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
             //  A simple background for our game
-            game.add.sprite(0, 0, 'sky');
-            // sky.scale.setTo(3, 2);
+            game.add.sprite(0, 0, 'forest');
+            
 
             // Play background music
             music: Phaser.Sound;
@@ -220,6 +220,7 @@ $(document).ready(function() {
                 
             // Butterfly
             // The object below contains the butterfly coordinates
+            var bIdCounter = 1;
             var butterfly_coords = {
                 107: 100,
                 106: 200,
@@ -227,15 +228,23 @@ $(document).ready(function() {
                 104: 400,
                 103: 500,
                 102: 600,
-                101: 700
+                101: 900
             }
             butterflies = game.add.group();
+            game.physics.arcade.enable(butterflies);
+            // FOR SOME REASON THE LINE BELOW CAUSES THE BUTTERFLIES TO DISAPPEAR. BUT WE NEED IT TO ENABLE INTERACTIONS WITH PLAYER
+            // butterflies.enableBody = true;
+
             for (var key in butterfly_coords) {
                 var butterfly = butterflies.create( key, butterfly_coords[key], 'butterfly');
+                butterfly.id = "resumeItem" + bIdCounter;
+                bIdCounter += 1;
+                console.log(bIdCounter);   
             }
             butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
             butterflies.callAll('animations.play', 'animations', 'fly');
-
+            
+            
             //CREATE ENEMIES BELOW
 
             enemies = game.add.group();
@@ -332,9 +341,12 @@ $(document).ready(function() {
             // This lets the user win if they run into the door.
             game.physics.arcade.overlap(player, door, winChecker, null, this);
 
-            //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
+             //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
             game.physics.arcade.overlap(player, stars, collectStar, null, this);
 
+            // enable collect butterflies
+            game.physics.arcade.overlap(player, butterflies, collectButterfly, null, this);
+            
             // KILL PLAYER IF HE BUMPS INTO BAD GUY
             game.physics.arcade.overlap(player, enemies, killPlayer, null, this);
             //  Reset the players velocity (movement)
@@ -371,6 +383,11 @@ $(document).ready(function() {
                 jumping.play('');
             }
         }
+        
+        function collectButterfly (player, butterfly) {
+            console.log("butterfly collected");
+        }
+       
         function collectStar (player, star) {
             
             // Removes the star from the screen
