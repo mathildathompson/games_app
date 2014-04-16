@@ -15,6 +15,7 @@ $(document).ready(function() {
             }
         // Now we start to create the other assets
             game.load.image('sky', '/assets/forestbg.png');           
+            
             game.load.image('star', '/assets/star.png');
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
             //adding background music
@@ -35,14 +36,15 @@ $(document).ready(function() {
             game.load.image('invplat', '/assets/inv_plat.png');
             game.load.image('longledge', '/assets/longledge.png');
             game.load.image('toadstool', '/assets/toadstool.png');
-
+            game.load.image('grass', '/assets/grass_ground.png');
             // Button images
             game.load.image('reset-button', '/assets/reset-button.png');
             game.load.image('contact-button', '/assets/contact-button.png');
-            
+            game.load.image('house', '/assets/house.png');
+            game.load.image('door', '/assets/door.png');
 
             game.load.image('trunk', '/assets/invisibletrunk.png');
-            game.load.image('grass', '/assets/grass_ground.png');
+            
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
             game.load.spritesheet('butterfly', '/assets/butterfly2.png', 70, 65);
@@ -58,6 +60,7 @@ $(document).ready(function() {
         var music;
         var jumping;
         var grass;
+        var door;
 
         //here we set two more vars
         var score = 0;
@@ -189,6 +192,12 @@ $(document).ready(function() {
             ledge = platforms.create(840, 580 , 'invplat');
             ledge.body.immovable = true;
 
+            // HOUSE
+            var house = game.add.sprite(4000, game.world.height - 336, "house");
+            door = game.add.sprite(4170, game.world.height - 139, "door");   
+            game.physics.arcade.enable(door);
+            door.body.immovable = true;
+
 
             // The player and its settings
             player = game.add.sprite(200, game.world.height - 150, 'dude');
@@ -207,7 +216,7 @@ $(document).ready(function() {
             game.camera.follow(player);
                 
             // Butterfly created
-            butterfly = game.add.sprite(200, game.world.height - 150, 'butterfly');
+            butterfly = game.add.sprite(300, game.world.height - 300, 'butterfly');
             butterfly.animations.add('fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true);
             // butterfly.body.immovable = true;
             butterfly.animations.play('fly');
@@ -297,14 +306,6 @@ $(document).ready(function() {
      
 
         function update() {
-            // enemies animations below
-            
-            // var tween = game.add.tween(enemies).to( { x: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-            // tween.onLoop.add(enemiesRight, this);
-            
-
-            // enemies.x += 1;
-            
             
             //  Collide the player and the stars with the platforms
             game.physics.arcade.collide(player, platforms);
@@ -312,6 +313,9 @@ $(document).ready(function() {
 
             // ENEMY ADDED HERE====================
             game.physics.arcade.collide(enemies, platforms);
+            
+            // This lets the user win if they run into the door.
+            game.physics.arcade.overlap(player, door, winChecker, null, this);
 
             //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
             game.physics.arcade.overlap(player, stars, collectStar, null, this);
@@ -383,35 +387,45 @@ $(document).ready(function() {
             
 
             highlight();
-
-            //  Add and update the score
-            // score += 10;
-            // scoreText.text = 'Score: ' + score;
-
-            ////// WIN FUNCTIONALITY //////
             
-            // If the right score is reached then pause music, remove player from screen and call win function
+            // updates the score so we can check in teh winChecker function if player has collected all the stars.
             score += 1;
-            if (score > 0) { 
+             
+
+            // This simply plays a sound effect each time an item is collected.
+            starCollect.play('');
+
+        }
+
+         // Here we check if the user has collected all the collectables when they enter the door
+         function winChecker () {
+            if (score > 6) { 
                 win();
                 this.music.pause();
                 player.kill();
-            }
+            } 
+            // THIS SHIT AIN'T WORKING YET!!!!!!!!!!!!!!!
+            // Basically the text just writes over itself, rather than deleting the previous text.
+            // else {
+            //     wincheck_style = { font: "65px Arial", fill: "#fff", align: "center" };
+            //     game.add.text(470, game.world.height - 400, "You have collected " + score + " butterflies.", wincheck_style);
+            //     game.add.text(470, game.world.height - 320, "You have " + (7 - score) + " more to catch.", wincheck_style);
+            // }
+         }
 
-            // Here we display the contact and replay button options, calling either respective function
-            function win () {                
-                style = { font: "65px Arial", fill: "#fff", align: "center" };
-                game.add.text(game.camera.x+325, game.camera.y+150, "You Win!", style);
-                button = game.add.button(game.camera.x+275, game.camera.y+250, 'reset-button', actionOnResetClick, this);
-                button = game.add.button(game.camera.x+475, game.camera.y+250, 'contact-button', actionOnContactClick, this);  
-                // The following lines kill the players movement before disabling keyboard inputs
-                player.body.velocity.x = 0;
-                setTimeout(game.input.keyboard.disabled = true, 1000); 
-                // Plays the victory song    
-                victory.play('');  
-            }    
-
+        // Win function: f the right score is reached then pause music, remove player from screen and call win function 
+        function win () {                
+            style = { font: "65px Arial", fill: "#fff", align: "center" };
+            game.add.text(game.camera.x+325, game.camera.y+150, "You Win!", style);
+            button = game.add.button(game.camera.x+275, game.camera.y+250, 'reset-button', actionOnResetClick, this);
+            button = game.add.button(game.camera.x+475, game.camera.y+250, 'contact-button', actionOnContactClick, this);  
+            // The following lines kill the players movement before disabling keyboard inputs
+            player.body.velocity.x = 0;
+            setTimeout(game.input.keyboard.disabled = true, 1000); 
+            // Plays the victory song    
+            victory.play('');
             // When the Reset button is clicked, it calls this function, which in turn calls the game to be reloaded.
+            // Here we display the contact and replay button options, calling either respective function
             function actionOnResetClick () {
                 gameRestart();
             }
@@ -419,12 +433,8 @@ $(document).ready(function() {
             // When the contact button is clicked it redirects through to contact form
             function actionOnContactClick () {
                 
-            }
-
-            // This simply plays a sound effect each time an item is collected.
-            starCollect.play('');
-
-        }
+            } 
+        } 
 
         function killPlayer (player, enemy) {
             explosion = game.add.sprite(player.body.x - 32, player.body.y - 32,  'explosion');
