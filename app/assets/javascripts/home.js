@@ -49,7 +49,7 @@ $(document).ready(function() {
     var $hero_weapon = $("#home_p_weap");
     var $hero_armour = $("#home_p_armour");
     var $hero_img = $("#hero_shot");
-    var $game_link = $("a")
+    var $game_link = $("a.game_link")
 
     // Here's a function to show tom in the hero image div
     $("#tom").on("mouseenter", function(){

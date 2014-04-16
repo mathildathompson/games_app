@@ -4,7 +4,7 @@ Education.destroy_all
 Career.destroy_all
 
 # Olly's seed data
-u1 = User.create(:first_name => 'Oliver', :last_name => 'Dutton', :github => 'https://github.com/ollyd', 
+u1 = User.create(:first_name => 'Olly', :last_name => 'Dutton', :github => 'https://github.com/ollyd', 
     :linkedin => 'http://www.linkedin.com/profile/view?id=74952025', :email => 'ollydutton@gmail.com', 
     :twitter => 'https://twitter.com/hacks_n_stacks', :password => 'admin', :password_confirmation => 'admin')
 
@@ -50,9 +50,42 @@ u1.save
 # Tom's seed data
 
 
-u2 = User.create(:first_name => 'Tom', :last_name => 'Dane', :github => '', 
-    :linkedin => '', :email => 'tjdane@gmail.com', 
-    :twitter => '', :password => 'admin', :password_confirmation => 'admin')
+u2 = User.create(:first_name => 'Tom', :last_name => 'Dane', :github => 'https://github.com/thomasdane', 
+    :linkedin => 'http://www.linkedin.com/pub/tom-dane/3b/9ab/b17', :email => 'tjdane@gmail.com', 
+    :twitter => 'https://twitter.com/tomjdane', :password => 'admin', :password_confirmation => 'admin')
+
+p1 = Portfolio.create(:title => 'PlayGo Event App', :link => 'http://playgo.herokuapp.com/', :image => '')
+
+e1 = Education.create(:institution => 'General Assembly', :course => 'Web Development Immersive', 
+    :start_date => '24/02/2014', :end_date => '24/05/2014' )
+
+e2 = Education.create(:institution => 'Australian National University', :course => 'BA Philosophy', 
+    :start_date => '24/02/2004', :end_date => '24/05/2007' )
+
+e3 = Education.create(:institution => 'Sydney Institute TAFE', :course => 'I.T (Web Development)', 
+    :start_date => '01/03/2009', :end_date => '28/02/2009' )
+
+c1 = Career.create(:job_title => 'Search & Innovations Director', :job_description => 'Tasked with creating an Innovations team in order to diversify 
+    our business offering. Working closely with Maxus\' creative technology R&D division, Metalworks Singapore.',
+    :company => 'Maxus', :start_date => '1/06/2013', :end_date => '20/02/2014')
+
+c2 = Career.create(:job_title => 'Associate Search Director', :job_description => '2IC of the Maxus Australia Search Team. 
+    Primarily SEM and SEO, however, exxperienced in everything Performance Media related, e.g. Facebook Advertising, Display, Retargeting, Mobile and Video.',
+    :company => 'Maxus', :start_date => '19/01/2012', :end_date => '31/05/2013')
+
+c3 = Career.create(:job_title => 'Senior Search Manager', :job_description => 'Managed a Search Team for key client accounts across some of the most challenging verticals, 
+    including Vodafone (Telco), and CBA (Finance).',
+    :company => 'Ikon', :start_date => '01/06/2011', :end_date => '17/01/2012')
+
+u2.portfolios << p1
+
+u2.educations << e2
+u2.educations << e1
+u2.educations << e3
+
+u2.careers << c1
+u2.careers << c2
+u2.careers << c3
 
 u2.admin = true
 u2.save

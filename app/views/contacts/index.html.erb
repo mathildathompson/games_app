@@ -1,0 +1,34 @@
+<!-- The side_nums dive puts numbers down the left side of the page like sublime -->
+<div id="side_nums">
+  <ul id="nums">
+  </ul>
+</div>
+
+<header>
+  <h1><span class="red">$</span>(<span class="blue">contact</span>).ready<span class="blue"></span></h1>
+</header>
+
+<div id="home_container">
+ 
+    <h2 id="home_choose_char"><span class="blue">function </span><span class="green">contact</span> (<span class="orange"><%= @first_name %></span>){}</h2>
+ 
+    <div class="character">
+      <div class="viewer">
+        <img  class="home_sprite" src="/assets/<%= @first_name.downcase%>sprite.png">
+      </div>     
+    </div> 
+
+    <div class="contactLinks">
+        <ul>
+            <li><a href="<%= @github %>"><i class="fa fa-github-alt"></i> Github</a></li>
+            <li><a href="<%= @linkedin %>"><i class="fa fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="<%= @user.twitter %>"><i class="fa fa-twitter"></i> Twitter</a></li>
+        </ul>
+    </div>    
+
+</div><!-- end div #container -->
+
+
+
+
+
