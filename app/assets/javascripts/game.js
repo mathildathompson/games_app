@@ -193,8 +193,8 @@ $(document).ready(function() {
             ledge.body.immovable = true;
 
             // HOUSE
-            var house = game.add.sprite(300, game.world.height - 336, "house");
-            door = game.add.sprite(470, game.world.height - 139, "door");   
+            var house = game.add.sprite(4000, game.world.height - 336, "house");
+            door = game.add.sprite(4170, game.world.height - 139, "door");   
             game.physics.arcade.enable(door);
             door.body.immovable = true;
 
@@ -399,16 +399,18 @@ $(document).ready(function() {
 
          // Here we check if the user has collected all the collectables when they enter the door
          function winChecker () {
-            console.log("you win?ish?");
             if (score > 6) { 
                 win();
                 this.music.pause();
                 player.kill();
-            } else {
-                wincheck_style = { font: "65px Arial", fill: "#fff", align: "center" };
-                game.add.text(470, game.world.height - 400, "You have collected " + score + " butterflies.", wincheck_style);
-                game.add.text(470, game.world.height - 320, "You have " + (7 - score) + " more to catch.", wincheck_style);
-            }
+            } 
+            // THIS SHIT AIN'T WORKING YET!!!!!!!!!!!!!!!
+            // Basically the text just writes over itself, rather than deleting the previous text.
+            // else {
+            //     wincheck_style = { font: "65px Arial", fill: "#fff", align: "center" };
+            //     game.add.text(470, game.world.height - 400, "You have collected " + score + " butterflies.", wincheck_style);
+            //     game.add.text(470, game.world.height - 320, "You have " + (7 - score) + " more to catch.", wincheck_style);
+            // }
          }
 
         // Win function: f the right score is reached then pause music, remove player from screen and call win function 
