@@ -401,18 +401,18 @@ $(document).ready(function() {
 
          // Here we check if the user has collected all the collectables when they enter the door
          function winChecker () {
-            if (score > 6) { 
+            if (score > 0) { 
                 win();
                 this.music.pause();
                 player.kill();
             } 
             // THIS SHIT AIN'T WORKING YET!!!!!!!!!!!!!!!
             // Basically the text just writes over itself, rather than deleting the previous text.
-            // else {
-            //     wincheck_style = { font: "65px Arial", fill: "#fff", align: "center" };
-            //     game.add.text(470, game.world.height - 400, "You have collected " + score + " butterflies.", wincheck_style);
-            //     game.add.text(470, game.world.height - 320, "You have " + (7 - score) + " more to catch.", wincheck_style);
-            // }
+            else {
+                wincheck_style = { font: "65px Arial", fill: "#fff", align: "center" };
+                game.add.text(470, game.world.height - 400, "You have collected " + score + " butterflies.", wincheck_style);
+                game.add.text(470, game.world.height - 320, "You have " + (7 - score) + " more to catch.", wincheck_style);
+            }
          }
 
         // Win function: f the right score is reached then pause music, remove player from screen and call win function 
