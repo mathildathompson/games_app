@@ -3,7 +3,8 @@ $(document).ready(function() {
         var game = new Phaser.Game(900, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
         function preload() {
-
+        
+            game.load.image('treetall', '/assets/tree2.png', 900, 1462);
           // here we run an if statement to choose which sprite to load
             if ($("#Erik").length > 0){
                 game.load.spritesheet('dude', '/assets/eriksprite.png', 32, 60);
@@ -29,19 +30,24 @@ $(document).ready(function() {
             game.load.image('wood_end1', '/assets/wood_end1.png');
             game.load.image('wood_end2', '/assets/wood_end2.png');
             game.load.image('tree_tile', '/assets/tree_tile.png');
-            game.load.image('treetall', '/assets/tree2.png');
+            
             game.load.image('shortledge', '/assets/shortledge.png');
+            game.load.image('invplat', '/assets/inv_plat.png');
             game.load.image('longledge', '/assets/longledge.png');
             game.load.image('toadstool', '/assets/toadstool.png');
+
             // Button images
             game.load.image('reset-button', '/assets/reset-button.png');
             game.load.image('contact-button', '/assets/contact-button.png');
             
+
+            game.load.image('trunk', '/assets/invisibletrunk.png');
             game.load.spritesheet('baddie', '/assets/baddie.png', 32, 32);
             game.load.spritesheet('explosion', '/assets/explode.png', 128, 128);
             game.load.spritesheet('butterfly', '/assets/butterfly2.png', 70, 65);
         }
 
+        var trees;
         var player;
         var platforms;
         var cursors;
@@ -109,9 +115,6 @@ $(document).ready(function() {
             var ledge = platforms.create(550, 350, 'wood_end1');
             ledge.body.immovable = true;     
 
-            ledge = platforms.create(800, 180 , 'treetall');
-            ledge.body.immovable = true;
-
             //now the player is on the other side of the tree
             ledge = platforms.create(1900, 430, 'tree_tile');
             ledge.body.immovable = true;
@@ -146,9 +149,6 @@ $(document).ready(function() {
 
              // this is the short wood easter egg ledge
 
-            // ledge = platforms.create(2700, 150, 'shortledge');
-            // ledge.body.immovable = true;
-
             ledge = platforms.create(2300, 350, 'shortledge');
             ledge.body.immovable = true;
 
@@ -161,10 +161,17 @@ $(document).ready(function() {
             ledge = platforms.create(1450, 200, 'shortledge');
             ledge.body.immovable = true; 
 
-            // ledge = platforms.create(1100, 150, 'shortledge');
-            // ledge.body.immovable = true;       
-                    
+       // Here are some tree/trunk/top pairings. Trees have no 'body', trunks and tops are invislbe, but do.
+            trees = game.add.group();
+            var tree = trees.create(800, 180 , 'treetall');
+            
+            ledge = platforms.create(1000, 500 , 'trunk');
+            ledge.body.immovable = true;
 
+            ledge = platforms.create(830, 270 , 'invplat');
+            ledge.body.immovable = true;
+
+                    
             // The player and its settings
             player = game.add.sprite(200, game.world.height - 150, 'dude');
 
