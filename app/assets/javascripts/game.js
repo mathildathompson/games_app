@@ -387,20 +387,10 @@ $(document).ready(function() {
             
 
             highlight();
-
-            //  Add and update the score
-            // score += 10;
-            // scoreText.text = 'Score: ' + score;
-
-            ////// WIN FUNCTIONALITY //////
             
-            // If the right score is reached then pause music, remove player from screen and call win function
+            // updates the score so we can check in teh winChecker function if player has collected all the stars.
             score += 1;
-            // if (score > 6) { 
-            //     win();
-            //     this.music.pause();
-            //     player.kill();
-            // }   
+             
 
             // This simply plays a sound effect each time an item is collected.
             starCollect.play('');
@@ -410,9 +400,18 @@ $(document).ready(function() {
          // Here we check if the user has collected all the collectables when they enter the door
          function winChecker () {
             console.log("you win?ish?");
+            if (score > 6) { 
+                win();
+                this.music.pause();
+                player.kill();
+            } else {
+                wincheck_style = { font: "65px Arial", fill: "#fff", align: "center" };
+                game.add.text(470, game.world.height - 400, "You have collected " + score + " butterflies.", wincheck_style);
+                game.add.text(470, game.world.height - 320, "You have " + (7 - score) + " more to catch.", wincheck_style);
+            }
          }
 
-         // Here we display the contact and replay button options, calling either respective function
+        // Win function: f the right score is reached then pause music, remove player from screen and call win function 
         function win () {                
             style = { font: "65px Arial", fill: "#fff", align: "center" };
             game.add.text(game.camera.x+325, game.camera.y+150, "You Win!", style);
@@ -424,6 +423,7 @@ $(document).ready(function() {
             // Plays the victory song    
             victory.play('');
             // When the Reset button is clicked, it calls this function, which in turn calls the game to be reloaded.
+            // Here we display the contact and replay button options, calling either respective function
             function actionOnResetClick () {
                 gameRestart();
             }
