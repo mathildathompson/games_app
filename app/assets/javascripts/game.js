@@ -222,28 +222,28 @@ $(document).ready(function() {
             // couldn't figure it out. Using much shittier code to do something similar below.
             // Butterfly
             // The object below contains the butterfly coordinates
-            // var bIdCounter = 1;
-            // var butterfly_coords = {
-            //     107: 100,
-            //     106: 200,
-            //     105: 300,
-            //     104: 400,
-            //     103: 500,
-            //     102: 600,
-            //     101: 900
-            // }
-            // butterflies = game.add.group();
-            // // FOR SOME REASON THE LINE BELOW CAUSES THE BUTTERFLIES TO DISAPPEAR. BUT WE NEED IT TO ENABLE INTERACTIONS WITH PLAYER
-            // butterflies.enableBody = true;
+            var bIdCounter = 1;
+            var butterfly_coords = {
+                107: 100,
+                106: 200,
+                105: 300,
+                104: 400,
+                103: 500,
+                102: 600,
+                101: 900
+            }
+            butterflies = game.add.group();
+            // FOR SOME REASON THE LINE BELOW CAUSES THE BUTTERFLIES TO DISAPPEAR. BUT WE NEED IT TO ENABLE INTERACTIONS WITH PLAYER
+            butterflies.enableBody = true;
 
-            // for (var key in butterfly_coords) {
-            //     var butterfly = butterflies.create( key, butterfly_coords[key], 'butterfly');
-            //     butterfly.id = "resumeItem" + bIdCounter;
-            //     bIdCounter += 1;
-            //     console.log(bIdCounter);   
-            // }
-            // butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
-            // butterflies.callAll('animations.play', 'animations', 'fly');
+            for (var key in butterfly_coords) {
+                var butterfly = butterflies.create( parseInt(key), butterfly_coords[key], 'butterfly');
+                butterfly.id = "resumeItem" + bIdCounter;
+                bIdCounter += 1;
+                console.log(bIdCounter);   
+            }
+            butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
+            butterflies.callAll('animations.play', 'animations', 'fly');
             
             
             //CREATE ENEMIES BELOW
@@ -276,50 +276,64 @@ $(document).ready(function() {
                 enemies.callAll('animations.play', 'animations', 'right');
                 setTimeout(enemiesRight, 2000);
             }
-            //  Finally some stars to collect
-            butterflies = game.add.group();
-            //diamonds
+            //  Create butterflies to collect
+            // butterflies = game.add.group();
+            // var bIdCounter = 0;
+            // butterflies.enableBody = true;
+            // var butterfly_coords = {
+            //     100: 900,
+            //     101: 800,
+            //     102: 801
+            // }
 
-            //  We will enable physics for any star that is created in this group
-            butterflies.enableBody = true;
+            // for (var key in butterfly_coords) {
+            //     var butterfly = butterflies.create( parseInt(key), butterfly_coords[key], 'butterfly');
 
-            //  Here we'll create 8 of them evenly spaced apart
-            for (var i = 0; i < 3; i++)
-            {
-                //  Create a star inside of the 'stars' group
-                var butterfly = butterflies.create( 2100 + i * 600, 0, 'butterfly');
-                butterfly.id = 'career' + i
 
-                //  Let gravity do its thing
-                butterfly.body.gravity.y = 300;
 
-                //  This just gives each star a slightly random bounce value
-                butterfly.body.bounce.y = 0.7 + Math.random() * 0.2;
-            }
-            for (var i = 0; i < 2; i++)
-            {
-                //  Create a star inside of the 'stars' group
-                var butterfly = butterflies.create(600 + i * 700, 0, 'butterfly');
-                butterfly.id = 'education' + i
+            //     butterfly.id = "career" + bIdCounter;
+            //     butterfly.body.gravity.y = 300;
+            //     butterfly.body.bounce.y = 0.7 + Math.random() * 0.2;
+            //     bIdCounter += 1;
+            //     console.log(bIdCounter);   
+            // }
 
-                //  Let gravity do its thing
-                butterfly.body.gravity.y = 300;
+            // // for (var i = 0; i < 3; i++)
+            // // {
+            // //     //  Create a star inside of the 'stars' group
+            // //     var butterfly = butterflies.create( 2100 + i * 600, 0, 'butterfly');
+            // //     butterfly.id = 'career' + i
 
-                //  This just gives each star a slightly random bounce value
-                butterfly.body.bounce.y = 0.7 + Math.random() * 0.2;
-            }
-            for (var i = 0; i < 2; i++)
-            {
-                //  Create a star inside of the 'stars' group
-                var butterfly = butterflies.create(470 + i * 1200, 0, 'butterfly');
-                butterfly.id = 'portfolio' + i
+            // //     //  Let gravity do its thing
+            // //     
 
-                //  Let gravity do its thing
-                butterfly.body.gravity.y = 300;
+            // //     //  This just gives each star a slightly random bounce value
+            // //     butterfly.body.bounce.y = 0.7 + Math.random() * 0.2;
+            // // }
+            // for (var i = 0; i < 2; i++)
+            // {
+            //     //  Create a star inside of the 'stars' group
+            //     var butterfly = butterflies.create(600 + i * 700, 0, 'butterfly');
+            //     butterfly.id = 'education' + i
 
-                //  This just gives each star a slightly random bounce value
-                butterfly.body.bounce.y = 0.2;
-            }
+            //     //  Let gravity do its thing
+            //     butterfly.body.gravity.y = 300;
+
+            //     //  This just gives each star a slightly random bounce value
+            //     butterfly.body.bounce.y = 0.7 + Math.random() * 0.2;
+            // }
+            // for (var i = 0; i < 2; i++)
+            // {
+            //     //  Create a star inside of the 'stars' group
+            //     var butterfly = butterflies.create(470 + i * 1200, 0, 'butterfly');
+            //     butterfly.id = 'portfolio' + i
+
+            //     //  Let gravity do its thing
+            //     butterfly.body.gravity.y = 300;
+
+            //     //  This just gives each star a slightly random bounce value
+            //     butterfly.body.bounce.y = 0.2;
+            // }
 
             //  The score
             scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
