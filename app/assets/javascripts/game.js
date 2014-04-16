@@ -230,8 +230,6 @@ $(document).ready(function() {
                 101: 700
             }
             butterflies = game.add.group();
-            var butterflies_xs = _.keys(butterfly_coords);
-            var butterflies_ys = _.values(butterfly_coords);
             for (var key in butterfly_coords) {
                 var butterfly = butterflies.create( key, butterfly_coords[key], 'butterfly');
             }
