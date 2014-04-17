@@ -31,7 +31,7 @@ $(document).ready(function() {
             game.load.image('treetall', '/assets/tree2.png', 900, 1462);                    
             game.load.image('treestem', '/assets/tree-stem.png');
 
-            game.load.image('star', '/assets/star.png');
+
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
             //adding background music
             this.load.audio('music', '/assets/adventure.mp3', true);
