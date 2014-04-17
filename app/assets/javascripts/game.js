@@ -60,7 +60,7 @@ $(document).ready(function() {
         var grass;
         var door;
         var butterflies;
-        var enemies
+        var enemies;
         var ledge;
 
         //here we set two more vars
@@ -272,20 +272,33 @@ $(document).ready(function() {
             //CREATE ENEMIES BELOW
             enemies = game.add.group();
             enemies.enableBody = true;
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 9; i++)
             {
-                var enemy = enemies.create( 100 + (i * 200), 500, 'baddie');
+                var enemy = enemies.create( 540 + (i * 700), 400, 'baddie');
                 enemy.body.gravity.y = 300;
                 enemy.body.bounce.y = 0.1 + Math.random() * 0.2;
+                enemies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
+                enemies.callAll('animations.add', 'animations', 'right', [2, 3], 10, true);   
+
             }
-            
+            //add a second group of enemies with different movement styles. these baddies have short distance animations. good for platforms. 
+            baddies = game.add.group();
+            baddies.enableBody = true;
+            for (var i = 0; i < 9; i++)
+            {
+                var baddy = baddies.create( 400 + (i * 900), 400, 'baddie');
+                baddy.body.gravity.y = 300;
+                baddy.body.bounce.y = 0.1 + Math.random() * 0.2;
+                baddies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
+                baddies.callAll('animations.add', 'animations', 'right', [2, 3], 10, true);   
+
+            }
+
             // These functions animate the enemies
-            enemies.callAll('animations.add', 'animations', 'left', [0, 1], 10, true);        
-            enemies.callAll('animations.add', 'animations', 'right', [2, 3], 10, true);   
-            enemiesRight();
+           enemiesRight();
         
             function enemiesRight(){
-                var tween = game.add.tween(enemies).to( { x: 200 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
+                var tween = game.add.tween(enemies).to( { x: 40 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
 
                 // enemies.x += 100;
                 enemies.callAll('animations.play', 'animations', 'left');
@@ -293,11 +306,30 @@ $(document).ready(function() {
             }
            
             function enemiesLeft(){
-                var tween = game.add.tween(enemies).to( { x: 400 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
+                var tween = game.add.tween(enemies).to( { x: 130 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
                 // enemies.x += -100;
                 enemies.callAll('animations.play', 'animations', 'right');
                 setTimeout(enemiesRight, 2000);
             }
+
+            baddiesRight();
+        
+            function baddiesRight(){
+                var tween = game.add.tween(baddies).to( { x: 50 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
+
+                // baddies.x += 100;
+                baddies.callAll('animations.play', 'animations', 'left');
+                setTimeout(baddiesLeft, 2000);
+            }
+           
+            function baddiesLeft(){
+                var tween = game.add.tween(baddies).to( { x: 350 }, 2000, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
+                // baddies.x += -100;
+                baddies.callAll('animations.play', 'animations', 'right');
+                setTimeout(baddiesRight, 2000);
+            }
+
+            
             
             //  The score
             scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
@@ -316,6 +348,7 @@ $(document).ready(function() {
 
             // ENEMY ADDED HERE====================
             game.physics.arcade.collide(enemies, platforms);
+            game.physics.arcade.collide(baddies, platforms);
             
             // This lets the user win if they run into the door.
             game.physics.arcade.overlap(player, door, winChecker, null, this);
