@@ -240,7 +240,7 @@ $(document).ready(function() {
 
 
             // The player and its settings
-            player = game.add.sprite(4200, game.world.height - 150, 'dude');
+            player = game.add.sprite(200, game.world.height - 150, 'dude');
 
             //  We need to enable physics on the player
             game.physics.arcade.enable(player);
@@ -380,7 +380,7 @@ $(document).ready(function() {
             if (cursors.left.isDown)
             {
                 //  Move to the left
-                player.body.velocity.x = -500;
+                player.body.velocity.x = -200;
 
                 player.animations.play('left');
                 
@@ -388,7 +388,7 @@ $(document).ready(function() {
             else if (cursors.right.isDown)
             {
                 //  Move to the right
-                player.body.velocity.x = 500;
+                player.body.velocity.x = 200;
 
                 player.animations.play('right');
 
@@ -451,7 +451,7 @@ $(document).ready(function() {
 
          // Here we check if the user has collected all the collectables when they enter the door
          function winChecker () {
-            if (score > 0) { 
+            if (score > 6) { 
                 win();
                 this.music.pause();
                 player.kill();
