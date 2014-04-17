@@ -26,6 +26,10 @@ header {
   padding-top: 14px;
   font-size: 112%;
 }
+ul#nums {
+  list-style: none;
+  padding-left: 0;
+}
 
 /*The following all relate to the sprite characters*/
 .character {
@@ -68,16 +72,6 @@ header {
   padding: 25px;
   text-shadow: 5px 0 black;
   position: relative;
-}
-
-#stats {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 15px;
-}
-#stats ul {
-  list-style-type: none;
 }
 
 a {
