@@ -374,6 +374,7 @@ $(document).ready(function() {
 
             // KILL PLAYER IF HE BUMPS INTO BAD GUY
             game.physics.arcade.overlap(player, enemies, killPlayer, null, this);
+            game.physics.arcade.overlap(player, baddies, killPlayer, null, this);
             //  Reset the players velocity (movement)
             player.body.velocity.x = 0;
 
