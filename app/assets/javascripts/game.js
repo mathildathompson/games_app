@@ -13,6 +13,10 @@ $(document).ready(function() {
             } else {
                 game.load.spritesheet('dude', '/assets/ollysprite.png', 32, 60);
             }
+
+            game.add.text(200, 300, 'Loading...', { font: '20px "Press Start 2P"', fill: '#fff' });
+            game.add.text(200, 380, 'Collect the seven butterflies to learn more about me', { font: '20px "Press Start 2P"', fill: '#fff' });
+            
         // Now we start to create the other assets
             game.load.image('forest', '/assets/forestbg.png');           
             
