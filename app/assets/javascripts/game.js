@@ -551,7 +551,7 @@ $(document).ready(function() {
             setTimeout(explode, 1500);
             setTimeout(gameOverText, 1500);
             setTimeout(gameRestart, 3000);
-
+            this.music.pause();
             explode_sound.play(''); 
             function explode() {
               explosion.kill();
