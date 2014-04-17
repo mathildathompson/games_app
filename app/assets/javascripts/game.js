@@ -4,22 +4,25 @@ $(document).ready(function() {
 
         function preload() {
         
-            game.load.image('treetall', '/assets/tree2.png', 900, 1462);
+            
           // here we run an if statement to choose which sprite to load
             if ($("#Erik").length > 0){
                 game.load.spritesheet('dude', '/assets/eriksprite.png', 32, 60);
+                var playerName = 'Erik'
             } else if ($("#Tom").length > 0) {
                 game.load.spritesheet('dude', '/assets/tomsprite.png', 32, 56);
+                var playerName = 'Tom'
             } else {
                 game.load.spritesheet('dude', '/assets/ollysprite.png', 32, 60);
+                var playerName = 'Olly'
             }
 
             game.add.text(200, 300, 'Loading...', { font: '20px "Press Start 2P"', fill: '#fff' });
-            game.add.text(200, 380, 'Collect the seven butterflies to learn more about me', { font: '20px "Press Start 2P"', fill: '#fff' });
+            game.add.text(200, 380, 'Collect the seven butterflies to learn more about ' + playerName, { font: '20px "Press Start 2P"', fill: '#fff' });
             
         // Now we start to create the other assets
-            game.load.image('forest', '/assets/forestbg.png');           
-            
+            game.load.image('forest', '/assets/forestbg.png');
+            game.load.image('treetall', '/assets/tree2.png', 900, 1462);           
             game.load.image('star', '/assets/star.png');
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
             //adding background music
@@ -473,6 +476,8 @@ $(document).ready(function() {
 
             // When the contact button is clicked it redirects through to contact form
             function actionOnContactClick () {
+
+
                 
             } 
         } 
