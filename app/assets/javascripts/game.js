@@ -426,13 +426,15 @@ $(document).ready(function() {
             butterflyJoel.alpha  = 1;
             // Samples an array of Joel's best comments
             joelStyle = { font: "30px Arial", fill: "#fff", align: "center" };
-            var joelisms = ["\"Have a great time... seriously.\"", "\"Turn up the autism for that one.\""]
-            var joelText = game.add.text(1350, 270, _.sample(joelisms), joelStyle);
+            // var joelisms = ["\"Have the best time... seriously.\"", "\"Turn up the autism for that one.\""]
+            // var joelText = game.add.text(1350, 270, _.sample(joelisms), joelStyle);
+
+            var joelText = game.add.text(1350, 270, "\"Have the best time... seriously.\"", joelStyle);
            
             // Audio effect
             notice.play('');
             // Call removeText function after a couple seconds
-            setTimeout(removeText, 500);
+            setTimeout(removeText, 1500);
 
             function removeText () {
                 game.world.remove(joelText);   
