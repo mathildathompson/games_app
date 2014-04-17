@@ -15,7 +15,7 @@ $(document).ready(function() {
             }
         // Now we start to create the other assets
             game.load.image('forest', '/assets/forestbg.png');           
-            
+            game.load.image('treestem', '/assets/tree-stem.png');
             game.load.image('star', '/assets/star.png');
             game.load.spritesheet('powerup', '/assets/powerup.png', 80, 74);
             //adding background music
@@ -24,6 +24,8 @@ $(document).ready(function() {
             game.load.audio('butterflyCollect', '/assets/Powerup.ogg');
             game.load.audio('jumping', '/assets/jumping.wav');
             game.load.audio('victory', '/assets/victory.mp3');
+            game.load.audio('notice', '/assets/hifi.mp3');
+
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
             game.load.image('tree_tile', '/assets/tree_tile.png');
@@ -84,6 +86,7 @@ $(document).ready(function() {
             butterflyCollect = game.add.audio('butterflyCollect');
             jumping = game.add.audio('jumping');
             victory = game.add.audio('victory');
+            notice = game.add.audio('notice');
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
             platforms = game.add.group();
@@ -120,7 +123,7 @@ $(document).ready(function() {
             //the three below are on the right
 
 
-            ledge = platforms.create(0, 950, 'toadstool');
+            ledge = platforms.create(10, 945, 'treestem');
             ledge.body.immovable = true;
 
             //this is the first ledge right of the toadstool
@@ -216,8 +219,8 @@ $(document).ready(function() {
             ledge = platforms.create(4600, 350, 'shortledge');
             ledge.body.immovable = true;
 
-            // HOUSE
-            var house = game.add.sprite(4000, game.world.height - 336, "house");
+            // HOUSE 
+            var house = game.add.sprite(4000, 925, "house");
             door = game.add.sprite(4170, game.world.height - 139, "door");   
             game.physics.arcade.enable(door);
             door.body.immovable = true;
@@ -394,7 +397,6 @@ $(document).ready(function() {
             
             // updates the score so we can check in teh winChecker function if player has collected all the stars.
             score += 1;
-             
 
             // This simply plays a sound effect each time an item is collected.
             butterflyCollect.play('');
@@ -408,12 +410,18 @@ $(document).ready(function() {
                 this.music.pause();
                 player.kill();
             } 
-            // THIS SHIT AIN'T WORKING YET!!!!!!!!!!!!!!!
-            // Basically the text just writes over itself, rather than deleting the previous text.
+            // Displays how many butterflies are still left to catch
             else {
-                wincheck_style = { font: "65px Arial", fill: "#fff", align: "center" };
-                game.add.text(470, game.world.height - 400, "You have collected " + score + " butterflies.", wincheck_style);
-                game.add.text(470, game.world.height - 320, "You have " + (7 - score) + " more to catch.", wincheck_style);
+                wincheck_style = { font: "50px Arial", fill: "#fff", align: "center" };
+                var butterflies = game.add.text(3950, 620, "You've collected \n" + score + " butterflies.\n\n You have " + (7 - score) + "\n more to catch.", wincheck_style);
+                // Audio effect
+                notice.play('');
+                // Call removeText function after a couple seconds
+                setTimeout(removeText, 1500);
+
+                function removeText () {
+                    game.world.remove(butterflies);
+                }
             }
          }
 
