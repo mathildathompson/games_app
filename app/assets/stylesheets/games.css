@@ -8,7 +8,7 @@
     width: 1110px;
     margin-left: auto;
     margin-right: auto;
-    border: 10px solid #66D9EF;
+    border: 10px ridge rgba(102,217,239, 0.5);
 }
 .menu {
     padding: 0;
@@ -20,7 +20,7 @@ canvas {
     display: inline-block;
     height: 600px;
     width: 800px;
-    border-right: 10px solid #66D9EF;
+    border-right: 10px ridge rgba(102,217,239, 0.5);
 }
 
 section.slider {
