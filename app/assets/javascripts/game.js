@@ -284,7 +284,7 @@ $(document).ready(function() {
             //add a second group of enemies with different movement styles. these baddies have short distance animations. good for platforms. 
             baddies = game.add.group();
             baddies.enableBody = true;
-            for (var i = 0; i < 9; i++)
+            for (var i = 0; i < 4; i++)
             {
                 var baddy = baddies.create( 400 + (i * 900), 400, 'baddie');
                 baddy.body.gravity.y = 300;
