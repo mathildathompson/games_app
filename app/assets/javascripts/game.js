@@ -40,6 +40,8 @@ $(document).ready(function() {
             game.load.audio('jumping', '/assets/jumping.wav');
             game.load.audio('victory', '/assets/victory.mp3');
             game.load.audio('notice', '/assets/hifi.mp3');
+            game.load.audio('explode_sound', '/assets/explode.mp3');
+
 
             //here we load two more assets for the other 'stars'
             game.load.image('ground', '/assets/platform.png');
@@ -80,6 +82,9 @@ $(document).ready(function() {
         var enemies;
         var ledge;
         var butterflyJoel;
+        var explode_sound;
+        
+
 
         //here we set two more vars
         var score = 0;
@@ -103,6 +108,7 @@ $(document).ready(function() {
             jumping = game.add.audio('jumping');
             victory = game.add.audio('victory');
             notice = game.add.audio('notice');
+            explode = game.add.audio('explode_sound');
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
             platforms = game.add.group();
@@ -362,10 +368,9 @@ $(document).ready(function() {
             cursors = game.input.keyboard.createCursorKeys();
             
         }
-     
+        
 
         function update() {
-            
             //  Collide the player and the stars with the platforms
             game.physics.arcade.collide(player, platforms);
             game.physics.arcade.collide(butterflies, platforms);
@@ -532,10 +537,10 @@ $(document).ready(function() {
             explosion = game.add.sprite(player.body.x - 32, player.body.y - 32,  'explosion');
             explosion.animations.add('run_explode', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
             explosion.animations.play('run_explode');
-            
             setTimeout(explode, 1500);
             setTimeout(gameOverText, 1500);
             setTimeout(gameRestart, 3000);
+
 
             function explode() {
               explosion.kill();  
