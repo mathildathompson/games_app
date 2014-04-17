@@ -10,6 +10,9 @@
 .menu {
     padding: 0;
 }
+.menu ul {
+    padding-left: 10px;
+}
 canvas {
     display: inline-block;
     height: 600px;
