@@ -1,6 +1,6 @@
 $(document).ready(function() {
    if ($("#game_canvas").length > 0) {
-        var game = new Phaser.Game(900, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+        var game = new Phaser.Game(900, 600, Phaser.AUTO, 'game_canvas', { preload: preload, create: create, update: update });
 
         function preload() {
         

@@ -25,6 +25,10 @@ body {
     color: #f8f8f2;
     /*font-family: 'Press Start 2P`', cursive;*/
 }
+#container {
+    position:relative;
+    min-width: 960px;
+}
 
 a {
     text-decoration: none;

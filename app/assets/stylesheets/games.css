@@ -3,14 +3,13 @@
 /*CSS file for fontawesome - an iconfont we will be using. This CSS file imported contains the font-face declaration. More info: http://fortawesome.github.io/Font-Awesome/ */
 /*@import url(http://thecodeplayer.com/uploads/fonts/fontawesome/css/font-awesome.min.css);*/
 
-#container {
-    position:relative;
-    min-width: 960px;
+#game_canvas {
+    width: 1100px;
+    margin: auto;
 }
-
-/*Basic reset*/
-* {margin: 0; padding: 0;}
-
+.menu {
+    padding: 0;
+}
 canvas {
     display: inline-block;
     height: 600px;
@@ -24,7 +23,7 @@ section.slider {
 #accordian {
     font-family: 'Fjord One', serif;
     background: #0A1F1D;
-    width: 480px;
+    width: 300px;
     color: #66D9EF;
     border-radius: 3px;
     /*Some cool shadow and glow effect*/
