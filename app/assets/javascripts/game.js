@@ -83,9 +83,8 @@ $(document).ready(function() {
         var ledge;
         var butterflyJoel;
         var explode_sound;
+
         
-
-
         //here we set two more vars
         var score = 0;
         var scoreText;
@@ -433,9 +432,7 @@ $(document).ready(function() {
             joelStyle = { font: "30px Arial", fill: "#fff", align: "center" };
             // var joelisms = ["\"Have the best time... seriously.\"", "\"Turn up the autism for that one.\""]
             // var joelText = game.add.text(1350, 270, _.sample(joelisms), joelStyle);
-
-            var joelText = game.add.text(1350, 270, "\"Have the best time... seriously.\"", joelStyle);
-           
+            var joelText = game.add.text(1350, 270, "\"Have the best time... seriously.\"", joelStyle);   
             // Audio effect
             notice.play('');
             // Call removeText function after a couple seconds
@@ -481,6 +478,10 @@ $(document).ready(function() {
             
             // updates the score so we can check in the winChecker function if player has collected all the stars.
             score += 1;
+            game.world.remove(scoreText);
+            score_style = { font: "20px Arial", fill: "#fff", align: "center" };
+            scoreText = game.add.text(20, 20, "No. Butterflies: " + score, score_style);
+            scoreText.fixedToCamera = true;
 
             // This simply plays a sound effect each time an item is collected.
             butterflyCollect.play('');
@@ -497,7 +498,7 @@ $(document).ready(function() {
             // Displays how many butterflies are still left to catch
             else {
                 wincheck_style = { font: "50px Arial", fill: "#fff", align: "center" };
-                var butterfliesText = game.add.text(3950, 620, "You've collected \n" + score + " butterflies.\n\n You have " + (7 - score) + "\n more to catch.", wincheck_style);
+                butterfliesText = game.add.text(3950, 620, "You've collected \n" + score + " butterflies.\n\n You have " + (7 - score) + "\n more to catch.", wincheck_style);
                 // Audio effect
                 notice.play('');
                 // Call removeText function after a couple seconds
