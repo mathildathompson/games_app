@@ -479,7 +479,7 @@ $(document).ready(function() {
 
             highlight();
             
-            // updates the score so we can check in teh winChecker function if player has collected all the stars.
+            // updates the score so we can check in the winChecker function if player has collected all the stars.
             score += 1;
 
             // This simply plays a sound effect each time an item is collected.
