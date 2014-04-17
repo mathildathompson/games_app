@@ -77,6 +77,7 @@ $(document).ready(function() {
         var butterflies;
         var enemies;
         var ledge;
+        var butterflyJoel;
 
         //here we set two more vars
         var score = 0;
@@ -278,10 +279,15 @@ $(document).ready(function() {
             }
             butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
             butterflies.callAll('animations.play', 'animations', 'fly');
-            
+
             // create special easter egg butterfly
-            var butterflyJoel = game.add.sprite(1410, 90, 'butterflyJoel');
+            butterflyJoel = game.add.sprite(1410, 70, 'butterflyJoel');
             game.physics.arcade.enable(butterflyJoel);
+            butterflyJoel.enableBody = true;
+            butterflyJoel.body.immovable = true;
+            // Full opacity so it's invisible
+            butterflyJoel.alpha = 0.01;
+           
             butterflyJoel.animations.add('flutter', [0, 1, 2, 3], 10, true);
             butterflyJoel.animations.play('flutter');
             
@@ -369,8 +375,11 @@ $(document).ready(function() {
             // This lets the user win if they run into the door.
             game.physics.arcade.overlap(player, door, winChecker, null, this);
 
-             //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
+             //  Checks to see if the player overlaps with any of the butterflies, if he does call the collectStar function
             game.physics.arcade.overlap(player, butterflies, collectButterfly, null, this);
+
+            //  Checks to see if the player overlaps with the butterflyJoel, if he does call the easterEgg function
+            game.physics.arcade.collide(player, butterflyJoel, easterEgg, null, this);
 
             // KILL PLAYER IF HE BUMPS INTO BAD GUY
             game.physics.arcade.overlap(player, enemies, killPlayer, null, this);
@@ -409,6 +418,25 @@ $(document).ready(function() {
             }
         }
         
+        function easterEgg (player, butterflyJoel) {
+            // Gets rid of opacity so that the easterEgg appears
+            butterflyJoel.alpha  = 1;
+            // Samples an array of Joel's best comments
+            joelStyle = { font: "30px Arial", fill: "#fff", align: "center" };
+            var joelisms = ["\"Have a great time... seriously.\"", "\"Turn up the autism for that one.\""]
+            var joelText = game.add.text(1350, 270, _.sample(joelisms), joelStyle);
+           
+            // Audio effect
+            notice.play('');
+            // Call removeText function after a couple seconds
+            setTimeout(removeText, 500);
+
+            function removeText () {
+                game.world.remove(joelText);   
+            }
+
+        }
+
         function collectButterfly (player, butterfly) {
             
             // Removes the star from the screen
@@ -459,15 +487,16 @@ $(document).ready(function() {
             // Displays how many butterflies are still left to catch
             else {
                 wincheck_style = { font: "50px Arial", fill: "#fff", align: "center" };
-                var butterflies = game.add.text(3950, 620, "You've collected \n" + score + " butterflies.\n\n You have " + (7 - score) + "\n more to catch.", wincheck_style);
+                var butterfliesText = game.add.text(3950, 620, "You've collected \n" + score + " butterflies.\n\n You have " + (7 - score) + "\n more to catch.", wincheck_style);
                 // Audio effect
                 notice.play('');
                 // Call removeText function after a couple seconds
                 setTimeout(removeText, 1500);
 
                 function removeText () {
-                    game.world.remove(butterflies);
+                    game.world.remove(butterfliesText);   
                 }
+                
             }
          }
 
