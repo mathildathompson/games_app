@@ -22,8 +22,10 @@ $(document).ready(function() {
             }
 
             game.add.text(200, 280, 'Loading...', { font: '20px "Press Start 2P"', fill: '#fff' });
-            game.add.text(200, 360, 'Collect the seven butterflies' + playerName, { font: '20px "Press Start 2P"', fill: '#fff' });
-            game.add.text(200, 380, ' to learn more about ' + playerName, { font: '20px "Press Start 2P"', fill: '#fff' });
+            game.add.text(200, 360, 'Collect the seven butterflies', { font: '20px "Press Start 2P"', fill: '#fff' });
+            game.add.text(200, 380, 'and take them to the house', { font: '20px "Press Start 2P"', fill: '#fff' });
+            game.add.text(200, 400, 'to learn more about ' + playerName, { font: '20px "Press Start 2P"', fill: '#fff' });
+           
         // Now we start to create the other assets
             game.load.image('forest', '/assets/forestbg.png');
             game.load.image('treetall', '/assets/tree2.png', 900, 1462);                    
