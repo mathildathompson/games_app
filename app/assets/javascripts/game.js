@@ -83,6 +83,7 @@ $(document).ready(function() {
         var ledge;
         var butterflyJoel;
         var explode_sound;
+        var roof;
         
 
 
@@ -108,7 +109,7 @@ $(document).ready(function() {
             jumping = game.add.audio('jumping');
             victory = game.add.audio('victory');
             notice = game.add.audio('notice');
-            explode = game.add.audio('explode_sound');
+            explode_sound = game.add.audio('explode_sound');
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
             platforms = game.add.group();
@@ -246,7 +247,9 @@ $(document).ready(function() {
             door = game.add.sprite(4170, game.world.height - 139, "door");   
             game.physics.arcade.enable(door);
             door.body.immovable = true;
-
+            var roof = game.add.sprite(200, game.world.height - 139, "shortledge");
+            game.physics.arcade.enable(roof);
+            roof.body.immovable = true;
 
             // The player and its settings
             player = game.add.sprite(200, game.world.height - 150, 'dude');
@@ -372,6 +375,10 @@ $(document).ready(function() {
 
         function update() {
             //  Collide the player and the stars with the platforms
+            // WILL GET ROOF OF HOUSE WORKING LATER (ERIK)
+            // if (player.body.velocity.y >= 0){
+            //  game.physics.arcade.collide(player, roof);
+            // }
             game.physics.arcade.collide(player, platforms);
             game.physics.arcade.collide(butterflies, platforms);
 
@@ -543,9 +550,10 @@ $(document).ready(function() {
             setTimeout(gameOverText, 1500);
             setTimeout(gameRestart, 3000);
 
-
+            explode_sound.play(''); 
             function explode() {
-              explosion.kill();  
+              explosion.kill();
+
             }
 
             // Show text to say you died, then reload the game.
