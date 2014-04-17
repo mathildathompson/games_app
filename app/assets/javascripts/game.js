@@ -247,9 +247,11 @@ $(document).ready(function() {
             door = game.add.sprite(4170, game.world.height - 139, "door");   
             game.physics.arcade.enable(door);
             door.body.immovable = true;
-            var roof = game.add.sprite(200, game.world.height - 139, "shortledge");
-            game.physics.arcade.enable(roof);
-            roof.body.immovable = true;
+            
+            // WILL ADD ROOF TO HOUSE LATER
+            // var roof = game.add.sprite(200, game.world.height - 139, "shortledge");
+            // game.physics.arcade.enable(roof);
+            // roof.body.immovable = true;
 
             // The player and its settings
             player = game.add.sprite(200, game.world.height - 150, 'dude');
