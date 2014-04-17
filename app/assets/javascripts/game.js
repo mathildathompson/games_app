@@ -1,6 +1,7 @@
 $(document).ready(function() {
    if ($("#game_canvas").length > 0) {
         var game = new Phaser.Game(900, 600, Phaser.AUTO, 'game_canvas', { preload: preload, create: create, update: update });
+        var lastName;
 
         function preload() {
         
@@ -9,17 +10,20 @@ $(document).ready(function() {
             if ($("#Erik").length > 0){
                 game.load.spritesheet('dude', '/assets/eriksprite.png', 32, 60);
                 var playerName = 'Erik'
+                lastName = 'froese'
             } else if ($("#Tom").length > 0) {
                 game.load.spritesheet('dude', '/assets/tomsprite.png', 32, 56);
                 var playerName = 'Tom'
+                lastName = 'dane'
             } else {
                 game.load.spritesheet('dude', '/assets/ollysprite.png', 32, 60);
                 var playerName = 'Olly'
+                lastName = 'dutton'
             }
 
-            game.add.text(200, 300, 'Loading...', { font: '20px "Press Start 2P"', fill: '#fff' });
-            game.add.text(200, 380, 'Collect the seven butterflies to learn more about ' + playerName, { font: '20px "Press Start 2P"', fill: '#fff' });
-            
+            game.add.text(200, 280, 'Loading...', { font: '20px "Press Start 2P"', fill: '#fff' });
+            game.add.text(200, 360, 'Collect the seven butterflies' + playerName, { font: '20px "Press Start 2P"', fill: '#fff' });
+            game.add.text(200, 380, ' to learn more about ' + playerName, { font: '20px "Press Start 2P"', fill: '#fff' });
         // Now we start to create the other assets
             game.load.image('forest', '/assets/forestbg.png');
             game.load.image('treetall', '/assets/tree2.png', 900, 1462);           
@@ -231,7 +235,7 @@ $(document).ready(function() {
 
 
             // The player and its settings
-            player = game.add.sprite(200, game.world.height - 150, 'dude');
+            player = game.add.sprite(4200, game.world.height - 150, 'dude');
 
             //  We need to enable physics on the player
             game.physics.arcade.enable(player);
@@ -371,7 +375,7 @@ $(document).ready(function() {
             if (cursors.left.isDown)
             {
                 //  Move to the left
-                player.body.velocity.x = -200;
+                player.body.velocity.x = -500;
 
                 player.animations.play('left');
                 
@@ -379,7 +383,7 @@ $(document).ready(function() {
             else if (cursors.right.isDown)
             {
                 //  Move to the right
-                player.body.velocity.x = 200;
+                player.body.velocity.x = 500;
 
                 player.animations.play('right');
 
@@ -395,7 +399,7 @@ $(document).ready(function() {
             //  Allow the player to jump if they are touching the ground.
             if (cursors.up.isDown && player.body.touching.down)
             {
-                player.body.velocity.y = -350;
+                player.body.velocity.y = -450;
                 jumping.play('');
             }
         }
@@ -443,7 +447,7 @@ $(document).ready(function() {
 
          // Here we check if the user has collected all the collectables when they enter the door
          function winChecker () {
-            if (score > 6) { 
+            if (score > 0) { 
                 win();
                 this.music.pause();
                 player.kill();
@@ -477,7 +481,7 @@ $(document).ready(function() {
             // When the contact button is clicked it redirects through to contact form
             function actionOnContactClick () {
 
-
+                window.location = ("/contacts/" + lastName)
                 
             } 
         } 
