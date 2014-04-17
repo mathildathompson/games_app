@@ -10,7 +10,7 @@
 
 <div id="home_container">
  
-    <h2 id="home_choose_char"><span class="blue">function </span><span class="green">contact</span> (<span class="orange"><%= @first_name %></span>){}</h2>
+    <h2 id="home_choose_char"><span class="blue">function </span><span class="green">contact</span> (<span class="orange"><%= @first_name %> <%= @last_name %></span>){}</h2>
 
   <a href="/games/<%= @user.last_name.downcase %>">
     <div class="character">
@@ -23,7 +23,7 @@
         <ul>
             <li><a href="<%= @github %>"><i target="_blank" class="fa fa-github-alt"></i> Github</a></li>
             <li><a href="<%= @linkedin %>"><i target="_blank" class="fa fa-linkedin"></i> LinkedIn</a></li>
-            <li><a href="<%= @user.twitter %>"><i  class="fa fa-twitter" target="_blank"></i> Twitter</a></li>
+            <li><a href="<%= @twitter %>"><i  class="fa fa-twitter" target="_blank"></i> Twitter</a></li>
         </ul>
     </div>    
 

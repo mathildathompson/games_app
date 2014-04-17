@@ -78,4 +78,20 @@ a {
 
   color:white;
 }
+/*FOOTER*/
+#footer_home {
+  text-align: center;
+}
+
+#tom_cont:hover {
+  color: #66D9EF;
+}
+
+#olly_cont:hover {
+  color:#F92672;
+}
+
+#erik_cont:hover {
+  color:#A6E22E;
+}
 

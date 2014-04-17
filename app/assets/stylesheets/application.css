@@ -19,6 +19,7 @@ modenizer.css instead */
     border:0px;
     font-family: "Calibri", sans;
 }
+
 body {
     background: #272822!important;
     /* this is because background is also set in game.css. can remove when we update there.*/ 
