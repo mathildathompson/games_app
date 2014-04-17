@@ -25,6 +25,11 @@ body {
     color: #f8f8f2;
     /*font-family: 'Press Start 2P`', cursive;*/
 }
+.contactLinks ul {
+    list-style: none;
+    padding-left: 0;
+}
+
 #container {
     position:relative;
     min-width: 960px;
