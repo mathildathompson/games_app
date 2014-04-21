@@ -65,17 +65,14 @@ e5 = Education.create(:institution => 'Australian National University', :course 
 e9 = Education.create(:institution => 'Sydney Institute TAFE', :course => 'I.T (Web Development)', 
     :start_date => '01/03/2009', :end_date => '28/02/2009' )
 
-c4 = Career.create(:job_title => 'Search & Innovations Director', :job_description => 'Tasked with creating an Innovations team in order to diversify 
-    our business offering. Working closely with Maxus\' creative technology R&D division, Metalworks Singapore.',
-    :company => 'Maxus', :start_date => '1/06/2013', :end_date => '20/02/2014')
+c4 = Career.create(:job_title => 'Digital Project Manager', :job_description => 'Worked with developers in India and the Philippines to build responsive desktop sites, landing pages and mobile sites for clients in Sydney.',
+    :company => 'FairSource', :start_date => '1/01/2012', :end_date => '1/05/2014')
 
-c5 = Career.create(:job_title => 'Associate Search Director', :job_description => '2IC of the Maxus Australia Search Team. 
-    Primarily SEM and SEO, however, exxperienced in everything Performance Media related, e.g. Facebook Advertising, Display, Retargeting, Mobile and Video.',
-    :company => 'Maxus', :start_date => '19/01/2012', :end_date => '31/05/2013')
+c5 = Career.create(:job_title => 'Wordpress Web Dev', :job_description => 'Built and hosted basic sites using Wordpress',
+    :company => 'Freelance', :start_date => '19/01/2009', :end_date => '31/12/2011')
 
-c9 = Career.create(:job_title => 'Senior Search Manager', :job_description => 'Managed a Search Team for key client accounts across some of the most challenging verticals, 
-    including Vodafone (Telco), and CBA (Finance).',
-    :company => 'Ikon', :start_date => '01/06/2011', :end_date => '17/01/2012')
+c9 = Career.create(:job_title => 'Researcher', :job_description => 'Wrote and organized around Open Source, web standards and online freedom',
+    :company => 'Centre for Internet and Society', :start_date => '01/08/2011', :end_date => '17/11/2011')
 
 # u2.portfolios << p1
 
