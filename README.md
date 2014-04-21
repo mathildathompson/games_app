@@ -1,28 +1,63 @@
-TO DO
+#Background
 
-GAME PLAY
-- ledges (olly)
-- baddies (tom)
-- butterflies (erik)
+The rationale behind this app was to build an intercative resume which would stand out from the many others which potential employers might see.
 
-LOAD SCREEN TEXT
-- tom
+To achieve this, the app is in fact an online gaming resume, for which, content gets unlocked one piece at a time. Each piece of content is associated to a butterfly within the game. The gamer is encouraged to collect all the butterflies, and by doing so, is rewarded with seeing the full content of the resume.   
 
-FORMATTING
-- sidebar/canvas relationship (?)
-- homepage (?)
+##Site Features
 
-MISC
-* API (LinkedIn?)
+- Choice of player (Olly, Erik, Tom). The resume content will change for each game, depending on which player you choose. 
+- Full CRUD system for Admin to manage user's, resume attributes.
+
+##Data Model
+
+4 models & 4 tables:
+
+- Education, (belongs_to user)
+- Career, (belongs_to user)
+- Portfolio, (belongs_to user) 
+- User, (has_many porfolios, has_many careers, has_many educations)
+
+##Gems & Specifications
+
+- Postgresql
+- Active Record
+- Rails
+- JSON
+- Javascript, jQuery, Underscore.js
+- Phaser.io framework
+- Facebook Open Graph API
+
+Gems:
+
+- bcrypt-ruby
+- httparty
+- protected_attributes
+- rails_12factor
+- thread_safe, '0.2.0'
+- underscore-rails
+- momentjs-rails
 
 
-##NICE TO HAVE
-* border around homepage
-* another bad guy (flying)
-* joel butterfly
-* other characters to interact with
-* text over house to tell user how many butterflies they've collected
-* tree foliage to the foreground
-* win function - turn cursor into hand when over button
+(development)
+
+- pry-rails
+- pry-debugger
+- pry-stack_explorer
+- better_errors
+
+--------------
+
+##To Do
+
+- Email Contact
+- Resume download
+- Give players lives rather than reload each time
+- Rspec testing
+- Styling
+
+--------------
+
+Big shout out to Joel Turnbull and Mathilda Thompson at GA Sydney for their help with this! 
 
 
