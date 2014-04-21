@@ -222,7 +222,7 @@ $(document).ready(function() {
             // roof.body.immovable = true;
 
             // The player and its settings
-            player = game.add.sprite(2700, game.world.height - 150, 'dude');
+            player = game.add.sprite(200, game.world.height - 150, 'dude');
 
             //  enable physics on the player
             game.physics.arcade.enable(player);
