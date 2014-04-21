@@ -54,3 +54,8 @@ a {
 .orange {
     color: #FD971F;  /*rgb(253,151,31)*/
 }
+
+form input {
+
+    color:black;
+}
