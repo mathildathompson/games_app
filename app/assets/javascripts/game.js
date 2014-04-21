@@ -115,7 +115,84 @@ $(document).ready(function() {
             //  We will enable physics for any object that is created in this group
             platforms.enableBody = true;
 
-            // Here we create the ground.
+
+            //  Now let's create the ledges
+            //the first number says how many pixels from the left border it is
+            //a negative number puts the ledge off the screen to the left
+            //ledges have a fixed width, so to shorten them you have to put them off the screen
+            //the second number says how far from the top of the page it is.    
+
+            // These are the coordinates for the short ledges
+            var shortledge_coords = {
+               250: 800,
+               550: 650,
+               1450: 500,
+               1750: 300,
+               2050: 500,
+               2300: 650,
+               2700: 650,
+               2700: 950,
+               2800: 600,
+               3000: 800,
+               3500: 750,
+               3500: 950,
+               3800: 450,
+               3900: 750,
+               4250: 150,
+               4250: 550,
+               4600: 350
+            }
+            // The following iterates through the coordinates and creates the ledges
+            for (var key in shortledge_coords) {
+                var ledge = platforms.create( parseInt(key), shortledge_coords[key], 'shortledge');
+                ledge.body.immovable = true;  
+            }
+       
+            // Here we create the long ledges
+            var longledge_coords = {
+                1500: 970,
+                1800: 970,
+                2100: 970
+            }
+            for (var key in longledge_coords) {
+                var ledge = platforms.create( parseInt(key), longledge_coords[key], 'longledge');
+                ledge.body.immovable = true;  
+            }
+
+
+            // Here are some tree/trunk/top pairings. Trees have no 'body', trunks and tops are invislbe, but do.
+            
+            trees = game.add.group();
+
+            var tree = trees.create(800, 480 , 'treetall');
+            
+            ledge = platforms.create(1000, 600 , 'trunk');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(10, 945, 'treestem');
+            ledge.body.immovable = true;
+ 
+            ledge = platforms.create(840, 580 , 'invplat');
+            ledge.body.immovable = true;
+
+            tree = trees.create(3100, 480 , 'treetall');
+            
+            ledge = platforms.create(3300, 600 , 'trunk');
+            ledge.body.immovable = true;
+
+            ledge = platforms.create(3140, 580 , 'invplat');
+            ledge.body.immovable = true;
+            
+                   
+            // This it he bonsai tree
+            ledge = platforms.create(1900, 730, 'tree_tile');
+            ledge.body.immovable = true;
+
+            //secret ledge for an easter egg to go on.
+            ledge = platforms.create(1400, 150, 'invshortledge');
+            ledge.body.immovable = true;
+
+             // Here we create the ground.
             var ground = platforms.create(0, game.world.height - 64, 'ground');
 
             //  Scale it to fit the width of the game (the original sprite is 400x32 in size)
@@ -133,113 +210,6 @@ $(document).ready(function() {
                 x_pos = x_pos + 400 
 
             }
-
-            //  Now let's create the ledges
-            //the first number says how many pixels from the left border it is
-            //a negative number puts the ledge off the screen to the left
-            //ledges have a fixed width, so to shorten them you have to put them off the screen
-            //the second number says how far from the top of the page it is.    
-
-            //Now let's create the ledges
-            //the three below are on the right
-
-
-            ledge = platforms.create(10, 945, 'treestem');
-            ledge.body.immovable = true;
-
-            //this is the first ledge right of the toadstool
-            ledge = platforms.create(250, 800, 'shortledge');
-            ledge.body.immovable = true;
-                
-            //this is the second ledge above the toadstool
-            var ledge = platforms.create(550, 650, 'shortledge');
-            ledge.body.immovable = true;
-
-            //now the player is on the other side of the tree
-            ledge = platforms.create(1900, 730, 'tree_tile');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(1500, 970, 'longledge');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(1800, 970, 'longledge');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(2100, 970, 'longledge');
-            ledge.body.immovable = true;
-
-            //now the player is through the bridge.
-            trees = game.add.group();
-            tree = trees.create(3100, 480 , 'treetall');
-            
-            ledge = platforms.create(3300, 600 , 'trunk');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(3140, 580 , 'invplat');
-            ledge.body.immovable = true;
-
-
-            //these ledges run up the second big tree
-            ledge = platforms.create(2700, 950, 'shortledge');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(3000, 800, 'shortledge');
-            ledge.body.immovable = true;
-            
-            ledge = platforms.create(2700, 650, 'shortledge');
-            ledge.body.immovable = true;
-
-            // ledge = platforms.create(3000, 180, 'shortledge');
-            // ledge.body.immovable = true;
-
-             // this is the short wood easter egg ledge
-
-            ledge = platforms.create(2300, 650, 'shortledge');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(2050, 500, 'shortledge');
-            ledge.body.immovable = true;  
-
-            //secret ledge for an easter egg to go on.
-            ledge = platforms.create(1400, 150, 'invshortledge');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(1750, 300, 'shortledge');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(1450, 500, 'shortledge');
-            ledge.body.immovable = true; 
-
-            // Here are some tree/trunk/top pairings. Trees have no 'body', trunks and tops are invislbe, but do.
-            
-            var tree = trees.create(800, 480 , 'treetall');
-            
-            ledge = platforms.create(1000, 600 , 'trunk');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(840, 580 , 'invplat');
-            ledge.body.immovable = true;
-
-            // Ledges after the second tree
-
-            ledge = platforms.create(3500, 950, 'shortledge');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(3900, 750, 'shortledge');
-            ledge.body.immovable = true;
-            
-            ledge = platforms.create(3500, 750, 'shortledge');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(4250, 550, 'shortledge');
-            ledge.body.immovable = true;
-
-            ledge = platforms.create(4250, 150, 'shortledge');
-            ledge.body.immovable = true;
-            
-            ledge = platforms.create(4600, 350, 'shortledge');
-            ledge.body.immovable = true;
-
             // HOUSE 
             var house = game.add.sprite(4000, 925, "house");
             door = game.add.sprite(4170, game.world.height - 139, "door");   
@@ -252,12 +222,12 @@ $(document).ready(function() {
             // roof.body.immovable = true;
 
             // The player and its settings
-            player = game.add.sprite(200, game.world.height - 150, 'dude');
+            player = game.add.sprite(2700, game.world.height - 150, 'dude');
 
-            //  We need to enable physics on the player
+            //  enable physics on the player
             game.physics.arcade.enable(player);
 
-            //  Player physics properties. Give the little guy a slight bounce.
+            //  Player physics properties.
             player.body.bounce.y = 0.2;
             player.body.gravity.y = 300;
             player.body.collideWorldBounds = true;
@@ -269,7 +239,7 @@ $(document).ready(function() {
                 
             // Butterflies create
             // The object below contains the butterfly coordinates
-            var bIdCounter = 0;
+            
             var butterfly_coords = {
                 250: 650,
                 2800: 350,
@@ -281,12 +251,16 @@ $(document).ready(function() {
             }
             butterflies = game.add.group();
             butterflies.enableBody = true;
-
+            
+            // The bIdCounter allows us to give the butterflies a unique id as they're created so we can use them to manipulate the DOM as they're collected.
+            // Now we can updated the sidebar CSS as they're collected.
+            var bIdCounter = 0;
+            
+            // This loop creates the butterflies
             for (var key in butterfly_coords) {
                 var butterfly = butterflies.create( parseInt(key), butterfly_coords[key], 'butterfly');
                 butterfly.id = "resumeItem" + bIdCounter;
-                bIdCounter += 1;
-                console.log(bIdCounter);   
+                bIdCounter += 1;  
             }
             butterflies.callAll('animations.add', 'animations', 'fly', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 10, true)
             butterflies.callAll('animations.play', 'animations', 'fly');
@@ -374,11 +348,12 @@ $(document).ready(function() {
         
 
         function update() {
-            //  Collide the player and the stars with the platforms
-            // WILL GET ROOF OF HOUSE WORKING LATER (ERIK)
+             // WILL GET ROOF OF HOUSE WORKING LATER (ERIK)
             // if (player.body.velocity.y >= 0){
             //  game.physics.arcade.collide(player, roof);
             // }
+
+            //  Collide the player and the stars with the platforms
             game.physics.arcade.collide(player, platforms);
             game.physics.arcade.collide(butterflies, platforms);
 
@@ -572,8 +547,6 @@ $(document).ready(function() {
         function gameRestart () {
             location.reload();
         }
-        function joelSpeak (){
-            console.log("Hello");
-        }    
+  
     };
 });
