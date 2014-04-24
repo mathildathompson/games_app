@@ -1,11 +1,11 @@
 <script src="https://rawgit.com/photonstorm/phaser/master/build/phaser.min.js"></script>
 <div id="game_canvas">
     <div id="divider"></div>
-    <section id="<%= @first_name %>" class="slider">
+    <section id="<%= @user.first_name %>" class="slider">
         <div id="accordian">
             <ul class="menu">
                 <li>
-                    <h3><span class="title"><%= @first_name + "'s resume"%></span></h3>
+                    <h3><span class="title"><%= @user.first_name + "'s resume"%></span></h3>
                     <h3><span class="title">#experience</span></h3>
                     <ul>
                         <% @user.careers.each_with_index do |career, index| %>

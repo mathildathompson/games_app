@@ -98,3 +98,16 @@ $(document).ready(function() {
  }
 
 });
+
+// $('.character').on('mouseenter', function(){
+//   var name = $(this).attr('id');
+//   character(name); //Something alone these lines you will have to change the name of some of the images; 
+// })
+
+// function character(name){
+//   $hero_name.text("P3: " + name);
+//   $game_link.attr("href", "/games/" + name)
+//   $hero_img.css("background-image", "url(assets/" + name +".png)");
+// }
+
+//What about refactoring this code into an object; 

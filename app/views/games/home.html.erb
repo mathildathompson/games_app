@@ -4,12 +4,15 @@
   </ul>
 </div>
 
+<!-- You are using the header more than once in the app, to avoid repitition, put it into a partial;
+When you call the partial remember you can pass local variables this will solve the problem that you need the html to dynamlically contain either home or content;  -->  
+<!-- Add a link here to rails guide partials -->
 <header>
   <h1><span class="red">$</span>(<span class="blue">home</span>).ready<span class="blue"></span></h1>
 </header>
 
 <div id="home_container">
- 
+    
     <h2 id="home_choose_char"><span class="blue">function </span><span class="green">chooseCharacter</span> (<span class="orange">tom, olly, erik</span>){}</h2>
 
 <!-- TOM -->

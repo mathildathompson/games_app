@@ -5,7 +5,8 @@ class GamesController < ApplicationController
 
   def index
     @user = User.find_by last_name: params[:last_name].capitalize
-    @first_name = @user.first_name
+    # This is not necessary
+    # @first_name = @user.first_name
   end
 
 

@@ -1,4 +1,6 @@
 class PortfoliosController < ApplicationController
+  before_filter :check_if_admin
+  #You need to add some security, currently anyone can add shit to your portfolio etc!
   def index
     @portfolios = Portfolio.all
   end
@@ -30,5 +32,10 @@ class PortfoliosController < ApplicationController
     portfolio = Portfolio.find params[:id]
     portfolio.destroy
     redirect_to portfolios_path
+  end
+
+  private
+  def check_if_admin
+    redirect_to(root_path) if @current_user.nil? || @current_user.admin == false
   end
 end
